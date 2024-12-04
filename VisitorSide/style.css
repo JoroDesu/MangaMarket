@@ -1,0 +1,217 @@
+/*main content*/
+
+#slider {
+    height: 256px; /* Matches the height of the images */
+    position: relative;
+  }
+  
+  #slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .best-seller {
+    margin: 20px 0;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .best-seller h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .box-line-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+  
+  .box-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px;
+  }
+  
+  .manga-box {
+    display: flex;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 500px; /* Adjusted width for each box */
+  }
+  
+  .manga-cover {
+    width: 30%; /* Smaller image size */
+    object-fit: cover;
+    border-radius: 10px 0 0 10px;
+  }
+  
+  .manga-details {
+    padding: 15px;
+    width: 70%; /* Adjusted width to fill the remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .manga-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .manga-author,
+  .manga-genre,
+  .manga-price {
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+  
+  .view-button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  .view-button:hover {
+    background-color: #45a049;
+  }
+  
+  .view-all-btn {
+    padding: 10px 20px;
+    color: rgb(239,107,74);
+    text-shadow: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  .view-all-btn:hover {
+    color: white;
+    background-color: rgb(239,107,74);
+  }
+  
+
+
+
+
+
+
+
+/*footer content*/
+
+
+  /* General Footer Styles */
+.wrapper {
+    background-color: #1e293b; /* Dark Blue */
+    color: #ffffff; /* White Text */
+    font-family: 'Arial', sans-serif;
+    padding: 40px 20px;
+}
+
+/* Horizontal Divider */
+hr {
+    border-color: rgba(255, 255, 255, 0.2);
+    margin: 20px 0;
+}
+
+/* Footer Content Layout */
+.side-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Left Section (Brand and CTA) */
+.mangamarket-brand {
+    display: flex;
+    align-items: center;
+}
+.mangamarket-brand img {
+    width: 50px;
+    height: auto;
+}
+.mangamarket-brand h2 {
+    color: #00bcd4; /* Light Blue */
+    font-size: 1.8rem;
+    margin-left: 10px;
+}
+.lead {
+    font-size: 1rem;
+    color: #e0e0e0; /* Light Gray */
+    margin: 15px 0;
+}
+.container-fluid p {
+    font-size: 0.95rem;
+    color: #e0e0e0;
+}
+.btn-primary {
+    background-color: #0288d1; /* Blue */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease-in-out;
+    text-decoration: none;
+}
+.btn-primary:hover {
+    background-color: #026aa7; /* Darker Blue */
+}
+
+/* Middle Section (Navigation Links) */
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+}
+.navbar-nav .nav-item {
+    margin-bottom: 10px;
+}
+.navbar-nav .nav-item .nav-link {
+    color: #cfd8dc; /* Light Gray */
+    font-size: 0.95rem;
+    transition: color 0.3s ease-in-out;
+    text-decoration: none;
+}
+.navbar-nav .nav-item .nav-link:hover {
+    color: #00bcd4; /* Light Blue */
+}
+
+/* Right Section (Customer Support Info) */
+h5 {
+    color: #00bcd4; /* Light Blue */
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #e0e0e0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .side-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .mangamarket-brand h2 {
+        font-size: 1.5rem;
+    }
+    .lead, .container-fluid p, .navbar-nav .nav-item .nav-link, h5, p {
+        font-size: 0.9rem;
+    }
+    .btn-primary {
+        font-size: 0.9rem;
+    }
+}

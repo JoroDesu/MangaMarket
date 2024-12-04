@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga Market</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../src/cropped_image (1).png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body class="bg-gray-100 h-screen flex flex-col">
+    <!-- Top Navigation -->
+    <!-- Top Navigation -->
+    <header class="bg-gray-950 text-white shadow p-4">
+        <div class="container mx-auto flex justify-between items-center">
+          <!-- Logo and Icons -->
+          <div class="flex items-center w-full justify-between">
+            <!-- Logo -->
+            <div class="flex items-center">
+              <img src="../src/cropped_image (1).png" alt="Logo" class="w-8 h-8 mr-3">
+              
+            </div>
+        
+            <!-- Search Field in the Middle -->
+            <div class="flex-grow mx-4">
+              <input 
+                type="text" 
+                placeholder="Search Manga..." 
+                class="w-full p-2 rounded-lg text-black focus:outline-none"
+              />
+            </div>
+        
+            <!-- Icons (Cart, Search, User, Wishlist) -->
+            <div class="flex space-x-6">
+                <a href="/user" class="text-black hover:text-gray-400">
+                    <i class="far fa-user"></i> <!-- Hollow User icon -->
+                </a>
+                <a href="/wishlist" class="text-black hover:text-gray-400">
+                    <i class="far fa-heart"></i> <!-- Hollow Wishlist (Heart) icon -->
+                </a>
+                <a href="/cart" class="text-black hover:text-gray-400">
+                    <i class="fas fa-shopping-cart"></i> <!-- Hollow Cart icon -->
+                </a>
+            </div>
+            
+          </div>
+        </div>
+      </header>
+      
+
+      <nav>
+        <ul class="flex justify-center space-x-6 mt-4">
+          <li><a href="../VisitorSide/Main_Page.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Home</a></li>
+          <li><a href="/on-sale" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">On Sale</a></li>
+          <li><a href="/manga" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Manga</a></li>
+          <li><a href="/new-release" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">New Release</a></li>
+          <li><a href="/contact" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Contact Us</a></li>
+          <li><a href="/about" class="text-black hover:text-gray-400" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">About Us</a></li>
+        </ul>
+      </nav>
+      
+      
+  
+
+        <!-- Main Content -->
+    <main class="flex-1 p-6 bg-orange-100">
+        <div id="slider" class="relative w-full max-w-4xl mx-auto overflow-hidden rounded-lg shadow-lg">
+        <!-- Slides -->
+        <div id="slides" class="flex transition-transform duration-500">
+            <img src="../src/Manhwa_1100x.webp" alt="Slide 1" class="w-full h-64 object-cover flex-shrink-0">
+            <img src="../src/mystery_a7951392-3177-4def-8dee-e217d38eed86_1100x.webp" alt="Slide 2" class="w-full h-64 object-cover flex-shrink-0">
+            <img src="../src/website_banner_1100x.webp" alt="Slide 3" class="w-full h-64 object-cover flex-shrink-0">
+        </div>
+        <!-- Navigation Buttons -->
+        <button id="prevButton" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow hover:bg-gray-700">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button id="nextButton" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow hover:bg-gray-700">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        </div>
+
+        <div class="best-seller">
+            <h1>Best Seller</h1>
+            <button class="view-all-btn">View All</button>
+        
+            <div class="box-line-container">
+              <div class="box-container">
+                <div class="manga-box">
+                  <img src="../source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
+                  <div class="manga-details">
+                    <h3 class="manga-title">Manga Title 1</h3>
+                    <p class="manga-author">Author: Author Name</p>
+                    <p class="manga-genre">Genre: Adventure</p>
+                    <p class="manga-price">Price: $19.99</p>
+                    <button class="view-button" onclick="viewMangaDetails()">View Details</button>
+                  </div>
+                </div>
+        
+                <div class="manga-box">
+                  <img src="../source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
+                  <div class="manga-details">
+                    <h3 class="manga-title">Manga Title 2</h3>
+                    <p class="manga-author">Author: Author Name</p>
+                    <p class="manga-genre">Genre: Fantasy</p>
+                    <p class="manga-price">Price: $15.99</p>
+                    <button class="view-button" onclick="viewMangaDetails()">View Details</button>
+                  </div>
+                </div>
+        
+                <!-- More manga boxes can go here -->
+              </div>
+            </div>
+        
+            
+          </div>
+
+
+<!-- start of footer -->
+<div class="wrapper">
+
+    <div class="lowercontainer ms-5">
+        <div class="row d-flex">
+            <div class="col-12">
+                <ul class="nav-links">
+                    <!-- Add additional footer links here if needed -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <hr class="border border-1 border-light opacity-100 mx-4">
+
+    <div class="side-footer mx-5 mb-3">
+        <div class="row d-flex justify-content-between">
+            <!-- Left Section -->
+            <div class="col-lg-7 col-sm-12">
+                <div class="mangamarket-brand d-flex justify-content-start mb-3">
+                    <img src="../src/cropped_image (1).png" alt="MangaMarket Logo" style="width: 50px; height: auto;">
+                    <h2 class="ms-2">MangaMarket</h2>
+                </div>
+                <p class="lead">Dive into the world of manga! Your one-stop shop for the latest and greatest manga collections, exclusively for the Philippines.</p>
+                <div class="container-fluid d-flex flex-wrap p-0 pb-4">
+                    <p class="me-3">Support your love for manga. Explore new releases or find timeless classics!</p>
+                    <a href="../Support Page/support.html" class="btn btn-primary btn-lg" role="button">Shop Now</a>
+                </div>
+            </div>
+
+            <!-- Middle Section -->
+            <div class="col-lg-2 col-sm-12 mb-4">
+                <nav class="navbar">
+                    <ul class="navbar-nav text-start">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Products/products.html">Browse Manga</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../About Us/about.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Support Page/support.html">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Map/map.html">Store Locator</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Right Section -->
+            <div class="col-lg-3 col-sm-12">
+                <h5>Customer Support Hours</h5>
+                <p>Available Online, Philippines</p>
+                <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
+                <p>Saturday - Sunday: 10:00 AM - 5:00 PM</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of footer -->
+
+  
+  <script src="mPage.js"></script>
+  </body>
+</html>
