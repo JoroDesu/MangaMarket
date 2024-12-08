@@ -37,3 +37,39 @@ const slides = document.getElementById('slides');
   }
 
   document.getElementById("year").textContent = new Date().getFullYear();
+
+
+  function toggleCategories() {
+    // Select all the hidden categories
+    const hiddenCategories = document.querySelectorAll('.category-box.hidden');
+    
+    // Check if categories are currently expanded
+    const isExpanded = hiddenCategories.length === 0; // If there are no hidden categories, they are expanded
+    
+    if (isExpanded) {
+        // If categories are expanded, collapse them
+        const visibleCategories = document.querySelectorAll('.category-box');
+        
+        // Hide all categories except the first 8
+        visibleCategories.forEach((category, index) => {
+            if (index >= 8) {
+                category.classList.add('hidden');
+            }
+        });
+
+        // Change button text to "Expand"
+        const button = document.querySelector('.expand-btn');
+        button.innerText = 'Expand';
+    } else {
+        // If categories are collapsed, expand them
+        hiddenCategories.forEach(category => {
+            category.classList.remove('hidden');
+        });
+
+        // Change button text to "Collapse"
+        const button = document.querySelector('.expand-btn');
+        button.innerText = 'Collapse';
+    }
+}
+
+
