@@ -1,0 +1,271 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Back Button */
+.back-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+   
+}
+
+.back-btn:hover {
+    background-color: #45a049;
+}
+
+/* Manga Description Section */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.name-row, .city-row {
+    display: flex;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+}
+
+input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.payment-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    width: 80%;
+    margin: auto;
+}
+
+.delivery-details,
+.order-summary,
+.payment-method {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #f9f9f9;
+}
+
+.delivery-details {
+    flex: 0 0 60%; /* Takes 60% width */
+}
+
+.order-summary,
+.payment-method {
+    flex: 0 0 35%; /* Takes 35% width */
+}
+
+.name-row,
+.city-row {
+    display: flex;
+    gap: 10px;
+}
+
+.input-half {
+    flex: 1;
+}
+
+.order-list {
+    margin-top: 15px;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.order-cover {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.manga-title {
+    font-weight: bold;
+}
+
+.summary-totals {
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+.summary-totals p {
+    display: flex;
+    justify-content: space-between;
+}
+
+.payment-method div {
+    margin-bottom: 10px;
+}
+
+.pay-now-container {
+    flex: 1 0 100%; /* Takes the full width */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.pay-now-button {
+    padding: 15px 30px;
+    background: rgb(221, 81, 83);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.pay-now-button:hover {
+    background: rgb(200, 60, 60);
+}
+
+
+
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%; /* Adjust width */
+    max-width: 800px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Close Button */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Cart Items List */
+#cartItemsList {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+/* Individual Cart Item */
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between image and details */
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd; /* Optional separator */
+    padding-bottom: 10px;
+}
+
+.cart-item-image {
+    width: 90px;
+    height: 139px;
+    object-fit: cover; /* Ensures the image fits nicely */
+    border-radius: 5px;
+}
+
+.cart-item-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1; /* Allow details to grow */
+}
+
+.cart-item-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.cart-item-price,
+.cart-item-quantity {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Checkout Button */
+.checkout-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.checkout-button:hover {
+    background-color: #0056b3;
+}
+
+

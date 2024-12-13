@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../src/cropped_image (1).png">
     <link rel="stylesheet" href="/VisitorSide/css/style.css">
+    <link rel="stylesheet" href="/VisitorSide/css/contactUs.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   </head>
@@ -69,111 +70,7 @@
   
 
         <!-- Main Content -->
-    <main class="flex-1 p-6 bg-orange-100">
-        <div id="slider" class="relative w-full max-w-4xl mx-auto overflow-hidden rounded-lg shadow-lg">
-        <!-- Slides -->
-        <div id="slides" class="flex transition-transform duration-500">
-            <img src="/src/Manhwa_1100x.webp" alt="Slide 1" class="w-full h-64 object-cover flex-shrink-0">
-            <img src="/src/mystery_a7951392-3177-4def-8dee-e217d38eed86_1100x.webp" alt="Slide 2" class="w-full h-64 object-cover flex-shrink-0">
-            <img src="/src/website_banner_1100x.webp" alt="Slide 3" class="w-full h-64 object-cover flex-shrink-0">
-        </div>
-        <!-- Navigation Buttons -->
-        <button id="prevButton" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow hover:bg-gray-700">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-        <button id="nextButton" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow hover:bg-gray-700">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-        </div>
-        <div class="best-seller">
-          <div class="header">
-              <h1>Best Seller</h1>
-              <a href="/VisitorSide/html/View_all.html" class="view-all-btn">View All</a>
-          </div>
-          <div class="box-line-container">
-              <div class="box-container">
-                  <a href="/VisitorSide/html/manga-details.html" class="manga-box">
-                      <img src="../source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
-                      <div class="manga-details">
-                          <h3 class="manga-title">Manga Title 1</h3>
-                          <p class="manga-author">Author: Author Name</p>
-                          <p class="manga-genre">Genre: Adventure</p>
-                          <p class="manga-price">Price: $19.99</p>
-                      </div>
-                  </a>
-      
-                  <a href="/VisitorSide/html/manga-details.html" class="manga-box">
-                      <img src="../source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
-                      <div class="manga-details">
-                          <h3 class="manga-title">Manga Title 2</h3>
-                          <p class="manga-author">Author: Author Name</p>
-                          <p class="manga-genre">Genre: Fantasy</p>
-                          <p class="manga-price">Price: $15.99</p>
-                      </div>
-                  </a>
-                  <!-- More manga boxes can go here -->
-              </div>
-          </div>
-      </div>
-      
-      <div class="on-sale">
-        <div class="header">
-            <h1>On Sale</h1>
-            <a href="/VisitorSide/html/View_all.html" class="view-all-btn">View All</a>
-        </div>
-        <div class="box-line-container">
-            <div class="box-container">
-                <a href="/VisitorSide/html/manga-details.html" class="manga-box">
-                    <img src="/source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
-                    <div class="manga-details">
-                        <h3 class="manga-title">Manga Title 1</h3>
-                        <p class="manga-author">Author: Author Name</p>
-                        <p class="manga-genre">Genre: Adventure</p>
-                        <p class="manga-price">Price: $19.99 <span class="sale-price">$9.99</span></p>
-                    </div>
-                </a>
-    
-                <a href="/VisitorSide/html/manga-details.html" class="manga-box">
-                    <img src="/source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
-                    <div class="manga-details">
-                        <h3 class="manga-title">Manga Title 2</h3>
-                        <p class="manga-author">Author: Author Name</p>
-                        <p class="manga-genre">Genre: Fantasy</p>
-                        <p class="manga-price">Price: $15.99 <span class="sale-price">$7.99</span></p>
-                    </div>
-                </a>
-                <!-- More manga boxes can go here -->
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="category-container">
-      <h2>Check our Categories</h2>
-      <div class="category-grid">
-          <a href="/category/adventure" class="category-box">Adventure</a>
-          <a href="/category/fantasy" class="category-box">Fantasy</a>
-          <a href="/category/action" class="category-box">Action</a>
-          <a href="/category/romance" class="category-box">Romance</a>
-          <a href="/category/mystery" class="category-box">Mystery</a>
-          <a href="/category/horror" class="category-box">Horror</a>
-          <a href="/category/sci-fi" class="category-box">Sci-Fi</a>
-          <a href="/category/comedy" class="category-box">Comedy</a>
-          <!-- Hidden categories -->
-          <a href="/category/thriller" class="category-box hidden">Thriller</a>
-          <a href="/category/drama" class="category-box hidden">Drama</a>
-          <a href="/category/slice-of-life" class="category-box hidden">Slice of Life</a>
-          <a href="/category/supernatural" class="category-box hidden">Supernatural</a>
-          <a href="/category/historical" class="category-box hidden">Historical</a>
-          <a href="/category/sports" class="category-box hidden">Sports</a>
-          <a href="/category/music" class="category-box hidden">Music</a>
-          <a href="/category/mecha" class="category-box hidden">Mecha</a>
-      </div>
-      <button class="expand-btn" onclick="toggleCategories()">Expand</button>
-  </div>
-  
-  </div>
-
+ 
 
 <!-- Modal Structure -->
 <div id="cartModal" class="modal hidden">

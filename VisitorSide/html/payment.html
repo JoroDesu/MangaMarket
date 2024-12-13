@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga Market</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../src/cropped_image (1).png">
+    <link rel="stylesheet" href="/VisitorSide/css/payment.css">
+    <link rel="stylesheet" href="/VisitorSide/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body class="bg-gray-100 h-screen flex flex-col">
+    <!-- Top Navigation -->
+    <!-- Top Navigation -->
+    <header class="sticky-header bg-gray-950 text-white shadow p-4">
+        <div class="container mx-auto flex justify-between items-center">
+          <!-- Logo and Icons -->
+          <div class="flex items-center w-full justify-between">
+            <!-- Logo -->
+            <div class="flex items-center">
+              <img src="/src/cropped_image (1).png" alt="Logo" class="w-8 h-8 mr-3">
+              
+            </div>
+        
+            <!-- Search Field in the Middle -->
+            <div class="flex-grow mx-4">
+              <input 
+                type="text" 
+                placeholder="Search Manga..." 
+                class="w-full p-2 rounded-lg text-black focus:outline-none search-input"
+              />
+            </div>
+
+        
+            <!-- Icons (Cart, Search, User, Wishlist) -->
+            <div class="flex space-x-6">
+                <a href="/user" class="text-black hover:text-gray-400">
+                    <i class="far fa-user"></i> <!-- Hollow User icon -->
+                </a>
+                <a href="/wishlist" class="text-black hover:text-gray-400">
+                    <i class="far fa-heart"></i> <!-- Hollow Wishlist (Heart) icon -->
+                </a>
+                <!-- Button to Trigger Modal -->
+                <button class="shopping-cart-button text-black hover:text-gray-400" onclick="openCartModal()">
+                    <i class="fas fa-shopping-cart"></i> <!-- Hollow Cart icon -->
+                </button>
+            </div>
+            
+          </div>
+        </div>
+      </header>
+      
+
+     
+<!--Content here-->
+
+
+<div class="payment-container">
+    
+    <!-- Delivery Details -->
+    <div class="delivery-details">
+        <a href="/VisitorSide/html/Descriptions.html" class="back-btn">Go Back</a>
+        <h2>Delivery Details</h2>
+        <form>
+            <div class="name-row">
+                <div class="input-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" placeholder="Enter your first name" required>
+                </div>
+                <div class="input-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" placeholder="Enter your last name" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="region">Region</label>
+                <input type="text" id="region" placeholder="Enter your region" required>
+            </div>
+            <div class="input-group">
+                <label for="building-number">Building Number</label>
+                <input type="text" id="building-number" placeholder="Enter your building number" required>
+            </div>
+            <div class="input-group">
+                <label for="street-name">Street Name</label>
+                <input type="text" id="street-name" placeholder="Enter your street name" required>
+            </div>
+            <div class="input-group">
+                <label for="city">City</label>
+                <input type="text" id="city" placeholder="Enter your city" required>
+            </div>
+            <div class="city-row">
+                <div class="input-group">
+                    <label for="state">State</label>
+                    <input type="text" id="state" placeholder="Enter your state" required>
+                </div>
+                <div class="input-group">
+                    <label for="postal-code">Postal Code</label>
+                    <input type="text" id="postal-code" placeholder="Enter your postal code" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="phone-number">Phone Number</label>
+                <input type="tel" id="phone-number" placeholder="Enter your phone number" required>
+            </div>
+        </form>
+        
+    </div>
+
+    <!-- Order Summary -->
+    <div class="order-summary">
+        <h2>Order Summary</h2>
+        <div class="order-list">
+            <!-- Example of Manga Order -->
+            <div class="order-item">
+                <img src="/source/Persona-5-Mementos-Mission-Cover-1-696x987.jpg" alt="Manga Cover" class="order-cover">
+                <div class="order-details">
+                    <p class="manga-title">Manga Title</p>
+                    <p class="manga-price">$19.99</p>
+                </div>
+            </div>
+            <!-- Add more items dynamically -->
+        </div>
+        <div class="summary-totals">
+            <p>Subtotal: <span class="subtotal">$59.97</span></p>
+            <p>Shipping: <span class="shipping">$5.00</span></p>
+            <p>Total: <span class="total">$64.97</span></p>
+        </div>
+    </div>
+
+    <!-- Payment Method -->
+    <div class="payment-method">
+        <h2>Payment Method</h2>
+        <form>
+            <div>
+                <input type="radio" id="gcash" name="payment" required>
+                <label for="gcash">GCash, Maya, PayPal</label>
+            </div>
+            
+            <div>
+                <input type="radio" id="cod" name="payment" required>
+                <label for="cod">Cash on Delivery (COD)</label>
+            </div>
+            <div>
+                <input type="radio" id="other" name="payment" required>
+                <label for="other">Other Payment Methods</label>
+            </div>
+        </form>
+    </div>
+
+    <!-- Pay Now Button -->
+    <div class="pay-now-container">
+        <button class="pay-now-button">Pay Now</button>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="cartModal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-button" onclick="closeCartModal()">&times;</span>
+        <h2>Your Cart</h2>
+        <ul id="cartItemsList">
+            <!-- Example Item -->
+            <li class="cart-item">
+                <img src="/source/Horimiya.600.3183213.jpg" alt="Manga Cover" class="cart-item-image">
+                <div class="cart-item-details">
+                    <h3 class="cart-item-title">Manga Title</h3>
+                    <p class="cart-item-price">Price: $19.99</p>
+                    <p class="cart-item-quantity">Quantity: 1</p>
+                </div>
+            </li>
+            <!-- More items can go here -->
+        </ul>
+        <a href="/VisitorSide/html/payment.html" class="checkout-button">Checkout</a>
+
+    </div>
+</div>
+
+
+
+
+<!-- Footer Start -->
+<div class="footer-wrapper">
+  <div class="footer-container">
+    <!-- Left Section -->
+    <div class="footer-box">
+      <div class="brand-section">
+        <img src="/src/cropped_image (1).png" alt="MangaMarket Logo" class="footer-logo">
+        <h2 class="brand-title">MangaMarket</h2>
+      </div>
+      <p class="brand-description">
+        Dive into the world of manga! Your one-stop shop for the latest and greatest manga collections, exclusively for the Philippines.
+      </p>
+      <a href="../Support Page/support.html" class="shop-now-btn">Shop Now</a>
+    </div>
+
+    <!-- Middle Section -->
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <ul class="quick-links">
+        <li><a href="../Products/products.html">Browse Manga</a></li>
+        <li><a href="../About Us/about.html">About Us</a></li>
+        <li><a href="../Support Page/support.html">Contact Us</a></li>
+        <li><a href="../Map/map.html">Store Locator</a></li>
+      </ul>
+    </div>
+
+    <!-- Right Section -->
+    <div class="footer-box">
+      <h3>Customer Support Hours</h3>
+      <p>Available Online, Philippines</p>
+      <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
+      <p>Saturday - Sunday: 10:00 AM - 5:00 PM</p>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <p class="footer-note">© 2024 MangaMarket. All rights reserved.</p>
+</div>
+<!-- Footer End -->
+
+<script src="/VisitorSide/js/mPage.js"></script>
+  <script src="/VisitorSide/js/payment.js"></script>
+  </body>
+</html>

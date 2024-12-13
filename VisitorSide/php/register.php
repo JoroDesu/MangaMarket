@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Prepare and bind SQL statement
-    $stmt = $conn->prepare("INSERT INTO credentials (name, email, password) VALUES (?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO credentials (full_name, email, password) VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $name, $email, $hashed_password);
 
     // Execute the query and check if it was successful

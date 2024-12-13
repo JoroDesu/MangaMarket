@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga Market</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../src/cropped_image (1).png">
+    <link rel="stylesheet" href="/VisitorSide/css/description.css">
+    <link rel="stylesheet" href="/VisitorSide/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body class="bg-gray-100 h-screen flex flex-col">
+    <!-- Top Navigation -->
+    <!-- Top Navigation -->
+    <header class="sticky-header bg-gray-950 text-white shadow p-4">
+        <div class="container mx-auto flex justify-between items-center">
+          <!-- Logo and Icons -->
+          <div class="flex items-center w-full justify-between">
+            <!-- Logo -->
+            <div class="flex items-center">
+              <img src="/src/cropped_image (1).png" alt="Logo" class="w-8 h-8 mr-3">
+              
+            </div>
+        
+            <!-- Search Field in the Middle -->
+            <div class="flex-grow mx-4">
+              <input 
+                type="text" 
+                placeholder="Search Manga..." 
+                class="w-full p-2 rounded-lg text-black focus:outline-none search-input"
+              />
+            </div>
+
+        
+            <!-- Icons (Cart, Search, User, Wishlist) -->
+            <div class="flex space-x-6">
+                <a href="/user" class="text-black hover:text-gray-400">
+                    <i class="far fa-user"></i> <!-- Hollow User icon -->
+                </a>
+                <a href="/wishlist" class="text-black hover:text-gray-400">
+                    <i class="far fa-heart"></i> <!-- Hollow Wishlist (Heart) icon -->
+                </a>
+                <a href="/cart" class="text-black hover:text-gray-400">
+                    <i class="fas fa-shopping-cart"></i> <!-- Hollow Cart icon -->
+                </a>
+            </div>
+            
+          </div>
+        </div>
+      </header>
+      
+
+      <nav class="sticky-nav">
+        <ul class="flex justify-center space-x-6 mt-4">
+          <li><a href="/VisitorSide/html/Main_Page.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Home</a></li>
+          <li><a href="/on-sale" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">On Sale</a></li>
+          <li><a href="/manga" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Manga</a></li>
+          <li><a href="/new-release" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">New Release</a></li>
+          <li><a href="/contact" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Contact Us</a></li>
+          <li><a href="/about" class="text-black hover:text-gray-400" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">About Us</a></li>
+        </ul>
+      </nav>
+      
+<!--Content here-->
+<div class="flex-container">
+  <!-- First Row: Main Manga Description -->
+    <div class="container">
+        <a href="/VisitorSide/html/Main_Page.html" class="back-btn">Go Back</a>
+        
+        <div class="manga-description">
+            <div class="manga-image">
+                <div class="image-container">
+                    <img id="manga-cover" src="/source/Persona-5-Mementos-Mission-Cover-1-696x987.jpg" alt="Manga" width="300" height="450">
+                </div>
+            </div>
+        
+            <div class="manga-details">
+                <h1 class="manga-title">Persona</h1> <!-- Manga Title will be populated -->
+                <h2 class="manga-author">Author: kasjdkasdja</h2> <!-- Author Name will be populated -->
+                <h2>Description:</h2>
+                <p class="manga-description-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. gfwuie uwef uwefvuwef vuwefv </p> <!-- Description will be populated -->
+                <h2>Genre:</h2>
+                <p class="manga-genres">Fantasy</p> <!-- Genres will be populated -->
+              
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Row: Mid Container -->
+    <div class="mid-container">
+      <!-- Related Manga Section -->
+      <div class="related-manga">
+        <h3 class="related-manga-title">Related Manga</h3>
+          <div class="recommendations">
+              <div class="related-item">
+                  <img src="/source/583649164431305.63f68280e2b51.jpg" alt="Manga 1" class="related-image">
+                  <p class="related-title">Manga Title 1</p>
+              </div>
+              <div class="related-item">
+                  <img src="/source/Horimiya.600.3183213.jpg" alt="Manga 2" class="related-image">
+                  <p class="related-title">Manga Title 2</p>
+              </div>
+              <div class="related-item">
+                  <img src="/source/images (1).jpg" alt="Manga 3" class="related-image">
+                  <p class="related-title">Manga Title 3</p>
+              </div>
+              <div class="related-item">
+                  <img src="/source/images (2).jpg" alt="Manga 4" class="related-image">
+                  <p class="related-title">Manga Title 4</p>
+              </div>
+              <div class="related-item">
+                  <img src="/source/Persona-5-Mementos-Mission-Cover-1-696x987.jpg" alt="Manga 5" class="related-image">
+                  <p class="related-title">Manga Title 5</p>
+              </div>
+          </div>
+          <!-- Cart and Buy Now Buttons -->
+          <div class="buy-options">
+            <a href="/cart.html" class="add-to-cart">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+            </a>
+            <a href="/VisitorSide/html/payment.html" class="buy-now">
+                <span class="price">$19.99</span>
+                <span class="buy-text">Buy Now</span>
+            </a>
+        </div>
+        
+      </div>
+      
+  </div>
+
+</div>
+
+<div class="bottom-container">
+  <div class="column">
+      <h2>On Sale</h2>
+      <div class="box-line-container">
+          <div class="box-container">
+              <a href="/VisitorSide/html/manga-details.html" class="manga-box">
+                  <img src="/source/images (1).jpg" alt="Manga Cover" class="manga-cover">
+                  <div class="manga-details">
+                      <h3 class="manga-title">Manga Title 1</h3>
+                      <p class="manga-author">Author: Author Name</p>
+                      <p class="manga-genre">Genre: Adventure</p>
+                      <p class="manga-price">Price: $19.99</p>
+                  </div>
+              </a>
+              <!-- More manga boxes here -->
+               
+          </div>
+      </div>
+  </div>
+  <div class="column">
+      <h2>Featured</h2>
+      <div class="box-line-container">
+          <div class="box-container">
+              <a href="/VisitorSide/html/manga-details.html" class="manga-box">
+                  <img src="/source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
+                  <div class="manga-details">
+                      <h3 class="manga-title">Manga Title 1</h3>
+                      <p class="manga-author">Author: Author Name</p>
+                      <p class="manga-genre">Genre: Fantasy</p>
+                      <p class="manga-price">Price: $15.99</p>
+                  </div>
+              </a>
+              <!-- More manga boxes here -->
+          </div>
+      </div>
+  </div>
+  <div class="column">
+      <h2>Top Rated</h2>
+      <div class="box-line-container">
+          <div class="box-container">
+              <a href="/VisitorSide/html/manga-details.html" class="manga-box">
+                  <img src="/source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
+                  <div class="manga-details">
+                      <h3 class="manga-title">Manga Title 1</h3>
+                      <p class="manga-author">Author: Author Name</p>
+                      <p class="manga-genre">Genre: Sci-Fi</p>
+                      <p class="manga-price">Price: $12.99</p>
+                  </div>
+              </a>
+              <!-- More manga boxes here -->
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+<!-- Footer Start -->
+<div class="footer-wrapper">
+  <div class="footer-container">
+    <!-- Left Section -->
+    <div class="footer-box">
+      <div class="brand-section">
+        <img src="/src/cropped_image (1).png" alt="MangaMarket Logo" class="footer-logo">
+        <h2 class="brand-title">MangaMarket</h2>
+      </div>
+      <p class="brand-description">
+        Dive into the world of manga! Your one-stop shop for the latest and greatest manga collections, exclusively for the Philippines.
+      </p>
+      <a href="../Support Page/support.html" class="shop-now-btn">Shop Now</a>
+    </div>
+
+    <!-- Middle Section -->
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <ul class="quick-links">
+        <li><a href="../Products/products.html">Browse Manga</a></li>
+        <li><a href="../About Us/about.html">About Us</a></li>
+        <li><a href="../Support Page/support.html">Contact Us</a></li>
+        <li><a href="../Map/map.html">Store Locator</a></li>
+      </ul>
+    </div>
+
+    <!-- Right Section -->
+    <div class="footer-box">
+      <h3>Customer Support Hours</h3>
+      <p>Available Online, Philippines</p>
+      <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
+      <p>Saturday - Sunday: 10:00 AM - 5:00 PM</p>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <p class="footer-note">© 2024 MangaMarket. All rights reserved.</p>
+</div>
+<!-- Footer End -->
+
+<script src="/VisitorSide/js/mPage.js"></script>
+  <script src="/VisitorSide/js/description.js"></script>
+  </body>
+</html>

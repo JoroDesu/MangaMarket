@@ -1,68 +1,98 @@
 body {
   font-family: 'Manrope', sans-serif;
+  background-color: #ffffff;
 }
 
-h1 {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 700;
+h1, p {
+  font-family: inherit; /* Inherit from body */
 }
 
-p {
-  font-family: 'Manrope', sans-serif;
+.sticky {
+  position: sticky;
+  background-color: #fff;
+  z-index: 1000;
 }
 
-/*main content*/
+.sticky-header {
+  top: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.sticky-nav {
+  top: 64px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding-bottom: 10px;
+  padding-top: 5px;
+}
+
+.search-input {
+  background-color: #dcdcfd; /* Light lavender background */
+}
 
 #slider {
-    height: 256px; /* Matches the height of the images */
-    position: relative;
-  }
-  
-  #slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between; /* Align the title and button */
-    align-items: center; /* Vertically center the elements */
-    margin-bottom: 10px; /* Space between the header and the manga boxes */
-    margin-top: 25px;
+  height: 256px; /* Matches the height of the images */
+  position: relative;
+}
+
+#slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Align the title and button */
+  align-items: center; /* Vertically center the elements */
+  margin: 25px 0 10px 0; /* Space between the header and the manga boxes */
 }
 
 .best-seller h1 {
-    font-size: 2.5rem;
-    margin: 0; /* Remove the default margin */
+  font-size: 2rem;
+  margin: 0; /* Remove the default margin */
+  font-weight: bold;
 }
-  
- /* Box Container Styles */
+
 .box-line-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 20px;
+  align-items: center;
+  position: relative;
+  gap: 10px;
+  overflow: hidden; /* Hide overflow for scrollable area */
 }
 
 .box-container {
   display: flex;
   gap: 20px;
-  overflow-x: auto;
+  overflow-x: scroll; /* Enable horizontal scroll */
+  scroll-behavior: smooth; /* Smooth scrolling */
+  max-width: calc(4 * 520px); /* Width for 4 items (adjusted for spacing) */
   padding: 10px;
 }
 
 .manga-box {
+  flex: 0 0 auto;
   display: flex;
   background-color: #f5f5f5;
   border-radius: 10px;
   overflow: hidden;
-  width: 500px; /* Adjusted width for each box */
+  width: 320px;
+  height: 200px;
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Ensure text color matches the design */
+  transition: transform 0.3s; /* Add hover effect */
+}
+
+.manga-box:hover {
+  transform: scale(1.02); /* Slight zoom on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .manga-cover {
-  width: 30%; /* Smaller image size */
-  object-fit: cover;
-  border-radius: 10px 0 0 10px;
+  width: 120px;
+  height: 180px;
+  object-fit: cover; /* Ensures the image covers the area */
+  border-radius: 10px 10px 10px 10px; /* Optional: Adds rounded corners */
+  margin: 10px;
 }
 
 .manga-details {
@@ -74,7 +104,7 @@ p {
 }
 
 .manga-title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
 }
 
@@ -83,6 +113,23 @@ p {
 .manga-price {
   font-size: 1rem;
   margin: 5px 0;
+}
+
+.manga-price {
+  display: flex;
+  align-items: center;
+}
+
+.manga-price .original-price {
+  font-size: 1rem;
+  text-decoration: line-through;
+  color: #b0b0b0; /* Gray color for original price */
+  margin-right: 10px;
+}
+
+.manga-price .discounted-price {
+  font-size: 1.2rem;
+  color: #f44336; /* Red for discounted price */
 }
 
 .view-button {
@@ -99,25 +146,6 @@ p {
   background-color: #45a049;
 }
 
-.view-all-btn {
-  padding: 10px 20px;
-  font-size: 1rem;
-  color: white;
-  background-color: #4CAF50; /* Green button */
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  text-decoration: none;
-}
-
-.view-all-btn:hover {
-  background-color: #45a049; /* Darker Green */
-}
-
-
-
-
-/* On Sale Section */
 .on-sale {
   margin: 20px 0;
   padding: 10px;
@@ -131,97 +159,28 @@ p {
 }
 
 .on-sale h1 {
-  font-size: 2.5rem;
-  margin: 0;
+  font-size: 2rem;
+  margin: 0; /* Remove the default margin */
+  font-weight: bold;
 }
 
 .view-all-btn {
   padding: 10px 20px;
   font-size: 1rem;
-  color: white;
-  background-color: #4CAF50; /* Green button */
+  color: #EF6B4A; /* Change text color */
   border: none;
   cursor: pointer;
   border-radius: 5px;
   text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
 }
 
 .view-all-btn:hover {
-  background-color: #45a049; /* Darker Green */
-}
-
-/* Box Container Styles */
-.box-line-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 20px;
-}
-
-.box-container {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  padding: 10px;
-}
-
-.manga-box {
-  display: flex;
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  overflow: hidden;
-  width: 500px; /* Adjusted width for each box */
-}
-
-.manga-cover {
-  width: 30%; /* Smaller image size */
-  object-fit: cover;
-  border-radius: 10px 0 0 10px;
-}
-
-.manga-details {
-  padding: 15px;
-  width: 70%; /* Adjusted width to fill the remaining space */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.manga-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.manga-author,
-.manga-genre,
-.manga-price {
-  font-size: 1rem;
-  margin: 5px 0;
-}
-
-.sale-price {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #e91e63; /* Sale price color (Pink) */
-  text-decoration: line-through; /* Original price strikethrough */
-}
-
-.view-button {
-  padding: 10px;
-  background-color: #4CAF50;
+  background-color: #EF6B4A; 
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
   color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 10px;
 }
 
-.view-button:hover {
-  background-color: #45a049;
-}
-
-/*Category box*/
-/* Category Container */
 .category-container {
   margin: 20px 0;
   padding: 10px;
@@ -231,9 +190,9 @@ p {
 .category-container h2 {
   font-size: 2rem;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
-/* Category Grid Layout */
 .category-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 items per row */
@@ -255,12 +214,10 @@ p {
   color: white;
 }
 
-/* Hidden categories */
 .category-box.hidden {
   display: none;
 }
 
-/* Expand Button */
 .expand-btn {
   padding: 10px 20px;
   font-size: 1rem;
@@ -278,9 +235,111 @@ p {
 
 
 
-/*footer content*/
+/* Modal Styling */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+  justify-content: center;
+  align-items: center;
+}
 
-/* General Footer Styles */
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 60%; /* Adjust width */
+  max-width: 800px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Cart Items List */
+#cartItemsList {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+/* Individual Cart Item */
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Space between image and details */
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd; /* Optional separator */
+  padding-bottom: 10px;
+}
+
+.cart-item-image {
+  width: 90px;
+  height: 139px;
+  object-fit: cover; /* Ensures the image fits nicely */
+  border-radius: 5px;
+}
+
+.cart-item-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1; /* Allow details to grow */
+}
+
+.cart-item-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+}
+
+.cart-item-price,
+.cart-item-quantity {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Checkout Button */
+.checkout-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.checkout-button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+
+
 .footer-wrapper {
   background-color: #1e293b; /* Dark Blue */
   color: #ffffff; /* White Text */
@@ -303,7 +362,6 @@ p {
   padding: 10px;
   box-sizing: border-box; /* Includes padding in the width calculation */
 }
-
 
 .brand-section {
   display: flex;
@@ -383,5 +441,3 @@ p {
     max-width: 100%;
   }
 }
-
-

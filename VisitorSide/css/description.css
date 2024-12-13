@@ -1,0 +1,297 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Back Button */
+.back-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.back-btn:hover {
+    background-color: #45a049;
+}
+
+/* Manga Description Section */
+.manga-description {
+    display: flex;
+    gap: 20px;
+}
+
+.manga-image {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    max-width: 420px;
+}
+
+.image-container {
+    text-align: center;
+}
+
+.manga-details {
+    flex: 2;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.manga-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.manga-author {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.manga-description-text {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.manga-genres {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+/* Related Manga Section */
+.related-manga {
+  display: flex; /* Add flex to parent */
+  justify-content: space-between; /* Space out child elements */
+  align-items: flex-start; /* Align top edges */
+  gap: 20px; /* Add some space between the sections */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.recommendations {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 15px;
+  width: 60%; /* Keep it at 65% width */
+}
+
+.related-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 113px;
+}
+
+.related-image {
+    width: 113px;
+    height: 169px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.related-image:hover {
+    transform: scale(1.05);
+}
+
+.related-title {
+    margin-top: 8px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+
+/* Cart and Buy Now Buttons */
+.buy-options {
+  display: flex;
+  flex-direction: row; /* Position buttons horizontally */
+  gap: 10px; /* Space between buttons */
+  width: 40%; /* Adjusted width for proper spacing */
+  justify-content: space-evenly; /* Align buttons at the top */
+  margin-top: auto;
+  margin-bottom: 74px;
+}
+
+.add-to-cart, .buy-now {
+  padding: 15px 30px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.price {
+  color: rgb(221,81,83); /* Default color */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.buy-now:hover .price {
+  color: white; /* Change color to white on hover */
+}
+
+.add-to-cart {
+  background-color: rgb(56,50,49);
+  color: white;
+  width: 182px; /* Set width */
+  height: 60px; /* Set height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.buy-now {
+  background-color: rgb(56,50,49);
+  color: white;
+  width: 327px; /* Set width */
+  height: 60px; /* Set height */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ensures the price and text align properly */
+  border: none;
+  border-radius: 5px;
+  padding: 0 15px; /* Add padding for spacing */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.add-to-cart:hover {
+  background-color: rgb(221,81,83);
+}
+
+.buy-now:hover {
+  background-color: rgb(221,81,83);
+  color: white;
+}
+
+
+/*bottom section*/
+
+/* Bottom container with 3 columns */
+.bottom-container {
+  display: flex;
+  gap: 20px; /* Space between columns */
+  justify-content: space-between;
+  padding: 20px;
+  width: 80%;
+  margin: auto;
+}
+
+.column {
+  flex: 1; /* Ensure all columns take equal width */
+  display: flex;
+  flex-direction: column;
+}
+
+.column h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.box-line-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 10px;
+  overflow: hidden; /* Hide overflow for scrollable area */
+}
+
+.box-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: scroll; /* Enable horizontal scroll */
+  scroll-behavior: smooth; /* Smooth scrolling */
+  max-width: calc(4 * 520px); /* Width for 4 items (adjusted for spacing) */
+  padding: 10px;
+}
+
+.manga-box {
+  flex: 0 0 auto;
+  display: flex;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 320px;
+  height: 200px;
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Ensure text color matches the design */
+  transition: transform 0.3s; /* Add hover effect */
+}
+
+.manga-box:hover {
+  transform: scale(1.02); /* Slight zoom on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.manga-cover {
+  width: 120px;
+  height: 180px;
+  object-fit: cover; /* Ensures the image covers the area */
+  border-radius: 10px 10px 10px 10px; /* Optional: Adds rounded corners */
+  margin: 10px;
+}
+
+.manga-details {
+  padding: 15px;
+  width: 70%; /* Adjusted width to fill the remaining space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.manga-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.manga-author,
+.manga-genre,
+.manga-price {
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+.manga-price {
+  display: flex;
+  align-items: center;
+}
+
+
+
