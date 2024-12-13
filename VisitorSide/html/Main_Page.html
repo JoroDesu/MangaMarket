@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../src/cropped_image (1).png">
     <link rel="stylesheet" href="/VisitorSide/css/style.css">
+    <link rel="stylesheet" href="/VisitorSide/css/registerCss.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   </head>
@@ -21,9 +22,10 @@
           <div class="flex items-center w-full justify-between">
             <!-- Logo -->
             <div class="flex items-center">
-              <img src="/src/cropped_image (1).png" alt="Logo" class="w-8 h-8 mr-3">
-              
+              <img src="/src/cropped_image (1).png" alt="Logo" class="w-16 h-16 mr-5"> <!-- Adjusted size -->
+              <span class="text-2xl font-bold text-gray-800">Manga Market</span> <!-- Added text -->
             </div>
+            
         
             <!-- Search Field in the Middle -->
             <div class="flex-grow mx-4">
@@ -37,9 +39,11 @@
         
             <!-- Icons (Cart, Search, User, Wishlist) -->
             <div class="flex space-x-6">
-                <a href="/user" class="text-black hover:text-gray-400">
-                    <i class="far fa-user"></i> <!-- Hollow User icon -->
-                </a>
+                <!-- Trigger Button for Register Modal -->
+                <button class="register-button text-black hover:text-gray-400" onclick="openRegisterModal()">
+                  <i class="far fa-user"></i> <!-- Hollow User icon -->
+                </button>
+
                 <a href="/wishlist" class="text-black hover:text-gray-400">
                     <i class="far fa-heart"></i> <!-- Hollow Wishlist (Heart) icon -->
                 </a>
@@ -60,7 +64,7 @@
           <li><a href="/on-sale" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">On Sale</a></li>
           <li><a href="/manga" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Manga</a></li>
           <li><a href="/new-release" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">New Release</a></li>
-          <li><a href="/contact" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Contact Us</a></li>
+          <li><a href="/VisitorSide/html/ContactUs.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Contact Us</a></li>
           <li><a href="/about" class="text-black hover:text-gray-400" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">About Us</a></li>
         </ul>
       </nav>
@@ -70,7 +74,7 @@
 
         <!-- Main Content -->
     <main class="flex-1 p-6 bg-orange-100">
-        <div id="slider" class="relative w-full max-w-4xl mx-auto overflow-hidden rounded-lg shadow-lg">
+      <div id="slider" class="relative w-full max-w-5xl mx-auto overflow-hidden rounded-lg shadow-lg h-[256px]">
         <!-- Slides -->
         <div id="slides" class="flex transition-transform duration-500">
             <img src="/src/Manhwa_1100x.webp" alt="Slide 1" class="w-full h-64 object-cover flex-shrink-0">
@@ -91,29 +95,37 @@
               <a href="/VisitorSide/html/View_all.html" class="view-all-btn">View All</a>
           </div>
           <div class="box-line-container">
-              <div class="box-container">
-                  <a href="/VisitorSide/html/manga-details.html" class="manga-box">
-                      <img src="../source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
-                      <div class="manga-details">
-                          <h3 class="manga-title">Manga Title 1</h3>
-                          <p class="manga-author">Author: Author Name</p>
-                          <p class="manga-genre">Genre: Adventure</p>
-                          <p class="manga-price">Price: $19.99</p>
-                      </div>
-                  </a>
-      
-                  <a href="/VisitorSide/html/manga-details.html" class="manga-box">
-                      <img src="../source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
-                      <div class="manga-details">
-                          <h3 class="manga-title">Manga Title 2</h3>
-                          <p class="manga-author">Author: Author Name</p>
-                          <p class="manga-genre">Genre: Fantasy</p>
-                          <p class="manga-price">Price: $15.99</p>
-                      </div>
-                  </a>
-                  <!-- More manga boxes can go here -->
-              </div>
+            <!-- Left Arrow -->
+            <button class="arrow left" onclick="scrollToLeft()">&#10094;</button>
+            
+            <div class="box-container" id="mangaScroller">
+              <a href="/VisitorSide/html/manga-details.html" class="manga-box">
+                <img src="../source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
+                <div class="manga-details">
+                  <h3 class="manga-title">Manga Title 1</h3>
+                  <p class="manga-author">Author: Author Name</p>
+                  <p class="manga-genre">Genre: Adventure</p>
+                  <p class="manga-price">Price: $19.99</p>
+                </div>
+              </a>
+          
+              <a href="/VisitorSide/html/manga-details.html" class="manga-box">
+                <img src="../source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
+                <div class="manga-details">
+                  <h3 class="manga-title">Manga Title 2</h3>
+                  <p class="manga-author">Author: Author Name</p>
+                  <p class="manga-genre">Genre: Fantasy</p>
+                  <p class="manga-price">Price: $15.99</p>
+                </div>
+              </a>
+              
+              <!-- Additional manga items can be added here -->
+            </div>
+            
+            <!-- Right Arrow -->
+            <button class="arrow right" onclick="scrollToRight()">&#10095;</button>
           </div>
+          
       </div>
       
       <div class="on-sale">
@@ -122,7 +134,10 @@
             <a href="/VisitorSide/html/View_all.html" class="view-all-btn">View All</a>
         </div>
         <div class="box-line-container">
-            <div class="box-container">
+            <!-- Left Arrow -->
+            <button class="arrow left" onclick="scrollToLeftSales()">&#10094;</button>
+            
+            <div class="box-container1" id="mangaScroller1">
                 <a href="/VisitorSide/html/manga-details.html" class="manga-box">
                     <img src="/source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
                     <div class="manga-details">
@@ -144,35 +159,116 @@
                 </a>
                 <!-- More manga boxes can go here -->
             </div>
+            
+            <!-- Right Arrow -->
+            <button class="arrow right" onclick="scrollToRightSales()">&#10095;</button>
         </div>
     </div>
     
     
-    <div class="category-container">
+    <div class="category-container relative bg-cover bg-center shadow-lg">
       <h2>Check our Categories</h2>
       <div class="category-grid">
-          <a href="/category/adventure" class="category-box">Adventure</a>
-          <a href="/category/fantasy" class="category-box">Fantasy</a>
-          <a href="/category/action" class="category-box">Action</a>
-          <a href="/category/romance" class="category-box">Romance</a>
-          <a href="/category/mystery" class="category-box">Mystery</a>
-          <a href="/category/horror" class="category-box">Horror</a>
-          <a href="/category/sci-fi" class="category-box">Sci-Fi</a>
-          <a href="/category/comedy" class="category-box">Comedy</a>
-          <!-- Hidden categories -->
-          <a href="/category/thriller" class="category-box hidden">Thriller</a>
-          <a href="/category/drama" class="category-box hidden">Drama</a>
-          <a href="/category/slice-of-life" class="category-box hidden">Slice of Life</a>
-          <a href="/category/supernatural" class="category-box hidden">Supernatural</a>
-          <a href="/category/historical" class="category-box hidden">Historical</a>
-          <a href="/category/sports" class="category-box hidden">Sports</a>
-          <a href="/category/music" class="category-box hidden">Music</a>
-          <a href="/category/mecha" class="category-box hidden">Mecha</a>
-      </div>
+        <a href="/category/adventure" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/fantasy-anime-1920-x-1080-wallpaper-u6n5i0t1sgcrii9i.jpg');">Adventure</a>
+        <a href="/category/fantasy" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/images.jpg');">Fantasy</a>
+        <a href="/category/action" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/fa76d0120785243.60b889ddccfaa.jpg');">Action</a>
+        <a href="/category/romance" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/72b8dee3-63c3-4eb5-9a68-3bf1a88d447e-love-couple-anime.webp');">Romance</a>
+        <a href="/category/mystery" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/anime-original-forest-night-wallpaper-preview.jpg');">Mystery</a>
+        <a href="/category/horror" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/qw5ma5zajz841.jpg');">Horror</a>
+        <a href="/category/sci-fi" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/950ff831445d81e5d45e66e4518bb1a5.jpg');">Sci-Fi</a>
+        <a href="/category/comedy" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/gintama-gintaoki-wallpaper-560x314.webp');">Comedy</a>
+        <!-- Hidden categories -->
+        <a href="/category/thriller" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/thriller-anime-1500-x-844-wallpaper-iqc0xdh2yn6fqs1w.jpg');">Thriller</a>
+        <a href="/category/drama" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/HD-wallpaper-kousei-kaori-romance-anime-love-manga-drama-spring-couple.jpg');">Drama</a>
+        <a href="/category/slice-of-life" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/fruits-basket.jpg');">Slice of Life</a>
+        <a href="/category/supernatural" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/images\ \(1\).jpg');">Supernatural</a>
+        <a href="/category/historical" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/anime-japanese-character_23-2151478204.jpg');">Historical</a>
+        <a href="/category/sports" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/8bf42cd3db64abf013f3e2fe1377af84.webp');">Sports</a>
+        <a href="/category/music" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/1337285.png');">Music</a>
+        <a href="/category/mecha" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/1344463.png');">Mecha</a>
+    </div>
       <button class="expand-btn" onclick="toggleCategories()">Expand</button>
   </div>
   
   </div>
+
+
+
+
+<!-- Modal Structure for Registration -->
+<div id="registerModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-left-section">
+      <img src="/src/ec35cb77-36c4-43ca-975e-3d7ad3372417.jpg" alt="Background Image" class="modal-background-image">
+    </div>
+    <div class="modal-right-section">
+      <span class="close-button" onclick="closeRegisterModal()">&times;</span>
+      <h2>Register an Account</h2>
+      
+      <!-- Registration Form -->
+      <form action="/VisitorSide/php/register.php" id="register-form" method="POST">
+          <div class="input-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required placeholder="Enter your full name">
+          </div>
+
+          <div class="input-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="Enter your email">
+          </div>
+
+          <div class="input-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required placeholder="Enter your password">
+          </div>
+
+          <div class="buttons">
+              <button type="submit" class="register-btn">Register</button>
+              <a href="javascript:void(0);" class="login-btn" onclick="openLoginModal()">Login</a>
+
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Structure for Login -->
+<div id="loginModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-left-section">
+      <img src="/src/ec35cb77-36c4-43ca-975e-3d7ad3372417.jpg" alt="Background Image" class="modal-background-image">
+    </div>
+    <div class="modal-right-section">
+      <span class="close-button" onclick="closeLoginModal()">&times;</span>
+      <div class="form-container">
+        
+        
+        <!-- Greeting Text -->
+        <h2>Welcome Back!</h2>
+        <p>Login to your Account</p>
+        
+        <!-- Login Form -->
+        <form id="login-form" method="POST">
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+          </div>
+          
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+          </div>
+          
+          <div class="buttons">
+            <button type="submit" class="login-btn">Login</button>
+            <a href="javascript:void(0);" class="register-btn" onclick="openRegisterModal()">Register</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!-- Modal Structure -->

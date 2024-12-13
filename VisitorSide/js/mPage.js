@@ -72,6 +72,58 @@ const slides = document.getElementById('slides');
     }
 }
 
+// Function to open the registration modal
+// Function to open the login modal and close the register modal if open
+function openLoginModal() {
+  // Close the register modal if it's open
+  const registerModal = document.getElementById("registerModal");
+  if (registerModal.style.display === "flex") {
+      registerModal.style.display = "none";
+  }
+
+  // Open the login modal
+  document.getElementById("loginModal").style.display = "flex";
+}
+
+// Function to open the register modal and close the login modal if open
+function openRegisterModal() {
+  // Close the login modal if it's open
+  const loginModal = document.getElementById("loginModal");
+  if (loginModal.style.display === "flex") {
+      loginModal.style.display = "none";
+  }
+
+  // Open the register modal
+  document.getElementById("registerModal").style.display = "flex";
+}
+
+// Function to close the login modal
+function closeLoginModal() {
+  document.getElementById("loginModal").style.display = "none";
+}
+
+// Function to close the register modal
+function closeRegisterModal() {
+  document.getElementById("registerModal").style.display = "none";
+}
+
+// Close modal when clicking outside of it
+window.onclick = function(event) {
+  const loginModal = document.getElementById("loginModal");
+  const registerModal = document.getElementById("registerModal");
+
+  if (event.target == loginModal) {
+      closeLoginModal();
+  }
+
+  if (event.target == registerModal) {
+      closeRegisterModal();
+  }
+}
+
+
+
+
 
 // Function to open the modal
 function openCartModal() {
@@ -90,3 +142,69 @@ window.onclick = function(event) {
       modal.style.display = 'none';
   }
 };
+
+
+// JavaScript function to handle the registration form submission
+document.getElementById('register-form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form from submitting the default way
+
+  var form = new FormData(this); // Get the form data
+
+  fetch('your-php-file.php', {
+      method: 'POST',
+      body: form
+  })
+  .then(response => response.json())
+  .then(data => {
+      if (data.status === "success") {
+          // Close the register modal
+          document.getElementById('registerModal').style.display = 'none';
+          alert(data.message);  // Show success message (optional)
+      } else {
+          alert(data.message);  // Show error message if registration fails
+      }
+  })
+  .catch(error => {
+      console.error('Error:', error);
+      alert('An error occurred, please try again.');
+  });
+});
+
+
+
+
+
+
+function scrollToLeft() {
+  const scroller = document.getElementById('mangaScroller');
+  scroller.scrollBy({
+    left: -350, // Adjust based on box width + gap
+    behavior: 'smooth'
+  });
+}
+
+function scrollToRight() {
+  const scroller = document.getElementById('mangaScroller');
+  scroller.scrollBy({
+    left: 350, // Adjust based on box width + gap
+    behavior: 'smooth'
+  });
+}
+
+// sale
+
+function scrollToLeftSales() {
+  const scroller = document.getElementById('mangaScroller1');
+  scroller.scrollBy({
+    left: -350, // Adjust based on box width + gap
+    behavior: 'smooth'
+  });
+}
+
+function scrollToRightSales() {
+  const scroller = document.getElementById('mangaScroller1');
+  scroller.scrollBy({
+    left: 350, // Adjust based on box width + gap
+    behavior: 'smooth'
+  });
+}

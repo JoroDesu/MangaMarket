@@ -7,19 +7,27 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 // Prepare a query to check if the credentials match
-$sql = "SELECT * FROM credentials WHERE email = ? AND password = ?";
+$sql = "SELECT * FROM credentials WHERE email = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ss", $email, $password); // "ss" means two string parameters
+$stmt->bind_param("s", $email); // "s" means one string parameter
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Check if any rows match
+// Check if the email exists
 if ($result->num_rows > 0) {
-    // Successful login
+    // Fetch the user record
     $user = $result->fetch_assoc();
-    echo json_encode(["status" => "success", "message" => "Login successful", "user" => $user]);
+
+    // Verify the hashed password
+    if (password_verify($password, $user['password'])) {
+        // Successful login
+        echo json_encode(["status" => "success", "message" => "Login successful", "user" => $user]);
+    } else {
+        // Invalid password
+        echo json_encode(["status" => "error", "message" => "Invalid credentials"]);
+    }
 } else {
-    // Invalid credentials
+    // Email not found
     echo json_encode(["status" => "error", "message" => "Invalid credentials"]);
 }
 

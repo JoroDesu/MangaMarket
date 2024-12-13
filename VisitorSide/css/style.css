@@ -29,10 +29,6 @@ h1, p {
   background-color: #dcdcfd; /* Light lavender background */
 }
 
-#slider {
-  height: 256px; /* Matches the height of the images */
-  position: relative;
-}
 
 #slides {
   display: flex;
@@ -63,35 +59,55 @@ h1, p {
 .box-container {
   display: flex;
   gap: 20px;
-  overflow-x: scroll; /* Enable horizontal scroll */
+  scroll-behavior: smooth; /* Smooth scrolling for navigation */
+  overflow-x: hidden; /* Allow horizontal scrolling */
+  max-width: calc(6 * 350px); /* Adjust to show only 4 items */
+  padding: 10px;
+}
+
+.box-container1 {
+  display: flex;
+  gap: 20px;
+  
   scroll-behavior: smooth; /* Smooth scrolling */
   max-width: calc(4 * 520px); /* Width for 4 items (adjusted for spacing) */
+  padding: 10px;
+}
+
+.box-container {
+  display: flex;
+  gap: 20px;
+  scroll-behavior: smooth; /* Smooth scrolling for navigation */
+  overflow-x: hidden; /* Allow horizontal scrolling */
+  max-width: calc(6 * 350px); /* Adjust to show only 4 items */
   padding: 10px;
 }
 
 .manga-box {
   flex: 0 0 auto;
   display: flex;
-  background-color: #f5f5f5;
-  border-radius: 10px;
+  background-color: rgb(237, 237, 255);
+  border-radius: 4px;
   overflow: hidden;
   width: 320px;
   height: 200px;
   text-decoration: none; /* Remove underline */
   color: inherit; /* Ensure text color matches the design */
-  transition: transform 0.3s; /* Add hover effect */
+  transition: transform 0.3s, box-shadow 0.3s; /* Add hover effect for shadow and scaling */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); 
 }
 
 .manga-box:hover {
-  transform: scale(1.02); /* Slight zoom on hover */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px); /* Lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
+
 
 .manga-cover {
   width: 120px;
   height: 180px;
   object-fit: cover; /* Ensures the image covers the area */
-  border-radius: 10px 10px 10px 10px; /* Optional: Adds rounded corners */
+  border-radius: 4px; /* Optional: Adds rounded corners */
   margin: 10px;
 }
 
@@ -132,19 +148,37 @@ h1, p {
   color: #f44336; /* Red for discounted price */
 }
 
-.view-button {
-  padding: 10px;
-  background-color: #4CAF50;
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
-  margin-top: 10px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background-color 0.3s ease;
 }
 
-.view-button:hover {
-  background-color: #45a049;
+.arrow:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* Darken on hover */
 }
+
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
+}
+
+
 
 .on-sale {
   margin: 20px 0;
@@ -167,19 +201,23 @@ h1, p {
 .view-all-btn {
   padding: 10px 20px;
   font-size: 1rem;
-  color: #EF6B4A; /* Change text color */
+  color: white; /* Change text color to white by default */
+  background-color: #EF6B4A; /* Set initial background color */
   border: none;
   cursor: pointer;
   border-radius: 5px;
   text-decoration: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for all states */
 }
 
 .view-all-btn:hover {
-  background-color: #EF6B4A; 
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
-  color: white;
+  background-color: #D95355; /* Darker version of the color */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+  transform: scale(1.05); /* Slightly enlarge the button */
+  color: white; /* Keep text color white */
 }
+
 
 .category-container {
   margin: 20px 0;
@@ -201,17 +239,40 @@ h1, p {
 }
 
 .category-box {
-  background-color: #f5f5f5;
-  padding: 15px;
-  border-radius: 5px;
+  background-size: cover;
+  background-position: center;
+  height: 180px; /* Adjust height to match your design */
+  
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
   font-size: 1.2rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .category-box:hover {
-  background-color: #e91e63; /* Hover color */
-  color: white;
+  transform: scale(1.05); /* Slightly enlarge the box */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Enhance shadow */
+}
+
+.category-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
 }
 
 .category-box.hidden {
@@ -221,18 +282,20 @@ h1, p {
 .expand-btn {
   padding: 10px 20px;
   font-size: 1rem;
-  background-color: #4CAF50; /* Green button */
+  background-color: rgb(56,50,49); /* Green button */
   color: white;
   border: none;
   cursor: pointer;
   border-radius: 5px;
   text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .expand-btn:hover {
-  background-color: #45a049; /* Darker Green */
+  background-color: rgb(221,81,83); /* Darker Green */
+  transform: scale(1.1);  /* Slightly enlarge the button */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
 }
-
 
 
 /* Modal Styling */

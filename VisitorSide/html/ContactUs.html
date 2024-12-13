@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manga Market</title>
+    <title>Contact Us</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
@@ -70,7 +70,46 @@
   
 
         <!-- Main Content -->
- 
+        <div class="container">
+          <h1>Contact Us</h1>
+          <p>WE'RE HERE TO HELP.</p>
+          <p>If you have any questions or enquiries for us, feel free to drop us a note below.<br>
+          Please complete all the fields and we will try our best to be in touch with you as soon as we can.</p>
+          <p class="mandatory-note">Please note that all fields are mandatory.</p>
+  
+          <form>
+              <!-- Row 1: Name and Email -->
+              <div>
+                  <label for="fullname">Full Name</label>
+                  <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+              </div>
+              <div>
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+              </div>
+  
+              <!-- Row 2: Nature of Inquiry -->
+              <div>
+                  <label for="inquiry">Nature of Inquiry</label>
+                  <select id="inquiry" name="inquiry" required>
+                      <option value="">Select an option</option>
+                      <option value="general">General Inquiry</option>
+                      <option value="support">Support</option>
+                      <option value="feedback">Feedback</option>
+                      <option value="other">Other</option>
+                  </select>
+              </div>
+  
+              <!-- Row 3: Message -->
+              <div>
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message" rows="5" placeholder="Type your message here" required></textarea>
+              </div>
+  
+              <!-- Submit Button -->
+              <button type="submit">Send Message</button>
+          </form>
+      </div>
 
 <!-- Modal Structure -->
 <div id="cartModal" class="modal hidden">
