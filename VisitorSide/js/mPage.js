@@ -72,29 +72,31 @@ const slides = document.getElementById('slides');
     }
 }
 
+// Assuming you have a way to check if the user is logged in, for example:
+let isLoggedIn = false;  // This should be set based on session or token validation
+
 // Function to open the registration modal
+function openRegisterModal() {
+  // Close the login modal if it's open
+  const loginModal = document.getElementById("loginModal");
+  if (loginModal.style.display === "flex") {
+    loginModal.style.display = "none";
+  }
+
+  // Open the register modal
+  document.getElementById("registerModal").style.display = "flex";
+}
+
 // Function to open the login modal and close the register modal if open
 function openLoginModal() {
   // Close the register modal if it's open
   const registerModal = document.getElementById("registerModal");
   if (registerModal.style.display === "flex") {
-      registerModal.style.display = "none";
+    registerModal.style.display = "none";
   }
 
   // Open the login modal
   document.getElementById("loginModal").style.display = "flex";
-}
-
-// Function to open the register modal and close the login modal if open
-function openRegisterModal() {
-  // Close the login modal if it's open
-  const loginModal = document.getElementById("loginModal");
-  if (loginModal.style.display === "flex") {
-      loginModal.style.display = "none";
-  }
-
-  // Open the register modal
-  document.getElementById("registerModal").style.display = "flex";
 }
 
 // Function to close the login modal
@@ -113,35 +115,48 @@ window.onclick = function(event) {
   const registerModal = document.getElementById("registerModal");
 
   if (event.target == loginModal) {
-      closeLoginModal();
+    closeLoginModal();
   }
 
   if (event.target == registerModal) {
-      closeRegisterModal();
+    closeRegisterModal();
   }
 }
 
-
-
-
-
-// Function to open the modal
+// Function to open the cart modal
 function openCartModal() {
-  document.getElementById('cartModal').style.display = 'block';
+  if (!isLoggedIn) {
+    openLoginModal(); // Show the login modal if the user is not logged in
+  } else {
+    document.getElementById('cartModal').style.display = 'block'; // Otherwise, show the cart modal
+  }
 }
 
-// Function to close the modal
+// Function to close the cart modal
 function closeCartModal() {
   document.getElementById('cartModal').style.display = 'none';
 }
 
-// Close modal when clicking outside of it
+// Close modal when clicking outside of the cart modal
 window.onclick = function(event) {
-  const modal = document.getElementById('cartModal');
-  if (event.target == modal) {
-      modal.style.display = 'none';
+  const cartModal = document.getElementById('cartModal');
+  if (event.target == cartModal) {
+    closeCartModal();
   }
-};
+}
+
+// For the "Add to Cart" or "Buy Now" buttons
+document.querySelectorAll('.addToCartBtn, .buyNowBtn').forEach(button => {
+  button.addEventListener('click', function() {
+    if (!isLoggedIn) {
+      openLoginModal(); // Show the login modal if not logged in
+    } else {
+      // Proceed with the action if logged in
+      console.log("Proceeding with add to cart or purchase");
+    }
+  });
+});
+
 
 
 // JavaScript function to handle the registration form submission

@@ -17,7 +17,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 // Prepare a query to check if the credentials match
-$sql = "SELECT id, email, password FROM credentials WHERE email = ?";
+$sql = "SELECT user_id, email, password FROM credentials WHERE email = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $email); // "s" means one string parameter
 $stmt->execute();
