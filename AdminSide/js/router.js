@@ -1,57 +1,120 @@
-function toggleSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('hidden');
+document.addEventListener("DOMContentLoaded", () => {
+  const navLinks = document.querySelectorAll(".nav-link");
+  const content = document.getElementById("content");
+  let currentScript = null;
+  let cleanupFunctions = {};
+
+  // Retrieve the last visited page from localStorage or default to 'dashboard'
+  const savedPage = localStorage.getItem("currentPage") || "dashboard";
+
+  function showLoadingIndicator() {
+      content.innerHTML = `
+          <div class="flex justify-center items-center h-full">
+              <div class="loader border-t-4 border-blue-500 w-16 h-16 rounded-full animate-spin"></div>
+              <p class="ml-4 text-gray-600">Loading...</p>
+          </div>`;
   }
 
-  // Function to handle active state for navigation links
-  const links = document.querySelectorAll('.nav-link');
-  links.forEach(link => {
-    link.addEventListener('click', function() {
-      // Remove active class from all links
-      links.forEach(l => l.classList.remove('active'));
-      // Add active class to the clicked link
-      this.classList.add('active');
-      
-      // Change content based on the clicked page
-      const page = this.getAttribute('data-page');
-      loadContent(page);
-    });
-  });
-
-  // Function to load content dynamically based on page
   function loadContent(page) {
-    const contentDiv = document.getElementById('content');
-    let content = '';
-    switch(page) {
-      case 'dashboard':
-        content = '<h2>Welcome to the Dashboard</h2><p>Here you can view key metrics and manage the overall system.</p>';
-        break;
-      case 'product-management':
-        content = '<h2>Product Management</h2><p>Manage your products, update prices, and add new items to the store.</p>';
-        break;
-      case 'order-management':
-        content = '<h2>Order Management</h2><p>View and manage customer orders, track shipping, and update statuses.</p>';
-        break;
-      case 'customer-management':
-        content = '<h2>Customer Management</h2><p>View and manage customer details, interactions, and support requests.</p>';
-        break;
-      case 'payment-transaction':
-        content = '<h2>Payment & Transactions</h2><p>Manage and track payment records and transaction history.</p>';
-        break;
-      case 'discount-promotion':
-        content = '<h2>Discount & Promotion</h2><p>Set up and manage promotions and discounts for customers.</p>';
-        break;
-      case 'shipping-management':
-        content = '<h2>Shipping Management</h2><p>Manage shipping options, rates, and track orders in transit.</p>';
-        break;
-      case 'cms':
-        content = '<h2>Content Management System (CMS)</h2><p>Manage your website content, blog posts, and news updates.</p>';
-        break;
-      default:
-        content = '<h2>Welcome!</h2><p>Select a page from the sidebar to start managing your store.</p>';
-    }
-    contentDiv.innerHTML = content;
+      unloadContent(); // Reset content and states before loading a new page
+
+      showLoadingIndicator(); // Show the loading indicator
+
+      fetch(`html/${page}.html`)
+          .then((response) => {
+              if (!response.ok) {
+                  throw new Error(
+                      `Error loading page: ${response.statusText} (status code: ${response.status})`
+                  );
+              }
+              return response.text();
+          })
+          .then((html) => {
+              content.innerHTML = html;
+              updateActiveTab(page);
+              loadScript(page);
+          })
+          .catch((error) => {
+              content.innerHTML = `<p class=\"text-red-500\">Error: ${error.message}</p>`;
+              console.error("Content Load Error:", error);
+          });
   }
 
-  // Initialize default content for dashboard
-  loadContent('dashboard');
+  function loadScript(page) {
+      const script = document.createElement("script");
+      script.src = `js/${page}.js`;
+      script.onload = () => {
+          console.log(`${page}.js loaded successfully`);
+
+          if (typeof init === "function") {
+              init(); // Initialize page-specific logic
+          }
+
+          if (typeof cleanup === "function") {
+              cleanupFunctions[page] = cleanup; // Store cleanup function for the page
+          }
+      };
+      script.onerror = () => {
+          console.error(`Failed to load script: src/js/${page}.js`);
+      };
+
+      document.body.appendChild(script);
+      currentScript = script;
+  }
+
+  function unloadContent() {
+      if (content) {
+          content.innerHTML = ""; // Clear all child elements
+      }
+
+      if (currentScript) {
+          document.body.removeChild(currentScript);
+          currentScript = null;
+      }
+
+      Object.keys(cleanupFunctions).forEach((page) => {
+          if (typeof cleanupFunctions[page] === "function") {
+              cleanupFunctions[page]();
+          }
+      });
+
+      cleanupFunctions = {}; // Reset cleanup functions
+
+      if (typeof window.cleanup === "function") {
+          window.cleanup();
+          window.cleanup = null;
+      }
+  }
+
+  function updateActiveTab(activePage) {
+      navLinks.forEach((link) => {
+          const page = link.getAttribute("data-page");
+          if (page === activePage) {
+              link.parentNode.classList.add("active");
+          } else {
+              link.parentNode.classList.remove("active");
+          }
+      });
+  }
+
+  // Initialize the saved or default page
+  loadContent(savedPage);
+  updateActiveTab(savedPage);
+
+  navLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          const page = link.getAttribute("data-page");
+
+          if (!page) {
+              console.error("Error: Invalid page attribute.");
+              return;
+          }
+
+          loadContent(page);
+          localStorage.setItem("currentPage", page);
+          updateActiveTab(page);
+      });
+  });
+});

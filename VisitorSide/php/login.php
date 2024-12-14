@@ -1,4 +1,6 @@
 <?php
+session_start(); // Start session management
+
 // Include your database connection
 include 'dbconn.php';
 
@@ -7,7 +9,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 // Prepare a query to check if the credentials match
-$sql = "SELECT * FROM credentials WHERE email = ?";
+$sql = "SELECT id, email, password FROM credentials WHERE email = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $email); // "s" means one string parameter
 $stmt->execute();
@@ -20,8 +22,11 @@ if ($result->num_rows > 0) {
 
     // Verify the hashed password
     if (password_verify($password, $user['password'])) {
-        // Successful login
-        echo json_encode(["status" => "success", "message" => "Login successful", "user" => $user]);
+        // Start session for the logged-in user
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['email'] = $user['email'];
+
+        echo json_encode(["status" => "success", "message" => "Login successful"]);
     } else {
         // Invalid password
         echo json_encode(["status" => "error", "message" => "Invalid credentials"]);

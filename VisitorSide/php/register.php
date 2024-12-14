@@ -8,12 +8,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Hash the password for security
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    // Hash the password before storing it
+    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
     // Prepare and bind SQL statement
     $stmt = $conn->prepare("INSERT INTO credentials (full_name, email, password) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $name, $email, $hashed_password);
+    $stmt->bind_param("sss", $name, $email, $hashedPassword);
 
     // Execute the query and check if it was successful
     if ($stmt->execute()) {

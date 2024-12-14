@@ -1,0 +1,106 @@
+<form action="/AdminSide/php/productmanage.php" method="POST" enctype="multipart/form-data" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-lg mx-auto">
+  <h2 class="text-2xl font-bold mb-4 text-center">Add New Manga</h2>
+
+  <!-- Manga Title -->
+  <div class="mb-4">
+    <label for="manga-title" class="block text-gray-700 text-sm font-bold mb-2">Manga Title:</label>
+    <input type="text" id="manga-title" name="title" required
+           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+           placeholder="Enter manga title">
+  </div>
+
+  <!-- Author -->
+  <div class="mb-4">
+    <label for="author" class="block text-gray-700 text-sm font-bold mb-2">Author:</label>
+    <input type="text" id="author" name="author" required
+           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+           placeholder="Enter author's name">
+  </div>
+
+  <!-- Genre -->
+  <div class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2">Genre:</label>
+    <div class="flex flex-wrap gap-4">
+      <label>
+        <input type="checkbox" name="genre[]" value="Action"> Action
+      </label>
+      <label>
+        <input type="checkbox" name="genre[]" value="Adventure"> Adventure
+      </label>
+      <label>
+        <input type="checkbox" name="genre[]" value="Comedy"> Comedy
+      </label>
+      <label>
+        <input type="checkbox" name="genre[]" value="Drama"> Drama
+      </label>
+      <label>
+        <input type="checkbox" name="genre[]" value="Fantasy"> Fantasy
+      </label>
+      <label>
+        <input type="checkbox" name="genre[]" value="Horror"> Horror
+      </label>
+      <label>
+        <input type="checkbox" name="genre[]" value="Romance"> Romance
+      </label>
+      <label>
+        <input type="checkbox" name="genre[]" value="Sci-Fi"> Sci-Fi
+      </label>
+      <label>
+        <input type="checkbox" name="genre[]" value="Thriller"> Thriller
+      </label>
+      <label>
+        <input type="checkbox" name="genre[]" value="Mystery"> Mystery
+      </label>
+      <label>
+        <input type="checkbox" name="genre[]" value="Slice of Life"> Slice of Life
+      </label>
+      <label>
+        <input type="checkbox" name="genre[]" value="Supernatural"> Supernatural
+      </label>
+      <label>
+        <input type="checkbox" name="genre[]" value="Historical"> Historical
+      </label>
+      <label>
+        <input type="checkbox" name="genre[]" value="Sports"> Sports
+      </label>
+      <label>
+        <input type="checkbox" name="genre[]" value="Music"> Music
+      </label>
+      <label>
+        <input type="checkbox" name="genre[]" value="Mecha"> Mecha
+      </label>
+    </div>
+
+  </div>
+
+  <!-- Price -->
+  <div class="mb-4">
+    <label for="price" class="block text-gray-700 text-sm font-bold mb-2">Price:</label>
+    <input type="number" id="price" name="price" required step="0.01" min="0"
+           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+           placeholder="Enter price in USD">
+  </div>
+
+  <!-- Description -->
+  <div class="mb-4">
+    <label for="description" class="block text-gray-700 text-sm font-bold mb-2">Description:</label>
+    <textarea id="description" name="description" required
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Enter manga description" rows="4"></textarea>
+  </div>
+
+  <!-- Image Upload -->
+  <div class="mb-4">
+    <label for="manga-image" class="block text-gray-700 text-sm font-bold mb-2">Upload Image:</label>
+    <input type="file" id="manga-image" name="image" accept="image/*" required
+           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+  </div>
+
+  <!-- Submit Button -->
+  <div class="flex items-center justify-center">
+    <button type="submit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+      Add Manga
+    </button>
+  </div>
+</form>
