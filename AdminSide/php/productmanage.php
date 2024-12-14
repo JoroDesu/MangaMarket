@@ -8,6 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $author = $_POST['author'];
     $genres = isset($_POST['genre']) ? implode(",", $_POST['genre']) : ''; // Store genres as comma-separated string
     $price = $_POST['price'];
+    $stock = $_POST['stock']; // Added stock field
     $description = $_POST['description'];
 
     // Handle image upload
@@ -18,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $imageError = $image['error'];
 
     // Set the absolute target directory for images
-    $targetDir = "C:/xampp1/htdocs/MangaMarket/source/mangacover/";
+    $targetDir = "https://white-seal-771693.hostingersite.com/MangaMarket/source/mangacover/";
     $targetFile = $targetDir . basename($imageName);
 
     // Ensure the directory exists
@@ -31,9 +32,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
     if (in_array($imageFileType, $validExtensions) && $imageSize < 5000000 && $imageError === 0) {
         if (move_uploaded_file($imageTmpName, $targetFile)) {
-            // Prepare and bind SQL statement
-            $stmt = $conn->prepare("INSERT INTO mangas (title, author, genre, price, description, image) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("ssssss", $title, $author, $genres, $price, $description, $targetFile);
+            // Prepare and bind SQL statement to include stock
+            $stmt = $conn->prepare("INSERT INTO mangas (title, author, genre, price, stock, description, image) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssssss", $title, $author, $genres, $price, $stock, $description, $targetFile);
 
             // Execute the query and set flag for success
             if ($stmt->execute()) {
