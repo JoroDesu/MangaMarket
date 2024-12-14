@@ -5,7 +5,7 @@ document.querySelector('#login-form').addEventListener('submit', function(event)
     const password = document.querySelector('#password').value;
   
     // Send a POST request to the PHP backend
-    fetch('login.php', {
+    fetch('https://white-seal-771693.hostingersite.com/VisitorSide/php/login.php', {
       method: 'POST',
       body: new URLSearchParams({
         email: email,

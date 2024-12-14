@@ -146,7 +146,7 @@ window.onclick = function(event) {
 }
 
 // For the "Add to Cart" or "Buy Now" buttons
-document.querySelectorAll('.addToCartBtn, .buyNowBtn').forEach(button => {
+document.querySelectorAll('.add-to-cart, .buy-now').forEach(button => {
   button.addEventListener('click', function() {
     if (!isLoggedIn) {
       openLoginModal(); // Show the login modal if not logged in
@@ -165,7 +165,7 @@ document.getElementById('register-form').addEventListener('submit', function(eve
 
   var form = new FormData(this); // Get the form data
 
-  fetch('your-php-file.php', {
+  fetch('https://white-seal-771693.hostingersite.com/VisitorSide/php/register.php', {
       method: 'POST',
       body: form
   })

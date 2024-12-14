@@ -30,6 +30,32 @@ function populateMangaBoxes() {
     });
 }
 
+fetch('https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchManga.php') // Replace with the actual API endpoint
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then((data) => {
+        data.forEach((manga) => {
+            // Create an image element to test the image retrieval
+            const img = new Image();
+            img.src = manga.cover;
+
+            img.onload = () => {
+                console.log(`Image for "${manga.title}" successfully retrieved: ${manga.cover}`);
+            };
+
+            img.onerror = () => {
+                console.error(`Failed to retrieve image for "${manga.title}": ${manga.cover}`);
+            };
+        });
+    })
+    .catch((error) => {
+        console.error('Error fetching manga data:', error);
+    });
+
 
 function populateMangaBoxesSales() {
   const boxContainer = document.querySelector(".box-container1");
