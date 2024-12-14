@@ -1,0 +1,14 @@
+{
+    "name": "joro/manga-market",
+    "description": "Hotdog",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "JoroDesu",
+            "email": "russelguiwan@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
