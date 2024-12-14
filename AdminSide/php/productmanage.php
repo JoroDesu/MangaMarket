@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (in_array($imageFileType, $validExtensions) && $imageSize < 5000000 && $imageError === 0) {
         if (move_uploaded_file($imageTmpName, $targetFile)) {
             // Prepare and bind SQL statement to include stock
-            $stmt = $conn->prepare("INSERT INTO mangas (title, author, genre, price, stock, description, image) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO manga (title, author, genre, price, stock, description, image) VALUES (?, ?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("sssssss", $title, $author, $genres, $price, $stock, $description, $targetFile);
 
             // Execute the query and set flag for success
