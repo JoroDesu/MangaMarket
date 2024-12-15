@@ -85,6 +85,24 @@ fetch('https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchManga.ph
           console.error('Error fetching on sale data:', error);
         });
     }
+
+    fetch("https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchOnSale.php")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(onSaleData => {
+    if (!Array.isArray(onSaleData)) {
+      throw new Error("Invalid JSON data");
+    }
+    // (Process data)
+  })
+  .catch(error => {
+    console.error("Error fetching on sale data:", error);
+  });
+
     
     function populateNewReleaseBoxes() {
       const boxContainer = document.querySelector("#releaseScroller");
