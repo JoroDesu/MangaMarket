@@ -21,13 +21,14 @@ $mangas = [];
 if ($result && $result->num_rows > 0) {
     // Fetch the data row by row
     while ($row = $result->fetch_assoc()) {
+        $baseURL = "https://white-seal-771693.hostingersite.com/MangaMarket/source/mangacover/";
         $mangas[] = [
             'title' => $row['title'],
             'author' => $row['author'],
             'genre' => $row['genre'],
             'price' => $row['price'],
             'description' => $row['description'],
-            'cover' => $row['image_url'] // Use the 'image_path' field for the cover image URL
+            'cover' => $baseURL . $row['image_url'] 
         ];
     }
 } else {
