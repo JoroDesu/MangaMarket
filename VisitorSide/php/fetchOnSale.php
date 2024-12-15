@@ -10,10 +10,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 include 'dbconn.php';
 
+// Enable error reporting and log errors (but don't output them)
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+error_log("Error in manga fetch script.");
+
 // Query to fetch data from the mangas table where the sale column is not NULL
-$query = "SELECT manga_id, title, author, genre, price, description, image_url, sale, saleprice 
+$query = "SELECT manga_id, title, author, genre, price, description, image_url, sale, sale_price 
           FROM manga 
-          WHERE saleprice IS NOT NULL";
+          WHERE sale IS NOT NULL";
 
 // Execute the query
 $result = $conn->query($query);
@@ -33,11 +38,13 @@ if ($result && $result->num_rows > 0) {
             'description' => $row['description'],
             'cover' => $baseURL . $row['image_url'],
             'sale' => $row['sale'], // Include the sale column
-            'salePrice' => $row['saleprice'] // Include the sale_price column
+            'salePrice' => $row['sale_price'] // Include the sale_price column
         ];
     }
 } else {
-    echo json_encode(["message" => "No manga found."]);
+    // Always return an empty array instead of an error message
+    header('Content-Type: application/json');
+    echo json_encode([]);
     exit();
 }
 
