@@ -8,22 +8,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../src/cropped_image (1).png">
+    <link rel="stylesheet" href="/VisitorSide/css/style.css">
+    <link rel="stylesheet" href="/VisitorSide/css/registerCss.css">
     <link rel="stylesheet" href="/VisitorSide/css/view_all.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   </head>
   <body class="bg-gray-100 h-screen flex flex-col">
     <!-- Top Navigation -->
-    <!-- Top Navigation -->
+ 
     <header class="sticky-header bg-gray-950 text-white shadow p-4">
         <div class="container mx-auto flex justify-between items-center">
           <!-- Logo and Icons -->
           <div class="flex items-center w-full justify-between">
             <!-- Logo -->
             <div class="flex items-center">
-              <img src="/src/cropped_image (1).png" alt="Logo" class="w-8 h-8 mr-3">
-              
+              <img src="/src/cropped_image (1).png" alt="Logo" class="w-16 h-16 mr-5"> <!-- Adjusted size -->
+              <span class="text-2xl font-bold text-gray-800">Manga Market</span> <!-- Added text -->
             </div>
+            
         
             <!-- Search Field in the Middle -->
             <div class="flex-grow mx-4">
@@ -37,15 +40,18 @@
         
             <!-- Icons (Cart, Search, User, Wishlist) -->
             <div class="flex space-x-6">
-                <a href="/user" class="text-black hover:text-gray-400">
-                    <i class="far fa-user"></i> <!-- Hollow User icon -->
-                </a>
+                <!-- Trigger Button for Register Modal -->
+                <button class="register-button text-black hover:text-gray-400" onclick="openRegisterModal()">
+                  <i class="far fa-user"></i> <!-- Hollow User icon -->
+                </button>
+
                 <a href="/wishlist" class="text-black hover:text-gray-400">
                     <i class="far fa-heart"></i> <!-- Hollow Wishlist (Heart) icon -->
                 </a>
-                <a href="/cart" class="text-black hover:text-gray-400">
-                    <i class="fas fa-shopping-cart"></i> <!-- Hollow Cart icon -->
-                </a>
+                <!-- Button to Trigger Modal -->
+                <button class="shopping-cart-button text-black hover:text-gray-400" onclick="openCartModal()">
+                  <i class="fas fa-shopping-cart"></i> <!-- Hollow Cart icon -->
+              </button>
             </div>
             
           </div>
@@ -56,13 +62,14 @@
       <nav class="sticky-nav">
         <ul class="flex justify-center space-x-6 mt-4">
           <li><a href="/VisitorSide/html/Main_Page.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Home</a></li>
-          <li><a href="/on-sale" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">On Sale</a></li>
-          <li><a href="/manga" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Manga</a></li>
-          <li><a href="/new-release" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">New Release</a></li>
-          <li><a href="/contact" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Contact Us</a></li>
-          <li><a href="/about" class="text-black hover:text-gray-400" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">About Us</a></li>
+          <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">On Sale</a></li>
+          <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Manga</a></li>
+          <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">New Release</a></li>
+          <li><a href="/VisitorSide/html/ContactUs.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Contact Us</a></li>
+          <li><a href="#footer-wrapper" class="text-black hover:text-gray-400" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">About Us</a></li>
         </ul>
       </nav>
+      
       
   
 
