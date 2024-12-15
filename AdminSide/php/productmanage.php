@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 header("Access-Control-Allow-Origin: *");
@@ -19,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = $conn->real_escape_string($_POST['description']);
 
     // Define the upload directory and allowed file types
-    $uploadDir = __DIR__ . '../../source/mangacover/';
+    $uploadDir = __DIR__ . '/source/mangacover/';
     $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
     $uploadOk = 1;
     $uploadedFileName = '';
