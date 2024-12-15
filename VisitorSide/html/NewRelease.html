@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manga Market</title>
+    <title>New Release</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
@@ -63,7 +63,7 @@
           <li><a href="/VisitorSide/html/Main_Page.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Home</a></li>
           <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">On Sale</a></li>
           <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Manga</a></li>
-          <li><a href="/VisitorSide/html/NewRelease.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">New Release</a></li>
+          <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">New Release</a></li>
           <li><a href="/VisitorSide/html/ContactUs.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Contact Us</a></li>
           <li><a href="#footer-wrapper" class="text-black hover:text-gray-400" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">About Us</a></li>
         </ul>
@@ -73,136 +73,7 @@
   
 
         <!-- Main Content -->
-    <main class="flex-1 p-6 bg-orange-100">
-      <div id="slider" class="relative w-full max-w-5xl mx-auto overflow-hidden rounded-lg shadow-lg h-[256px]">
-        <!-- Slides -->
-        <div id="slides" class="flex transition-transform duration-500">
-            <img src="/src/Manhwa_1100x.webp" alt="Slide 1" class="w-full h-64 object-cover flex-shrink-0">
-            <img src="/src/mystery_a7951392-3177-4def-8dee-e217d38eed86_1100x.webp" alt="Slide 2" class="w-full h-64 object-cover flex-shrink-0">
-            <img src="/src/website_banner_1100x.webp" alt="Slide 3" class="w-full h-64 object-cover flex-shrink-0">
-        </div>
-        <!-- Navigation Buttons -->
-        <button id="prevButton" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow hover:bg-gray-700">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-        <button id="nextButton" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow hover:bg-gray-700">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-        </div>
-
-
-
-        <div class="best-seller">
-          <div class="header">
-              <h1>Best Seller</h1>
-              <a href="/VisitorSide/html/View_all.html" class="view-all-btn">View All</a>
-          </div>
-          <div class="box-line-container">
-            <!-- Left Arrow -->
-            <button class="arrow left" onclick="scrollToRight('mangaScroller')">&#10094;</button>
-            
-            <div class="box-container" id="mangaScroller">
-              <a href="/VisitorSide/html/manga-details.html" class="manga-box">
-                <img src="/source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
-                <div class="manga-details">
-                  <h3 class="manga-title">Manga Title 1</h3>
-                  <p class="manga-author">Author: Author Name</p>
-                  <p class="manga-genre">Genre: Adventure</p>
-                  <p class="manga-price">Price: $19.99</p>
-                </div>
-              </a>
-          
-              <a href="/VisitorSide/html/manga-details.html" class="manga-box">
-                <img src="/source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
-                <div class="manga-details">
-                  <h3 class="manga-title">Manga Title 2</h3>
-                  <p class="manga-author">Author: Author Name</p>
-                  <p class="manga-genre">Genre: Fantasy</p>
-                  <p class="manga-price">Price: $15.99</p>
-                </div>
-              </a>
-              
-              <!-- Additional manga items can be added here -->
-            </div>
-            
-            <!-- Right Arrow -->
-            <button class="arrow right" onclick="scrollToRight('mangaScroller')">&#10095;</button>
-          </div>
-          
-      </div>
-      
-      <div class="on-sale">
-        <div class="header">
-            <h1>On Sale</h1>
-            <a href="/VisitorSide/html/View_all.html" class="view-all-btn">View All</a>
-        </div>
-        <div class="box-line-container">
-          <!-- Left Arrow -->
-          <button class="arrow left" onclick="scrollToLeft('saleScroller')">&#10094;</button>
-      
-          <div class="box-container" id="saleScroller">
-            <!-- Dynamically populated content -->
-          </div>
-      
-          <!-- Right Arrow -->
-          <button class="arrow right" onclick="scrollToRight('saleScroller')">&#10095;</button>
-        </div>
-      </div>
-      
-      <div class="new-release">
-        <div class="header">
-            <h1>New Release</h1>
-            <a href="/VisitorSide/html/View_all.html" class="view-all-btn">View All</a>
-        </div>
-        <div class="box-line-container">
-          <!-- Left Arrow -->
-          <button class="arrow left" onclick="scrollToLeft('releaseScroller')">&#10094;</button>
-      
-          <div class="box-container" id="releaseScroller">
-            <!-- Dynamically populated content -->
-          </div>
-      
-          <!-- Right Arrow -->
-          <button class="arrow right" onclick="scrollToRight('releaseScroller')">&#10095;</button>
-        </div>
-      </div>
-
-
-  
-
-
-    <div class="category-container relative bg-cover bg-center shadow-lg">
-      <h2>Check our Categories</h2>
-      <div class="category-grid">
-        <a href="#" onclick="fetchCategory('Adventure')" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/fantasy-anime-1920-x-1080-wallpaper-u6n5i0t1sgcrii9i.jpg');">Adventure</a>
-<a href="#" onclick="fetchCategory('Aantasy')" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/images.jpg');">Fantasy</a>
-<a href="#" onclick="fetchCategory('Action')" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/fa76d0120785243.60b889ddccfaa.jpg');">Action</a>
-<a href="#" onclick="fetchCategory('Romance')" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/72b8dee3-63c3-4eb5-9a68-3bf1a88d447e-love-couple-anime.webp');">Romance</a>
-<a href="#" onclick="fetchCategory('Mystery')" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/anime-original-forest-night-wallpaper-preview.jpg');">Mystery</a>
-<a href="#" onclick="fetchCategory('Horror')" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/qw5ma5zajz841.jpg');">Horror</a>
-<a href="#" onclick="fetchCategory('Sci-fi')" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/950ff831445d81e5d45e66e4518bb1a5.jpg');">Sci-Fi</a>
-<a href="#" onclick="fetchCategory('Comedy')" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/gintama-gintaoki-wallpaper-560x314.webp');">Comedy</a>
-<!-- Hidden categories -->
-<a href="#" onclick="fetchCategory('Thriller')" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/thriller-anime-1500-x-844-wallpaper-iqc0xdh2yn6fqs1w.jpg');">Thriller</a>
-<a href="#" onclick="fetchCategory('Drama')" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/HD-wallpaper-kousei-kaori-romance-anime-love-manga-drama-spring-couple.jpg');">Drama</a>
-<a href="#" onclick="fetchCategory('Slice-of-life')" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/fruits-basket.jpg');">Slice of Life</a>
-<a href="#" onclick="fetchCategory('Supernatural')" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/images\ \(1\).jpg');">Supernatural</a>
-<a href="#" onclick="fetchCategory('Historical')" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/anime-japanese-character_23-2151478204.jpg');">Historical</a>
-<a href="#" onclick="fetchCategory('Sports')" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/8bf42cd3db64abf013f3e2fe1377af84.webp');">Sports</a>
-<a href="#" onclick="fetchCategory('Music')" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/1337285.png');">Music</a>
-<a href="#" onclick="fetchCategory('Mecha')" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/1344463.png');">Mecha</a>
-</div>
-      <button class="expand-btn" onclick="toggleCategories()">Expand</button>
-  </div>
-  
-  <script>
-    function fetchCategory(genre) {
-        // Redirect to PHP page with category as a parameter
-        window.location.href = `https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchGenre.php?category=${genre}`;
-    }
-</script>
-
-  </div>
+    
 
 
 

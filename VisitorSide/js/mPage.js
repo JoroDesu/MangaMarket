@@ -223,19 +223,12 @@ function scrollToRight() {
 }
 
 // sale
-
-function scrollToLeftSales() {
-  const scroller = document.getElementById('mangaScroller1');
-  scroller.scrollBy({
-    left: -350, // Adjust based on box width + gap
-    behavior: 'smooth'
-  });
+function scrollToLeft(scrollerId) {
+  const scroller = document.getElementById(scrollerId);
+  scroller.scrollBy({ left: -300, behavior: 'smooth' });
 }
 
-function scrollToRightSales() {
-  const scroller = document.getElementById('mangaScroller1');
-  scroller.scrollBy({
-    left: 350, // Adjust based on box width + gap
-    behavior: 'smooth'
-  });
+function scrollToRight(scrollerId) {
+  const scroller = document.getElementById(scrollerId);
+  scroller.scrollBy({ left: 300, behavior: 'smooth' });
 }

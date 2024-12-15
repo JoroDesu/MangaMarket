@@ -134,6 +134,8 @@ h1, p {
 .manga-price {
   display: flex;
   align-items: center;
+  color: #EF6B4A;
+  font-weight: 1000;
 }
 
 .manga-price .original-price {
@@ -180,19 +182,12 @@ h1, p {
 
 
 
-.on-sale {
-  margin: 20px 0;
-  padding: 10px;
-}
-
-.on-sale .header {
-  display: flex;
-  justify-content: space-between; /* Align the title and button */
-  align-items: center; /* Vertically center the elements */
-  margin-bottom: 20px; /* Space between the header and the manga boxes */
-}
-
 .on-sale h1 {
+  font-size: 2rem;
+  margin: 0; /* Remove the default margin */
+  font-weight: bold;
+}
+.new-release h1{
   font-size: 2rem;
   margin: 0; /* Remove the default margin */
   font-weight: bold;
