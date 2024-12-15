@@ -21,48 +21,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = $conn->real_escape_string($_POST['description']);
 
     // Define the upload directory and allowed file types
-    $uploadDir = __DIR__ . '/source/mangacover/';
+    $uploadDir = __DIR__ . '/source';
     $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
     $uploadOk = 1;
     $uploadedFileName = '';
 
     // Check if file was uploaded
-    if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
-        $fileName = basename($_FILES["image"]["name"]);
-        $fileTmpPath = $_FILES["image"]["tmp_name"];
-        $fileSize = $_FILES["image"]["size"];
-        $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-        $uploadedFileName = uniqid("MANGA-", true) . '.' . $fileExt; // Generate unique file name
-        $targetFilePath = $uploadDir . $uploadedFileName;
+if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
+    $fileName = basename($_FILES["image"]["name"]);
+    $fileTmpPath = $_FILES["image"]["tmp_name"];
+    $fileSize = $_FILES["image"]["size"];
+    $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+    $uploadedFileName = $fileName; // Use the original file name
+    $targetFilePath = $uploadDir . $uploadedFileName;
 
-        // Validate file type
-        if (!in_array($fileExt, $allowedExtensions)) {
-            echo "Only JPG, JPEG, PNG, and GIF files are allowed.";
-            $uploadOk = 0;
-        }
-
-        // Validate file size
-        if ($fileSize > 500000) { // Max size: 500KB
-            echo "Sorry, your file is too large.";
-            $uploadOk = 0;
-        }
-
-        // Attempt to upload file if all checks pass
-        if ($uploadOk == 1) {
-            // Create the upload directory if it doesn't exist
-            if (!is_dir($uploadDir)) {
-                mkdir($uploadDir, 0777, true);
-            }
-
-            if (!move_uploaded_file($fileTmpPath, $targetFilePath)) {
-                echo "Sorry, there was an error uploading your file.";
-                $uploadOk = 0;
-            }
-        }
-    } else {
-        echo "No valid file uploaded.";
+    // Validate file type
+    if (!in_array($fileExt, $allowedExtensions)) {
+        echo "Only JPG, JPEG, PNG, and GIF files are allowed.";
         $uploadOk = 0;
     }
+
+    // Validate file size
+    if ($fileSize > 500000) { // Max size: 500KB
+        echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+
+    // Attempt to upload file if all checks pass
+    if ($uploadOk == 1) {
+        // Create the upload directory if it doesn't exist
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
+
+        if (!move_uploaded_file($fileTmpPath, $targetFilePath)) {
+            echo "Sorry, there was an error uploading your file.";
+            $uploadOk = 0;
+        }
+    }
+} else {
+    echo "No valid file uploaded.";
+    $uploadOk = 0;
+}
+
 
     // Insert data into database if upload is successful
     if ($uploadOk == 1) {
