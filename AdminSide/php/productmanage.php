@@ -74,12 +74,12 @@ if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
         if ($stmt->execute()) {
             echo "<script>
                     alert('Manga successfully uploaded with image!');
-                    window.location.href = '/AdminSide/html/order-managament.html';
+                    window.location.href = '/AdminSide/index.html';
                 </script>";
         } else {
             echo "<script>
                     alert('Failed to upload manga. Please try again.');
-                    window.location.href = '/AdminSide/html/order-managament.html';
+                    window.location.href = '/AdminSide/index.html';
                 </script>";
 }
 
