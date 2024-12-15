@@ -11,9 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 include 'dbconn.php';
 
 // Query to fetch data from the mangas table where the sale column is not NULL
-$query = "SELECT manga_id, title, author, genre, price, description, image_url, sale 
+$query = "SELECT manga_id, title, author, genre, price, description, image_url, saleprice 
           FROM manga 
-          WHERE sale IS NOT NULL";
+          WHERE saleprice IS NOT NULL";
 
 // Execute the query
 $result = $conn->query($query);

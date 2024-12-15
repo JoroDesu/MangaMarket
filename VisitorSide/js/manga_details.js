@@ -72,7 +72,7 @@ fetch('https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchManga.ph
                 <p class="manga-author">Author: ${manga.author}</p>
                 <p class="manga-genre">Genre: ${manga.genre}</p>
                 <p class="manga-price">
-                  <span class="original-price">${manga.originalPrice}</span>
+                  <span class="original-price">${manga.price}</span>
                   <span class="discounted-price">${manga.salePrice}</span>
                 </p>
               </div>
