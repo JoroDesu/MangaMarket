@@ -21,7 +21,7 @@ $mangas = [];
 if ($result && $result->num_rows > 0) {
     // Fetch the data row by row
     while ($row = $result->fetch_assoc()) {
-        $baseURL = "https://white-seal-771693.hostingersite.com/MangaMarket/source/categoriesbg/";
+        $baseURL = "https://white-seal-771693.hostingersite.com/MangaMarket/source/";
         $mangas[] = [
             'id' => $row['manga_id'], // Include the manga_id
             'title' => $row['title'],
