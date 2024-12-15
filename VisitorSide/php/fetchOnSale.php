@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 include 'dbconn.php';
 
 // Query to fetch data from the mangas table where the sale column is not NULL
-$query = "SELECT manga_id, title, author, genre, price, description, image_url, saleprice 
+$query = "SELECT manga_id, title, author, genre, price, description, image_url, sale, saleprice 
           FROM manga 
           WHERE saleprice IS NOT NULL";
 
@@ -32,7 +32,8 @@ if ($result && $result->num_rows > 0) {
             'price' => $row['price'],
             'description' => $row['description'],
             'cover' => $baseURL . $row['image_url'],
-            'sale' => $row['sale'] // Include the sale column
+            'sale' => $row['sale'], // Include the sale column
+            'salePrice' => $row['saleprice'] // Include the sale_price column
         ];
     }
 } else {
