@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Insert data into database if upload is successful
     if ($uploadOk == 1) {
-        $stmt = $conn->prepare("INSERT INTO manga (title, author, genre, price, stock, description, image_path) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO manga (title, author, genre, price, stock, description, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssiss", $title, $author, $genres, $price, $stock, $description, $uploadedFileName);
 
         // Execute the query and provide feedback
