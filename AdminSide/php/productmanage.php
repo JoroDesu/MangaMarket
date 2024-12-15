@@ -1,4 +1,13 @@
 <?php
+
+header("Access-Control-Allow-Origin: *"); 
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); 
+header("Access-Control-Allow-Headers: Content-Type, x-requested-with");
+
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    exit(0); 
+}
+
 include 'dbconn.php';
 
 // Check if form is submitted
@@ -11,42 +20,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stock = (int)$_POST['stock']; // Ensure stock is an integer
     $description = $_POST['description'];
 
-    // Handle image upload
-    $image = $_FILES['image'];
-    $imageName = $image['name'];
-    $imageTmpName = $image['tmp_name'];
-    $imageSize = $image['size'];
-    $imageError = $image['error'];
+    // Prepare and bind SQL statement
+    $stmt = $conn->prepare("INSERT INTO manga (title, author, genre, price, stock, description) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssis", $title, $author, $genres, $price, $stock, $description);
 
-    // Set the target directory for images (server path)
-    $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/MangaMarket/source/mangacover/";
-    $imageURL = "https://white-seal-771693.hostingersite.com/MangaMarket/source/mangacover/" . basename($imageName);
+    // Execute the query and set flag for success
+    $success = $stmt->execute();
 
-    // Ensure the directory exists
-    if (!is_dir($targetDir)) {
-        mkdir($targetDir, 0755, true);
-    }
-
-    // Check if the image file is valid
-    $validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
-    $imageFileType = strtolower(pathinfo($imageName, PATHINFO_EXTENSION));
-    if (getimagesize($imageTmpName) !== false && in_array($imageFileType, $validExtensions) && $imageSize < 5000000 && $imageError === 0) {
-        if (move_uploaded_file($imageTmpName, $targetDir . basename($imageName))) {
-            // Prepare and bind SQL statement
-            $stmt = $conn->prepare("INSERT INTO manga (title, author, genre, price, stock, description, image) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("ssssiss", $title, $author, $genres, $price, $stock, $description, $imageURL);
-
-            // Execute the query and set flag for success
-            $success = $stmt->execute();
-
-            // Close the statement
-            $stmt->close();
-        } else {
-            $success = false;
-        }
-    } else {
-        $success = false;
-    }
+    // Close the statement
+    $stmt->close();
 
     // Provide user feedback
     if ($success) {
