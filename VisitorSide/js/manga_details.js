@@ -108,7 +108,7 @@ fetch('https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchManga.ph
       const boxContainer = document.querySelector("#releaseScroller");
       boxContainer.innerHTML = ""; // Clear existing content
     
-      fetch("https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchNewRelease.php")
+      fetch("https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchNewReleases.php")
         .then(response => response.json())
         .then(newReleaseData => {
           newReleaseData.forEach((manga) => {
