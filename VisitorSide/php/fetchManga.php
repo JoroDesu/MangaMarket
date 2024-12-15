@@ -10,8 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 include 'dbconn.php';
 
-// Query to fetch data from the mangas table
-$query = "SELECT title, author, genre, price, description, image_url FROM manga";
+// Query to fetch data from the mangas table, including manga_id
+$query = "SELECT manga_id, title, author, genre, price, description, image_url FROM manga";
 
 // Execute the query
 $result = $conn->query($query);
@@ -23,6 +23,7 @@ if ($result && $result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $baseURL = "https://white-seal-771693.hostingersite.com/MangaMarket/source/mangacover/";
         $mangas[] = [
+            'id' => $row['manga_id'], // Include the manga_id
             'title' => $row['title'],
             'author' => $row['author'],
             'genre' => $row['genre'],

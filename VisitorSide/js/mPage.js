@@ -123,8 +123,21 @@ window.onclick = function(event) {
   }
 }
 
-// Function to open the cart modal
+// Function to open the modal
 function openCartModal() {
+  document.getElementById('cartModal').style.display = 'block';
+}
+
+// Function to close the modal
+function closeCartModal() {
+  document.getElementById('cartModal').style.display = 'none';
+}
+
+
+
+/* Function to open the cart modal
+function openCartModal() {
+  let isLoggedIn = true;
   if (!isLoggedIn) {
     openLoginModal(); // Show the login modal if the user is not logged in
   } else {
@@ -135,7 +148,7 @@ function openCartModal() {
 // Function to close the cart modal
 function closeCartModal() {
   document.getElementById('cartModal').style.display = 'none';
-}
+}*/
 
 // Close modal when clicking outside of the cart modal
 window.onclick = function(event) {
@@ -156,6 +169,9 @@ document.querySelectorAll('.add-to-cart, .buy-now').forEach(button => {
     }
   });
 });
+
+
+
 
 
 

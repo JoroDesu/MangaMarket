@@ -10,182 +10,302 @@
     <link rel="icon" type="image/x-icon" href="../src/cropped_image (1).png">
     <link rel="stylesheet" href="/VisitorSide/css/description.css">
     <link rel="stylesheet" href="/VisitorSide/css/style.css">
+    <link rel="stylesheet" href="/VisitorSide/css/login.css">
+    <link rel="stylesheet" href="/VisitorSide/css/registerCss.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   </head>
   <body class="bg-gray-100 h-screen flex flex-col">
     <!-- Top Navigation -->
-    <!-- Top Navigation -->
     <header class="sticky-header bg-gray-950 text-white shadow p-4">
-        <div class="container mx-auto flex justify-between items-center">
-          <!-- Logo and Icons -->
-          <div class="flex items-center w-full justify-between">
-            <!-- Logo -->
-            <div class="flex items-center">
-              <img src="/src/cropped_image (1).png" alt="Logo" class="w-8 h-8 mr-3">
-              
-            </div>
-        
-            <!-- Search Field in the Middle -->
-            <div class="flex-grow mx-4">
-              <input 
-                type="text" 
-                placeholder="Search Manga..." 
-                class="w-full p-2 rounded-lg text-black focus:outline-none search-input"
-              />
-            </div>
-
-        
-            <!-- Icons (Cart, Search, User, Wishlist) -->
-            <div class="flex space-x-6">
-                <a href="/user" class="text-black hover:text-gray-400">
-                    <i class="far fa-user"></i> <!-- Hollow User icon -->
-                </a>
-                <a href="/wishlist" class="text-black hover:text-gray-400">
-                    <i class="far fa-heart"></i> <!-- Hollow Wishlist (Heart) icon -->
-                </a>
-                <a href="/cart" class="text-black hover:text-gray-400">
-                    <i class="fas fa-shopping-cart"></i> <!-- Hollow Cart icon -->
-                </a>
-            </div>
-            
+      <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo and Icons -->
+        <div class="flex items-center w-full justify-between">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <img src="/src/cropped_image (1).png" alt="Logo" class="w-16 h-16 mr-5"> <!-- Adjusted size -->
+            <span class="text-2xl font-bold text-gray-800">Manga Market</span> <!-- Added text -->
           </div>
+          
+      
+          <!-- Search Field in the Middle -->
+          <div class="flex-grow mx-4">
+            <input 
+              type="text" 
+              placeholder="Search Manga..." 
+              class="w-full p-2 rounded-lg text-black focus:outline-none search-input"
+            />
+          </div>
+
+      
+          <!-- Icons (Cart, Search, User, Wishlist) -->
+          <div class="flex space-x-6">
+              <!-- Trigger Button for Register Modal -->
+              <button class="register-button text-black hover:text-gray-400" onclick="openRegisterModal()">
+                <i class="far fa-user"></i> <!-- Hollow User icon -->
+              </button>
+
+              <a href="/wishlist" class="text-black hover:text-gray-400">
+                  <i class="far fa-heart"></i> <!-- Hollow Wishlist (Heart) icon -->
+              </a>
+              <!-- Button to Trigger Modal -->
+              <button class="shopping-cart-button text-black hover:text-gray-400" onclick="openCartModal()">
+                <i class="fas fa-shopping-cart"></i> <!-- Hollow Cart icon -->
+            </button>
+          </div>
+          
         </div>
-      </header>
+      </div>
+    </header>
+    
+
+    <nav class="sticky-nav">
+      <ul class="flex justify-center space-x-6 mt-4">
+        <li><a href="/VisitorSide/html/Main_Page.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Home</a></li>
+        <li><a href="/on-sale" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">On Sale</a></li>
+        <li><a href="/manga" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Manga</a></li>
+        <li><a href="/new-release" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">New Release</a></li>
+        <li><a href="/MangaMarket/VisitorSide/html/ContactUs.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Contact Us</a></li>
+        <li><a href="/about" class="text-black hover:text-gray-400" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">About Us</a></li>
+      </ul>
+    </nav>
       
 
-      <nav class="sticky-nav">
-        <ul class="flex justify-center space-x-6 mt-4">
-          <li><a href="/VisitorSide/html/Main_Page.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Home</a></li>
-          <li><a href="/on-sale" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">On Sale</a></li>
-          <li><a href="/manga" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Manga</a></li>
-          <li><a href="/new-release" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">New Release</a></li>
-          <li><a href="/contact" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Contact Us</a></li>
-          <li><a href="/about" class="text-black hover:text-gray-400" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">About Us</a></li>
-        </ul>
-      </nav>
-      
-<!--Content here-->
-<div class="flex-container">
-  <!-- First Row: Main Manga Description -->
-    <div class="container">
-        <a href="/VisitorSide/html/Main_Page.html" class="back-btn">Go Back</a>
+
+  <!-- Content here -->
+  <div class="flex flex-col gap-8">
+    <!-- First Row: Main Manga Description -->
+    <div class="container mx-auto p-4">
+        <a href="/VisitorSide/html/Main_Page.html" class="text-blue-500 font-bold">Go Back</a>
         
-        <div class="manga-description">
-            <div class="manga-image">
-                <div class="image-container">
-                    <img id="manga-cover" src="/source/Persona-5-Mementos-Mission-Cover-1-696x987.jpg" alt="Manga" width="300" height="450">
+        <div class="flex gap-8 p-6 ">
+            <!-- Manga Image -->
+            <div class="flex-1 rounded-lg shadow-md p-4 max-w-sm">
+                <div class="text-center">
+                    <img id="manga-cover" src="/source/Persona-5-Mementos-Mission-Cover-1-696x987.jpg" alt="Manga" class="w-full h-auto rounded-lg">
                 </div>
             </div>
         
-            <div class="manga-details">
-                <h1 class="manga-title">Persona</h1> <!-- Manga Title will be populated -->
-                <h2 class="manga-author">Author: kasjdkasdja</h2> <!-- Author Name will be populated -->
-                <h2>Description:</h2>
-                <p class="manga-description-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. gfwuie uwef uwefvuwef vuwefv </p> <!-- Description will be populated -->
-                <h2>Genre:</h2>
-                <p class="manga-genres">Fantasy</p> <!-- Genres will be populated -->
-              
+            <!-- Manga Details -->
+            <div class="flex-1 bg-white rounded-lg shadow-md p-6">
+                <h1 class="text-3xl font-bold mb-2">Persona</h1>
+                <h2 class="text-xl text-gray-600 mb-4">Author: kasjdkasdja</h2>
+                <h2 class="text-xl font-semibold">Description:</h2>
+                <p class="text-base text-gray-800 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <h2 class="text-xl font-semibold">Genre:</h2>
+                <p class="text-base text-gray-600 mb-6">Fantasy</p>
+            </div>
+        </div>
+    </div>
+  
+<!-- Second Row: Mid Container -->
+<div class="mid-container mx-auto p-6 w-4/5">
+  <!-- Related Manga Section -->
+  <div class="flex gap-8">
+    <!-- Related Manga -->
+    <div class="related-manga bg-gray-200 p-6 rounded-lg shadow-md flex-1">
+        <h3 class="text-2xl font-semibold mb-4">Related Manga</h3>
+        <div class="flex gap-6 flex-wrap justify-start">
+            <!-- Manga items -->
+            <div class="related-item flex flex-col items-center w-28">
+                <img src="/source/583649164431305.63f68280e2b51.jpg" alt="Manga 1" class="w-full h-40 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
+                <p class="mt-2 text-center text-lg font-bold">Manga Title 1</p>
+            </div>
+            <div class="related-item flex flex-col items-center w-28">
+                <img src="/source/Horimiya.600.3183213.jpg" alt="Manga 2" class="w-full h-40 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
+                <p class="mt-2 text-center text-lg font-bold">Manga Title 2</p>
+            </div>
+            <div class="related-item flex flex-col items-center w-28">
+                <img src="/source/images (1).jpg" alt="Manga 3" class="w-full h-40 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
+                <p class="mt-2 text-center text-lg font-bold">Manga Title 3</p>
+            </div>
+            <div class="related-item flex flex-col items-center w-28">
+                <img src="/source/images (2).jpg" alt="Manga 4" class="w-full h-40 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
+                <p class="mt-2 text-center text-lg font-bold">Manga Title 4</p>
+            </div>
+            <div class="related-item flex flex-col items-center w-28">
+                <img src="/source/Persona-5-Mementos-Mission-Cover-1-696x987.jpg" alt="Manga 5" class="w-full h-40 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
+                <p class="mt-2 text-center text-lg font-bold">Manga Title 5</p>
             </div>
         </div>
     </div>
 
-    <!-- Second Row: Mid Container -->
-    <div class="mid-container">
-      <!-- Related Manga Section -->
-      <div class="related-manga">
-        <h3 class="related-manga-title">Related Manga</h3>
-          <div class="recommendations">
-              <div class="related-item">
-                  <img src="/source/583649164431305.63f68280e2b51.jpg" alt="Manga 1" class="related-image">
-                  <p class="related-title">Manga Title 1</p>
-              </div>
-              <div class="related-item">
-                  <img src="/source/Horimiya.600.3183213.jpg" alt="Manga 2" class="related-image">
-                  <p class="related-title">Manga Title 2</p>
-              </div>
-              <div class="related-item">
-                  <img src="/source/images (1).jpg" alt="Manga 3" class="related-image">
-                  <p class="related-title">Manga Title 3</p>
-              </div>
-              <div class="related-item">
-                  <img src="/source/images (2).jpg" alt="Manga 4" class="related-image">
-                  <p class="related-title">Manga Title 4</p>
-              </div>
-              <div class="related-item">
-                  <img src="/source/Persona-5-Mementos-Mission-Cover-1-696x987.jpg" alt="Manga 5" class="related-image">
-                  <p class="related-title">Manga Title 5</p>
-              </div>
-          </div>
-          <!-- Cart and Buy Now Buttons -->
-          <div class="buy-options">
-            <a href="/cart.html" class="add-to-cart">
-                <i class="fas fa-shopping-cart"></i> Add to Cart
-            </a>
-            <a href="/VisitorSide/html/payment.html" class="buy-now">
-                <span class="price">$19.99</span>
-                <span class="buy-text">Buy Now</span>
-            </a>
-        </div>
-        
-      </div>
-      
-  </div>
+    <!-- Cart and Buy Now Buttons on the Right -->
+    <div class="flex flex-col justify-start  flex-1">
+        <!-- Add to Cart Button -->
+        <a href="/cart.html" class="bg-gray-800 text-white py-4 px-6 rounded-md w-48 text-center font-bold hover:bg-red-500 transition duration-300 mb-4">
+            <i class="fas fa-shopping-cart"></i> Add to Cart
+        </a>
 
+        <!-- Buy Now Button -->
+        <a href="/VisitorSide/html/payment.html" class="bg-gray-800 text-white py-4 px-6 rounded-md w-60 flex items-center justify-between text-center font-bold hover:bg-red-500 transition duration-300">
+            <span class="text-xl text-red-500">$19.99</span>
+            <span>Buy Now</span>
+        </a>
+    </div>
+  </div>
 </div>
 
-<div class="bottom-container">
-  <div class="column">
-      <h2>On Sale</h2>
-      <div class="box-line-container">
-          <div class="box-container">
-              <a href="/VisitorSide/html/manga-details.html" class="manga-box">
-                  <img src="/source/images (1).jpg" alt="Manga Cover" class="manga-cover">
-                  <div class="manga-details">
-                      <h3 class="manga-title">Manga Title 1</h3>
-                      <p class="manga-author">Author: Author Name</p>
-                      <p class="manga-genre">Genre: Adventure</p>
-                      <p class="manga-price">Price: $19.99</p>
-                  </div>
-              </a>
-              <!-- More manga boxes here -->
-               
-          </div>
-      </div>
+
+
+  
+    <!-- Bottom Container -->
+    <div class="bottom-container flex gap-8 justify-between p-6">
+        <div class="column flex-1">
+            <h2 class="text-2xl font-bold mb-4 text-center">On Sale</h2>
+            <div class="box-line-container overflow-x-scroll">
+                <div class="box-container flex gap-6">
+                    <a href="/VisitorSide/html/manga-details.html" class="manga-box bg-gray-200 rounded-lg overflow-hidden w-72 h-48 flex transform transition duration-300 hover:scale-105">
+                        <img src="/source/images (1).jpg" alt="Manga Cover" class="manga-cover w-32 h-48 object-cover rounded-l-lg">
+                        <div class="manga-details p-4 flex-1">
+                            <h3 class="text-xl font-bold">Manga Title 1</h3>
+                            <p class="text-sm text-gray-600">Author: Author Name</p>
+                            <p class="text-sm text-gray-600">Genre: Adventure</p>
+                            <p class="text-lg text-gray-900">$19.99</p>
+                        </div>
+                    </a>
+                    <!-- More manga boxes here -->
+                </div>
+            </div>
+        </div>
+  
+        <div class="column flex-1">
+            <h2 class="text-2xl font-bold mb-4 text-center">Featured</h2>
+            <div class="box-line-container overflow-x-scroll">
+                <div class="box-container flex gap-6">
+                    <a href="/VisitorSide/html/manga-details.html" class="manga-box bg-gray-200 rounded-lg overflow-hidden w-72 h-48 flex transform transition duration-300 hover:scale-105">
+                        <img src="/source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover w-32 h-48 object-cover rounded-l-lg">
+                        <div class="manga-details p-4 flex-1">
+                            <h3 class="text-xl font-bold">Manga Title 1</h3>
+                            <p class="text-sm text-gray-600">Author: Author Name</p>
+                            <p class="text-sm text-gray-600">Genre: Fantasy</p>
+                            <p class="text-lg text-gray-900">$15.99</p>
+                        </div>
+                    </a>
+                    <!-- More manga boxes here -->
+                </div>
+            </div>
+        </div>
+  
+        <div class="column flex-1">
+            <h2 class="text-2xl font-bold mb-4 text-center">Top Rated</h2>
+            <div class="box-line-container overflow-x-scroll">
+                <div class="box-container flex gap-6">
+                    <a href="/VisitorSide/html/manga-details.html" class="manga-box bg-gray-200 rounded-lg overflow-hidden w-72 h-48 flex transform transition duration-300 hover:scale-105">
+                        <img src="/source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover w-32 h-48 object-cover rounded-l-lg">
+                        <div class="manga-details p-4 flex-1">
+                            <h3 class="text-xl font-bold">Manga Title 1</h3>
+                            <p class="text-sm text-gray-600">Author: Author Name</p>
+                            <p class="text-sm text-gray-600">Genre: Sci-Fi</p>
+                            <p class="text-lg text-gray-900">$12.99</p>
+                        </div>
+                    </a>
+                    <!-- More manga boxes here -->
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
-  <div class="column">
-      <h2>Featured</h2>
-      <div class="box-line-container">
-          <div class="box-container">
-              <a href="/VisitorSide/html/manga-details.html" class="manga-box">
-                  <img src="/source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
-                  <div class="manga-details">
-                      <h3 class="manga-title">Manga Title 1</h3>
-                      <p class="manga-author">Author: Author Name</p>
-                      <p class="manga-genre">Genre: Fantasy</p>
-                      <p class="manga-price">Price: $15.99</p>
-                  </div>
-              </a>
-              <!-- More manga boxes here -->
+  
+  
+
+
+
+<!-- Modal Structure for Registration -->
+<div id="registerModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-left-section">
+      <img src="/src/ec35cb77-36c4-43ca-975e-3d7ad3372417.jpg" alt="Background Image" class="modal-background-image">
+    </div>
+    <div class="modal-right-section">
+      <span class="close-button" onclick="closeRegisterModal()">&times;</span>
+      <h2>Register an Account</h2>
+      
+      <!-- Registration Form -->
+      <form action="https://white-seal-771693.hostingersite.com/VisitorSide/php/register.php" id="register-form" method="POST">
+          <div class="input-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required placeholder="Enter your full name">
           </div>
-      </div>
+
+          <div class="input-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="Enter your email">
+          </div>
+
+          <div class="input-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required placeholder="Enter your password">
+          </div>
+
+          <div class="buttons">
+              <button type="submit" class="register-btn">Register</button>
+              <a href="javascript:void(0);" class="login-btn" onclick="openLoginModal()">Login</a>
+
+          </div>
+      </form>
+    </div>
   </div>
-  <div class="column">
-      <h2>Top Rated</h2>
-      <div class="box-line-container">
-          <div class="box-container">
-              <a href="/VisitorSide/html/manga-details.html" class="manga-box">
-                  <img src="/source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
-                  <div class="manga-details">
-                      <h3 class="manga-title">Manga Title 1</h3>
-                      <p class="manga-author">Author: Author Name</p>
-                      <p class="manga-genre">Genre: Sci-Fi</p>
-                      <p class="manga-price">Price: $12.99</p>
-                  </div>
-              </a>
-              <!-- More manga boxes here -->
+</div>
+
+
+<!-- Modal Structure for Login -->
+<div id="loginModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-left-section">
+      <img src="/src/ec35cb77-36c4-43ca-975e-3d7ad3372417.jpg" alt="Background Image" class="modal-background-image">
+    </div>
+    <div class="modal-right-section">
+      <span class="close-button" onclick="closeLoginModal()">&times;</span>
+      <div class="form-container">
+        
+        
+        <!-- Greeting Text -->
+        <h2>Welcome Back!</h2>
+        <p>Login to your Account</p>
+        
+        <!-- Login Form -->
+        <form action="https://white-seal-771693.hostingersite.com/VisitorSide/php/login.php" id="login-form" method="POST">
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
           </div>
+          
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+          </div>
+          
+          <div class="buttons">
+            <button type="submit" class="login-btn">Login</button>
+            <a href="javascript:void(0);" class="register-btn" onclick="openRegisterModal()">Register</a>
+          </div>
+        </form>
       </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Structure -->
+<div id="cartModal" class="modal hidden">
+  <div class="modal-content">
+      <span class="close-button" onclick="closeCartModal()">&times;</span>
+      <h2>Your Cart</h2>
+      <ul id="cartItemsList">
+          <!-- Example Item -->
+          <li class="cart-item">
+              <img src="/source/Horimiya.600.3183213.jpg" alt="Manga Cover" class="cart-item-image">
+              <div class="cart-item-details">
+                  <h3 class="cart-item-title">Manga Title</h3>
+                  <p class="cart-item-price">Price: $19.99</p>
+                  <p class="cart-item-quantity">Quantity: 1</p>
+              </div>
+          </li>
+          <!-- More items can go here -->
+      </ul>
+      <a href="/VisitorSide/html/payment.html" class="checkout-button">Checkout</a>
+
   </div>
 </div>
 

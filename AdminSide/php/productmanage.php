@@ -71,10 +71,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Execute the query and provide feedback
         if ($stmt->execute()) {
-            echo "Manga successfully uploaded with image!";
+            echo "<script>
+                    alert('Manga successfully uploaded with image!');
+                    window.location.href = '/AdminSide/html/order-managament.html';
+                </script>";
         } else {
-            echo "Failed to upload manga. Please try again.";
-        }
+            echo "<script>
+                    alert('Failed to upload manga. Please try again.');
+                    window.location.href = '/AdminSide/html/order-managament.html';
+                </script>";
+}
+
 
         // Close the statement
         $stmt->close();

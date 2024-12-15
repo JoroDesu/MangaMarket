@@ -61,11 +61,11 @@
       <nav class="sticky-nav">
         <ul class="flex justify-center space-x-6 mt-4">
           <li><a href="/VisitorSide/html/Main_Page.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Home</a></li>
-          <li><a href="/on-sale" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">On Sale</a></li>
-          <li><a href="/manga" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Manga</a></li>
-          <li><a href="/new-release" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">New Release</a></li>
-          <li><a href="/MangaMarket/VisitorSide/html/ContactUs.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Contact Us</a></li>
-          <li><a href="/about" class="text-black hover:text-gray-400" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">About Us</a></li>
+          <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">On Sale</a></li>
+          <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Manga</a></li>
+          <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">New Release</a></li>
+          <li><a href="/VisitorSide/html/ContactUs.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Contact Us</a></li>
+          <li><a href="#footer-wrapper" class="text-black hover:text-gray-400" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">About Us</a></li>
         </ul>
       </nav>
       
@@ -195,6 +195,9 @@
 
 
 
+
+
+
 <!-- Modal Structure for Registration -->
 <div id="registerModal" class="modal hidden">
   <div class="modal-content">
@@ -270,13 +273,17 @@
   </div>
 </div>
 
-
 <!-- Modal Structure -->
+
 <div id="cartModal" class="modal hidden">
   <div class="modal-content">
       <span class="close-button" onclick="closeCartModal()">&times;</span>
-      <h2>Your Cart</h2>
-      <ul id="cartItemsList">
+      
+      <!-- "Add to Cart" Title in the upper left -->
+      <h2 class="modal-title">Add to Cart</h2>
+      
+      <!-- List of Manga Items in the cart -->
+      <ul id="cartItemsList" class="cart-items-list">
           <!-- Example Item -->
           <li class="cart-item">
               <img src="/source/Horimiya.600.3183213.jpg" alt="Manga Cover" class="cart-item-image">
@@ -288,10 +295,17 @@
           </li>
           <!-- More items can go here -->
       </ul>
-      <a href="/VisitorSide/html/payment.html" class="checkout-button">Checkout</a>
-
+      
+      <!-- Checkout Button at the bottom -->
+      <div class="checkout-button-container">
+          <a href="/VisitorSide/html/payment.html" class="checkout-button">Checkout</a>
+      </div>
   </div>
 </div>
+
+
+
+
 
 
 <!-- Footer Start -->
