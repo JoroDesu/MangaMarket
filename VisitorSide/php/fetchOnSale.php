@@ -37,8 +37,8 @@ if ($result && $result->num_rows > 0) {
             'price' => $row['price'],
             'description' => $row['description'],
             'cover' => $baseURL . $row['image_url'],
-            'sale' => $row['sale'], // Include the sale column
-            'salePrice' => $row['sale_price'] // Include the sale_price column
+            
+            'salePrice' => $row['saleprice'] // Include the sale_price column
         ];
     }
 } else {
