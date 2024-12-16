@@ -21,7 +21,7 @@ function populateManga(mangaList) {
 
 // Function to fetch session manga data
 function fetchSessionData() {
-    fetch('/VisitorSide/php/getSessionData.php')
+    fetch('https://white-seal-771693.hostingersite.com/VisitorSide/php/getSessionData.php')
         .then(response => response.json())
         .then(data => populateManga(data))
         .catch(error => console.error('Error fetching session data:', error));
