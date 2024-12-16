@@ -68,11 +68,7 @@ document.querySelector(".pay-now-button").addEventListener("click", (e) => {
         price: document.querySelector(".total").textContent.replace("₱", "").trim(), // Get the total price
     };
 
-    // Validate the form data (optional)
-    if (!formData.firstName || !formData.lastName ) {
-        alert("Please fill in all required fields.");
-        return;
-    }
+   
 
     // Send data to PHP via POST request
     fetch("https://white-seal-771693.hostingersite.com/VisitorSide/php/payment.php", {
@@ -86,7 +82,7 @@ document.querySelector(".pay-now-button").addEventListener("click", (e) => {
         .then((result) => {
             if (result.success) {
                 alert("Order placed successfully!");
-                window.location.href = "/VisitorSide/html/order-confirmation.html"; // Redirect to a confirmation page
+                window.location.href = "https://white-seal-771693.hostingersite.com/VisitorSide/html/Main_Page.html"
             } else {
                 console.error(result.message);
                 alert("Failed to place the order. Please try again.");
