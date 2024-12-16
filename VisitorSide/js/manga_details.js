@@ -180,3 +180,7 @@ function populateMangaDescription() {
 
 // Call the function to populate the manga description when the page loads
 window.onload = populateMangaDescription;
+
+
+
+

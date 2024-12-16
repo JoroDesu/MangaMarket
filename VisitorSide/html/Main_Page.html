@@ -99,7 +99,7 @@
           </div>
           <div class="box-line-container">
             <!-- Left Arrow -->
-            <button class="arrow left" onclick="scrollToRight('mangaScroller')">&#10094;</button>
+            <button class="arrow left" onclick="scrollToLeft('mangaScroller')">&#10094;</button>
             
             <div class="box-container" id="mangaScroller">
               <a href="/VisitorSide/html/manga-details.html" class="manga-box">
@@ -197,11 +197,11 @@
     
     <script>
       function fetchCategory(genre) {
-    // Redirect to PHP page with genre as a parameter
-      window.location.href = `https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchGenre.php?genre=${genre}`;
-}
-
-  </script>
+        // Redirect to view_all.html with the genre as a parameter
+        window.location.href = `/VisitorSide/html/View_all.html?genre=${genre}`;
+      }
+    </script>
+    
   
     </div>
 

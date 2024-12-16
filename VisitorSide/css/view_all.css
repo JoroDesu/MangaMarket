@@ -166,39 +166,6 @@ body {
   
   
   
-  /* On Sale Section */
-  .on-sale {
-    margin: 20px 0;
-    padding: 10px;
-  }
-  
-  .on-sale .header {
-    display: flex;
-    justify-content: space-between; /* Align the title and button */
-    align-items: center; /* Vertically center the elements */
-    margin-bottom: 20px; /* Space between the header and the manga boxes */
-  }
-  
-  .on-sale h1 {
-    font-size: 2.5rem;
-    margin: 0;
-  }
-  
-  .view-all-btn {
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: white;
-    background-color: #4CAF50; /* Green button */
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    text-decoration: none;
-  }
-  
-  .view-all-btn:hover {
-    background-color: #45a049; /* Darker Green */
-  }
-  
   /* Box Container Styles */
 .box-line-container {
     display: flex;
@@ -248,7 +215,7 @@ body {
   
   /* Title and Author */
   .manga-title {
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: bold;
     color: #333333;
     margin: 0;
@@ -268,78 +235,7 @@ body {
     text-align: right;
   }
   
-  /* View All Button */
-  .view-all-btn {
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: white;
-    background-color: #4CAF50; /* Green button */
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    text-decoration: none;
-  }
-  
-  .view-all-btn:hover {
-    background-color: #45a049; /* Darker Green */
-  }
-  
-  /*Category box*/
-  /* Category Container */
-  .category-container {
-    margin: 20px 0;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  .category-container h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  /* Category Grid Layout */
-  .category-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 items per row */
-    gap: 15px;
-    margin-bottom: 20px;
-  }
-  
-  .category-box {
-    background-color: #f5f5f5;
-    padding: 15px;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .category-box:hover {
-    background-color: #e91e63; /* Hover color */
-    color: white;
-  }
-  
-  /* Hidden categories */
-  .category-box.hidden {
-    display: none;
-  }
-  
-  /* Expand Button */
-  .expand-btn {
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #4CAF50; /* Green button */
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    text-decoration: none;
-  }
-  
-  .expand-btn:hover {
-    background-color: #45a049; /* Darker Green */
-  }
-  
+
   
   
   /*footer content*/
