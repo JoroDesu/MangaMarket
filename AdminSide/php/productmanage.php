@@ -68,7 +68,7 @@ if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
     // Insert data into database if upload is successful
     if ($uploadOk == 1) {
         $stmt = $conn->prepare("INSERT INTO manga (title, author, genre, price, stock, description, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssiss", $title, $author, $genres, $price, $stock, $description, $uploadedFileName);
+        $stmt->bind_param("ssssiss", $title, $author, $genres, $price, $stock, $description, $z);
 
         // Execute the query and provide feedback
         if ($stmt->execute()) {

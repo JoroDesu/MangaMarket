@@ -20,7 +20,7 @@ function populateManga(mangaList) {
 
 // Function to fetch manga data based on genre
 function fetchMangaData(genre) {
-    const url = `path_to_php_file.php?genre=${genre}`;  // Pass the genre as a URL parameter
+    const url = `https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchCategory.php?genre=${genre}`;  // Pass the genre as a URL parameter
 
     fetch(url)
         .then(response => response.json())
@@ -29,4 +29,4 @@ function fetchMangaData(genre) {
 }
 
 // Call this function with a specific genre (e.g., 'Action', 'Romance')
-fetchMangaData('Action'); // Replace 'Action' with the genre you want to load
+fetchMangaData('Action'); 
