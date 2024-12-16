@@ -26,49 +26,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $uploadOk = 1;
     $uploadedFileName = '';
 
-    if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
-        $fileName = basename($_FILES["image"]["name"]);
-        $fileTmpPath = $_FILES["image"]["tmp_name"];
-        $fileSize = $_FILES["image"]["size"];
-        $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-        $uploadedFileName = $fileName; // Use the original file name
-        $targetFilePath = $uploadDir . $uploadedFileName;
-    
-        // Validate file type
-        if (!in_array($fileExt, $allowedExtensions)) {
-            echo "Only JPG, JPEG, PNG, and GIF files are allowed.";
-            $uploadOk = 0;
-        }
-    
-        // Validate file size
-        if ($fileSize > 500000) { // Max size: 500KB
-            echo "Sorry, your file is too large.";
-            $uploadOk = 0;
-        }
-    
-        // Attempt to upload file if all checks pass
-        if ($uploadOk == 1) {
-            // Create the upload directory if it doesn't exist
-            if (!is_dir($uploadDir)) {
-                mkdir($uploadDir, 0777, true);
-            }
-    
-            if (!move_uploaded_file($fileTmpPath, $targetFilePath)) {
-                echo "Sorry, there was an error uploading your file.";
-                $uploadOk = 0;
-            }
-        }
-    } else {
-        echo "No valid file uploaded.";
+    // Check if file was uploaded
+if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
+    $fileName = basename($_FILES["image"]["name"]);
+    $fileTmpPath = $_FILES["image"]["tmp_name"];
+    $fileSize = $_FILES["image"]["size"];
+    $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+    $uploadedFileName = $fileName; // Use the original file name
+    $targetFilePath = $uploadDir . $uploadedFileName;
+
+    // Validate file type
+    if (!in_array($fileExt, $allowedExtensions)) {
+        echo "Only JPG, JPEG, PNG, and GIF files are allowed.";
         $uploadOk = 0;
     }
-    
+
+    // Validate file size
+    if ($fileSize > 500000) { // Max size: 500KB
+        echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+
+    // Attempt to upload file if all checks pass
+    if ($uploadOk == 1) {
+        // Create the upload directory if it doesn't exist
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
+
+        if (!move_uploaded_file($fileTmpPath, $targetFilePath)) {
+            echo "Sorry, there was an error uploading your file.";
+            $uploadOk = 0;
+        }
+    }
+} else {
+    echo "No valid file uploaded.";
+    $uploadOk = 0;
+}
 
 
     // Insert data into database if upload is successful
     if ($uploadOk == 1) {
         $stmt = $conn->prepare("INSERT INTO manga (title, author, genre, price, stock, description, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssiss", $title, $author, $genres, $price, $stock, $description, $z);
+        $stmt->bind_param("ssssiss", $title, $author, $genres, $price, $stock, $description, $uploadedFileName);
 
         // Execute the query and provide feedback
         if ($stmt->execute()) {
