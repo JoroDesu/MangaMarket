@@ -10,6 +10,7 @@
     <link rel="icon" type="image/x-icon" href="../src/cropped_image (1).png">
     <link rel="stylesheet" href="/VisitorSide/css/style.css">
     <link rel="stylesheet" href="/VisitorSide/css/registerCss.css">
+    <link rel="stylesheet" href="/VisitorSide/css/cart.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   </head>
@@ -286,20 +287,21 @@
   </div>
 </div>
 
-<!-- Modal Structure -->
+<!-- CartModal Structure -->
 
 <div id="cartModal" class="modal hidden">
   <div class="modal-content">
-      <span class="close-button" onclick="closeCartModal()">&times;</span>
+      
       
       <!-- "Add to Cart" Title in the upper left -->
       <h2 class="modal-title">Add to Cart</h2>
+      <span class="close-button" onclick="closeCartModal()">&times;</span>
       
       <!-- List of Manga Items in the cart -->
       <ul id="cartItemsList" class="cart-items-list">
           <!-- Example Item -->
           <li class="cart-item">
-              <img src="/source/Horimiya.600.3183213.jpg" alt="Manga Cover" class="cart-item-image">
+              <img src="../source/Horimiya.600.3183213.jpg" alt="Manga Cover" class="cart-item-image">
               <div class="cart-item-details">
                   <h3 class="cart-item-title">Manga Title</h3>
                   <p class="cart-item-price">Price: $19.99</p>

@@ -1,7 +1,7 @@
 /* Modal Styling */
 .modal {
     display: none; /* Hidden by default */
-    position: fixed;
+    position: absolute;
     z-index: 1000;
     left: 0;
     top: 0;
@@ -13,16 +13,7 @@
     align-items: center;
   }
   
-  /* Modal Content - Flex for left image and right form */
-  .modal-content {
-    display: flex;
-    width: 80%;
-    max-width: 1000px;
-    margin: auto;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  }
+ 
   
   /* Left Section: Image */
   .modal-left-section {

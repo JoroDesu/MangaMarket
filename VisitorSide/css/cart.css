@@ -1,0 +1,144 @@
+/* Modal styling */
+#cartModal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    right: 0;
+    top: 0;
+    width: 30%;
+    height: 60%;
+    overflow-y: auto;
+    background-color: white;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+    border-left: 1px solid #ccc;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Close Button */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Modal Title */
+.modal-title {
+    background-color: #f8f8f8;
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Cart Items List */
+.cart-items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+    background-color: white;
+}
+
+.cart-item {
+    display: flex;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.cart-item-image {
+    width: 50%;
+    max-height: 100px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.cart-item-details {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cart-item-title {
+    font-size: 1rem;
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.cart-item-price, .cart-item-quantity {
+    font-size: 0.9rem;
+    margin: 2px 0;
+    color: #555;
+}
+
+/* Checkout Button */
+.checkout-button-container {
+    padding: 15px;
+    border-top: 1px solid #ccc;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+.checkout-button {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    background-color: #0288d1;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.checkout-button:hover {
+    background-color: #026aa7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #cartModal {
+        width: 100%;
+        height: 50%;
+        bottom: 0;
+        top: auto;
+    }
+
+    .modal-title {
+        font-size: 1.2rem;
+        padding: 15px;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cart-item-image {
+        width: 80%;
+        margin-bottom: 10px;
+    }
+
+    .cart-item-details {
+        width: 100%;
+        text-align: center;
+    }
+
+    .checkout-button {
+        font-size: 0.9rem;
+    }
+}

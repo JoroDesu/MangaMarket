@@ -63,7 +63,7 @@
     
     <!-- Delivery Details -->
     <div class="delivery-details">
-        <a href="/VisitorSide/html/Descriptions.html" class="back-btn">Go Back</a>
+        <a href="/VisitorSide/html/Descriptions.html?id=${manga.id}" class="back-btn">Go Back</a>
         <h2>Delivery Details</h2>
         <form>
             <div class="name-row">
@@ -129,26 +129,6 @@
             <p>Shipping: <span class="shipping">$5.00</span></p>
             <p>Total: <span class="total">$64.97</span></p>
         </div>
-    </div>
-
-    <!-- Payment Method -->
-    <div class="payment-method">
-        <h2>Payment Method</h2>
-        <form>
-            <div>
-                <input type="radio" id="gcash" name="payment" required>
-                <label for="gcash">GCash, Maya, PayPal</label>
-            </div>
-            
-            <div>
-                <input type="radio" id="cod" name="payment" required>
-                <label for="cod">Cash on Delivery (COD)</label>
-            </div>
-            <div>
-                <input type="radio" id="other" name="payment" required>
-                <label for="other">Other Payment Methods</label>
-            </div>
-        </form>
     </div>
 
     <!-- Pay Now Button -->
