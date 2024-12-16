@@ -21,7 +21,7 @@ function respondWithError($message) {
 $genre = isset($_GET['genre']) ? $_GET['genre'] : '';  // Get the genre from URL parameters
 
 // Prepare the query to get manga by genre
-$query = "SELECT title, author, price, cover_image FROM manga WHERE genre = ?";
+$query = "SELECT title, author, price, image_url FROM manga WHERE genre = ?";
 $stmt = $mysqli->prepare($query);
 $stmt->bind_param("s", $genre);  // Bind the genre parameter to the query
 $stmt->execute();
@@ -31,11 +31,12 @@ $mangaList = [];
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        $baseURL = "../../source/mangacover/";
         $mangaList[] = [
             'title' => $row['title'],
             'author' => $row['author'],
             'price' => $row['price'],
-            'image_url' => $row['cover_image']
+            'cover' => $baseURL . $row['image_url']
         ];
     }
     // Return the manga list as JSON

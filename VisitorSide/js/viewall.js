@@ -7,7 +7,7 @@ function populateManga(mangaList) {
         const mangaCard = document.createElement('div');
         mangaCard.classList.add('manga-box'); // Add class for styling each manga card
         mangaCard.innerHTML = `
-            <img src="${manga.image_url}" alt="${manga.title} Cover" class="manga-cover">
+            <img src="${manga.cover}" alt="${manga.title} Cover" class="manga-cover">
             <div class="manga-details">
                 <h3 class="manga-title">${manga.title}</h3>
                 <p class="manga-author">${manga.author}</p>
@@ -20,7 +20,7 @@ function populateManga(mangaList) {
 
 // Function to fetch manga data based on genre
 function fetchMangaData(genre) {
-    const url = `https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchCategory.php?genre=${genre}`;  // Pass the genre as a URL parameter
+    const url = `https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchGenre.php?genre=${genre}`;  // Pass the genre as a URL parameter
 
     fetch(url)
         .then(response => response.json())
