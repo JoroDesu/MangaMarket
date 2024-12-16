@@ -5,7 +5,7 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, x-requested-with");
 
 // Include database connection
-include '../../dbconn.php';
+include 'dbconn.php';
 
 // Debug: Check if $conn is defined
 if (!isset($conn)) {
