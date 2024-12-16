@@ -3,11 +3,6 @@ function populateManga(mangaList) {
     const container = document.getElementById('manga-container'); // Container where manga will be displayed
     container.innerHTML = ''; // Clear any existing content
 
-    if (mangaList.length === 0) {
-        container.innerHTML = '<p>No manga found in the session.</p>';
-        return;
-    }
-
     mangaList.forEach(manga => {
         const mangaCard = document.createElement('div');
         mangaCard.classList.add('manga-box'); // Add class for styling each manga card
@@ -23,17 +18,12 @@ function populateManga(mangaList) {
     });
 }
 
+
 // Function to fetch session manga data
 function fetchSessionData() {
     fetch('https://white-seal-771693.hostingersite.com/VisitorSide/php/getSessionData.php')
         .then(response => response.json())
-        .then(data => {
-            if (data.error) {
-                console.error('Error:', data.error);
-            } else {
-                populateManga(data); // Populate manga if the data is valid
-            }
-        })
+        .then(data => populateManga(data))
         .catch(error => console.error('Error fetching session data:', error));
 }
 
