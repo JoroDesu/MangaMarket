@@ -30,7 +30,7 @@ function populateMangaBoxes() {
     });
 }
 
-fetch('https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchManga.php') // Replace with the actual API endpoint
+fetch('https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchManga.php') 
     .then((response) => {
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);

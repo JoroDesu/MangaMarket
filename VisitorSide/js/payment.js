@@ -69,7 +69,7 @@ document.querySelector(".pay-now-button").addEventListener("click", (e) => {
     };
 
     // Validate the form data (optional)
-    if (!formData.firstName || !formData.lastName || !formData.paymentMethod) {
+    if (!formData.firstName || !formData.lastName ) {
         alert("Please fill in all required fields.");
         return;
     }
