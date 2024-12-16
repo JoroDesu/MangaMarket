@@ -67,7 +67,7 @@ document.querySelector(".pay-now-button").addEventListener("click", (e) => {
         mangaId: new URLSearchParams(window.location.search).get('id'), // Extract manga ID from the URL
         price: document.querySelector(".total").textContent.replace("₱", "").trim(), // Get the total price
     };
-
+    console.log(formData);
    
 
     // Send data to PHP via POST request

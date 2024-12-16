@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, x-requested-with");
-header('Content-Type: application/json');
+
 // Handle preflight request
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit(0);
@@ -51,7 +51,7 @@ $price = floatval($data['price']);
 
 // Insert data into the database
 $sql = "INSERT INTO orders (first_name, last_name, region, building_number, street_name, city, state, postal_code, phone_number, manga_id, price) 
-        VALUES ('$firstName', '$lastName', '$region', '$buildingNumber', '$streetName', '$city', '$state', '$postalCode', '$phoneNumber', '$mangaId', '$price', )";
+        VALUES ('$firstName', '$lastName', '$region', '$buildingNumber', '$streetName', '$city', '$state', '$postalCode', '$phoneNumber', '$mangaId', '$price' )";
 
 if ($conn->query($sql) === TRUE) {
     echo json_encode(['success' => true, 'message' => 'Order placed successfully']);
