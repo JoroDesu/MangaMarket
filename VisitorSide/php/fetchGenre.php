@@ -4,8 +4,18 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, x-requested-with");
 
-// Include database connection
-include 'dbconn.php';
+$servername = "localhost";
+$username = "u143688490_joro";
+$password = "GaeAF123!";
+$dbname = "u143688490_mangaDB";
+
+$mysqli = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
+
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
