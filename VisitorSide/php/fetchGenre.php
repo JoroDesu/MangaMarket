@@ -13,36 +13,66 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 include 'dbconn.php';
 
 // Error handler function
-function respondWithError($message) {
+function respondWithError($message, $logError = null) {
+    // Log the error to a file (optional)
+    if ($logError) {
+        error_log($logError, 3, __DIR__ . '/error_log.txt');
+    }
+
+    // Respond with an error message
     echo json_encode(['error' => $message]);
     exit();
 }
 
-$genre = isset($_GET['genre']) ? $_GET['genre'] : '';  // Get the genre from URL parameters
+// Validate and sanitize genre parameter
+$genre = isset($_GET['genre']) ? trim($_GET['genre']) : '';
+
+if (empty($genre)) {
+    respondWithError("Genre parameter is missing.");
+}
 
 // Prepare the query to get manga by genre
 $query = "SELECT title, author, price, image_url FROM manga WHERE genre = ?";
 $stmt = $mysqli->prepare($query);
-$stmt->bind_param("s", $genre);  // Bind the genre parameter to the query
-$stmt->execute();
-$result = $stmt->get_result();
 
-$mangaList = [];
+if (!$stmt) {
+    respondWithError("Failed to prepare query.", $mysqli->error);
+}
 
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $baseURL = "../../source/mangacover/";
-        $mangaList[] = [
-            'title' => $row['title'],
-            'author' => $row['author'],
-            'price' => $row['price'],
-            'cover' => $baseURL . $row['image_url']
-        ];
+$stmt->bind_param("s", $genre);
+
+// Execute the query
+if ($stmt->execute()) {
+    $result = $stmt->get_result();
+    $mangaList = [];
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $baseURL = "../../source/mangacover/";
+            $mangaList[] = [
+                'title' => $row['title'],
+                'author' => $row['author'],
+                'price' => $row['price'],
+                'cover' => $baseURL . $row['image_url']
+            ];
+        }
+
+        // Save the result in a session to use in the next page
+        session_start();
+        $_SESSION['mangaList'] = $mangaList;
+
+        // Redirect to View_all.html
+        header("Location: /VisitorSide/html/View_all.html");
+        exit();
+    } else {
+        // If no manga found, redirect with an empty session variable
+        session_start();
+        $_SESSION['mangaList'] = [];
+        header("Location: /VisitorSide/html/View_all.html");
+        exit();
     }
-    // Return the manga list as JSON
-    echo json_encode($mangaList);
 } else {
-    echo json_encode([]);  // Return an empty array if no manga found
+    respondWithError("Failed to execute query.", $stmt->error);
 }
 
 $stmt->close();
