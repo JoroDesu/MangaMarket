@@ -18,15 +18,14 @@ function populateManga(mangaList) {
     });
 }
 
-// Function to fetch manga data based on genre
-function fetchMangaData(genre) {
-    const url = `https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchGenre.php?genre=${genre}`;  // Pass the genre as a URL parameter
 
-    fetch(url)
+// Function to fetch session manga data
+function fetchSessionData() {
+    fetch('/VisitorSide/php/getSessionData.php')
         .then(response => response.json())
         .then(data => populateManga(data))
-        .catch(error => console.error('Error fetching manga data:', error));
+        .catch(error => console.error('Error fetching session data:', error));
 }
 
-// Call this function with a specific genre (e.g., 'Action', 'Romance')
-fetchMangaData('Action'); 
+// Automatically call the function to load data on page load
+document.addEventListener('DOMContentLoaded', fetchSessionData);
