@@ -4,25 +4,18 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, x-requested-with");
 
-// Start session
-session_start();
-
 // Include database connection
 include 'dbconn.php';
 
-// Error handler function
-function respondWithError($message, $logError = null) {
-    if ($logError) {
-        error_log($logError, 3, __DIR__ . '/error_log.txt');
-    }
-    echo json_encode(['error' => $message]);
-    exit();
-}
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 // Validate and sanitize genre parameter
 $genre = isset($_GET['genre']) ? trim($_GET['genre']) : '';
 if (empty($genre)) {
-    respondWithError("Genre parameter is missing.");
+    echo json_encode(['error' => "Genre parameter is missing."]);
+    exit();
 }
 
 // Query to get manga by genre
@@ -30,7 +23,8 @@ $query = "SELECT title, author, price, image_url FROM manga WHERE genre = ?";
 $stmt = $mysqli->prepare($query);
 
 if (!$stmt) {
-    respondWithError("Failed to prepare query.", $mysqli->error);
+    echo json_encode(['error' => "Failed to prepare query.", 'details' => $mysqli->error]);
+    exit();
 }
 
 $stmt->bind_param("s", $genre);
@@ -49,14 +43,10 @@ if ($stmt->execute()) {
         ];
     }
 
-    // Save manga data in session
-    $_SESSION['mangaList'] = $mangaList;
-
-    // Redirect to View_all.html
-    header("Location: /VisitorSide/html/View_all.html");
-    exit();
+    // Return JSON response
+    echo json_encode($mangaList);
 } else {
-    respondWithError("Failed to execute query.", $stmt->error);
+    echo json_encode(['error' => "Failed to execute query.", 'details' => $stmt->error]);
 }
 
 $stmt->close();
