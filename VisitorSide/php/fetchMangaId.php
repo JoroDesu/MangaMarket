@@ -11,7 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 include 'dbconn.php';
 
 // Get manga_id from the query string
-$manga_id = isset($_GET['manga_id']) ? $_GET['manga_id'] : null;
+$manga_id = isset($_GET['id']) ? $_GET['id'] : null;
+
 
 // If manga_id is not provided, return an error
 if ($manga_id === null) {

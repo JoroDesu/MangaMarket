@@ -4,6 +4,7 @@ function getMangaIdFromURL() {
     return parseInt(urlParams.get('id')); // Get the ID from the URL
 }
 
+
 // Fetch the manga data from the PHP script based on the ID
 function populateMangaDescription() {
     const mangaId = getMangaIdFromURL(); // Get the manga ID from the URL
