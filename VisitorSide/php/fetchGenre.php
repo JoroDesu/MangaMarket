@@ -7,11 +7,6 @@ header("Access-Control-Allow-Headers: Content-Type, x-requested-with");
 // Include database connection
 include 'dbconn.php';
 
-// Debug: Check if $conn is defined
-if (!isset($conn)) {
-    die("Database connection is not properly initialized.");
-}
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -23,11 +18,11 @@ if (empty($genre)) {
     exit();
 }
 
-// Debug: Check the value of genre
-error_log("Genre: " . $genre);
+// Add wildcards for partial matching
+$genre = "%" . $genre . "%"; // Match any genre containing the user's input
 
-// Query to get manga by genre
-$query = "SELECT title, author, price, image_url FROM manga WHERE genre = ?";
+// Query to get manga by genre using LIKE
+$query = "SELECT title, author, price, image_url FROM manga WHERE genre LIKE ?";
 $stmt = $conn->prepare($query);
 
 if (!$stmt) {
