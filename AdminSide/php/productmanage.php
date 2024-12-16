@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = $conn->real_escape_string($_POST['description']);
 
     // Define the upload directory and allowed file types
-    $uploadDir = '/source/mangacover/';
+    $uploadDir = __DIR__ . '/source/mangacover/';
     $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
     $uploadOk = 1;
     $uploadedFileName = '';

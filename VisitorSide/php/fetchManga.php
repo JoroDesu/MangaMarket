@@ -23,7 +23,7 @@ if ($result && $result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $baseURL = "../../source/mangacover/";
         $mangas[] = [
-            'id' => $row['manga_id'], 
+            'id' => $row['manga_id'], // Include the manga_id
             'title' => $row['title'],
             'author' => $row['author'],
             'genre' => $row['genre'],
