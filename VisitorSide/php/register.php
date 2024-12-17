@@ -20,10 +20,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sss", $name, $email, $hashedPassword);
 
     if ($stmt->execute()) {
-        echo "Registration successful!";
+        echo "<script>
+                alert('Registered successfully!');
+                window.location.href = '/VisitorSide/html/Main_Page.html';
+            </script>";
     } else {
-        echo "Error: " . $stmt->error;
-    }
+        echo "<script>
+                alert('Failed to Register');
+                window.location.href = '/VisitorSide/html/Main_Page.html';
+            </script>";
+}
 
     $stmt->close();
     $conn->close();
