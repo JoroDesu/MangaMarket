@@ -5,42 +5,39 @@ header("Access-Control-Allow-Headers: Content-Type");
 
 include 'dbconn.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
-    // Sanitize and validate POST data
-    $firstName = $conn->real_escape_string($_POST['firstName']);
-    $lastName = $conn->real_escape_string($_POST['lastName']);
-    $region = $conn->real_escape_string($_POST['region']);
-    $buildingNumber = $conn->real_escape_string($_POST['buildingNumber']);
-    $streetName = $conn->real_escape_string($_POST['streetName']);
-    $city = $conn->real_escape_string($_POST['city']);
-    $state = $conn->real_escape_string($_POST['state']);
-    $postalCode = $conn->real_escape_string($_POST['postalCode']);
-    $phoneNumber = $conn->real_escape_string($_POST['phoneNumber']);
-    $mangaId = intval($_POST['mangaId']);
-    $price = floatval($_POST['price']);
 
-    if (
-        empty($firstName) || empty($lastName) || empty($region) ||
-        empty($buildingNumber) || empty($streetName) || empty($city) ||
-        empty($state) || empty($postalCode) || empty($phoneNumber) ||
-        empty($mangaId) || empty($price)
-    ) {
-        echo json_encode(['success' => false, 'message' => 'Missing required fields']);
-        exit;
-    }
+// Retrieve Form Data
+$fullName = $_POST['firstName'] . ' ' . $_POST['lastName'];
+$region = $_POST['region'];
+$buildingNumber = $_POST['buildingNumber'];
+$streetName = $_POST['streetName'];
+$city = $_POST['city'];
+$state = $_POST['state'];
+$postalCode = $_POST['postalCode'];
+$phoneNumber = $_POST['phoneNumber'];
+$mangaId = $_POST['mangaId'];
+$totalPrice = $_POST['price'];
+$deliveryInstructions = isset($_POST['deliveryInstructions']) ? $_POST['deliveryInstructions'] : "";
 
-    // Insert into database
-    $sql = "INSERT INTO orders (first_name, last_name, region, building_number, street_name, city, state, postal_code, phone_number, manga_id, price) 
-            VALUES ('$firstName', '$lastName', '$region', '$buildingNumber', '$streetName', '$city', '$state', '$postalCode', '$phoneNumber', '$mangaId', '$price')";
+// Assuming a default user_id for now (replace this with actual user ID logic)
+$userId = $_POST['mangaId'];
 
-    if ($conn->query($sql) === TRUE) {
-        echo json_encode(['success' => true, 'message' => 'Order placed successfully']);
-    } else {
-        echo json_encode(['success' => false, 'message' => 'Error: ' . $conn->error]);
-    }
+// SQL Query to Insert Data
+$sql = "INSERT INTO orders (user_id, manga_id, full_name, region, building_number, street_name, city, state, postal_code, phone_number, delivery_instructions, total_price)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    $conn->close();
+// Prepare and Bind
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("iisssssssssd", $userId, $mangaId, $fullName, $region, $buildingNumber, $streetName, $city, $state, $postalCode, $phoneNumber, $deliveryInstructions, $totalPrice);
+
+// Execute Query
+if ($stmt->execute()) {
+    echo "Order placed successfully!";
 } else {
-    echo json_encode(['success' => false, 'message' => 'Invalid request method']);
+    echo "Error: " . $stmt->error;
 }
+
+// Close Connections
+$stmt->close();
+$conn->close();
 ?>
