@@ -8,8 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../src/cropped_image (1).png">
+    <link rel="stylesheet" href="/VisitorSide/css/description.css">
     <link rel="stylesheet" href="/VisitorSide/css/style.css">
+    <link rel="stylesheet" href="/VisitorSide/css/login.css">
     <link rel="stylesheet" href="/VisitorSide/css/registerCss.css">
+    <link rel="stylesheet" href="/VisitorSide/css/cart.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   </head>
@@ -63,12 +66,14 @@
           <li><a href="/VisitorSide/html/Main_Page.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Home</a></li>
           <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">On Sale</a></li>
           <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Manga</a></li>
-          <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">New Release</a></li>
+          <li><a href="/VisitorSide/html/NewRelease.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">New Release</a></li>
           <li><a href="/VisitorSide/html/ContactUs.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Contact Us</a></li>
           <li><a href="#footer-wrapper" class="text-black hover:text-gray-400" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">About Us</a></li>
         </ul>
       </nav>
       
+
+  
       
   
 
@@ -156,20 +161,19 @@
   </div>
 </div>
 
-<!-- Modal Structure -->
-
-<div id="cartModal" class="modal hidden">
-  <div class="modal-content">
-      <span class="close-button" onclick="closeCartModal()">&times;</span>
+<!-- CartModal Structure -->
+<div id="cartModalPanel" class="modal-cart hidden">
+  <div class="cart-modal-content">
       
       <!-- "Add to Cart" Title in the upper left -->
-      <h2 class="modal-title">Add to Cart</h2>
+      <h2 class="cart-modal-title">Add to Cart</h2>
+      <span class="cart-close-button" onclick="closeCartModal()">&times;</span>
       
       <!-- List of Manga Items in the cart -->
-      <ul id="cartItemsList" class="cart-items-list">
+      <ul id="cartItemListPanel" class="cart-item-list">
           <!-- Example Item -->
           <li class="cart-item">
-              <img src="/source/Horimiya.600.3183213.jpg" alt="Manga Cover" class="cart-item-image">
+              <img src="../source/Horimiya.600.3183213.jpg" alt="Manga Cover" class="cart-item-image">
               <div class="cart-item-details">
                   <h3 class="cart-item-title">Manga Title</h3>
                   <p class="cart-item-price">Price: $19.99</p>
@@ -180,11 +184,12 @@
       </ul>
       
       <!-- Checkout Button at the bottom -->
-      <div class="checkout-button-container">
-          <a href="/VisitorSide/html/payment.html" class="checkout-button">Checkout</a>
+      <div class="cart-checkout-button-container">
+          <a href="/VisitorSide/html/payment.html" class="cart-checkout-button">Checkout</a>
       </div>
   </div>
 </div>
+
 
 
 
@@ -231,7 +236,7 @@
 <!-- Footer End -->
 
 
-  
+
   <script src="/VisitorSide/js/mPage.js"></script>
   <script src="/VisitorSide/js/manga_details.js"></script>
   </body>

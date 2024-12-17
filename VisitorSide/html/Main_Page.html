@@ -45,9 +45,7 @@
                   <i class="far fa-user"></i> <!-- Hollow User icon -->
                 </button>
 
-                <a href="/wishlist" class="text-black hover:text-gray-400">
-                    <i class="far fa-heart"></i> <!-- Hollow Wishlist (Heart) icon -->
-                </a>
+               
                 <!-- Button to Trigger Modal -->
                 <button class="shopping-cart-button text-black hover:text-gray-400" onclick="openCartModal()">
                   <i class="fas fa-shopping-cart"></i> <!-- Hollow Cart icon -->
@@ -288,17 +286,15 @@
 </div>
 
 <!-- CartModal Structure -->
-
-<div id="cartModal" class="modal hidden">
-  <div class="modal-content">
-      
+<div id="cartModalPanel" class="modal-cart hidden">
+  <div class="cart-modal-content">
       
       <!-- "Add to Cart" Title in the upper left -->
-      <h2 class="modal-title">Add to Cart</h2>
-      <span class="close-button" onclick="closeCartModal()">&times;</span>
+      <h2 class="cart-modal-title">Add to Cart</h2>
+      <span class="cart-close-button" onclick="closeCartModal()">&times;</span>
       
       <!-- List of Manga Items in the cart -->
-      <ul id="cartItemsList" class="cart-items-list">
+      <ul id="cartItemListPanel" class="cart-item-list">
           <!-- Example Item -->
           <li class="cart-item">
               <img src="../source/Horimiya.600.3183213.jpg" alt="Manga Cover" class="cart-item-image">
@@ -312,11 +308,12 @@
       </ul>
       
       <!-- Checkout Button at the bottom -->
-      <div class="checkout-button-container">
-          <a href="/VisitorSide/html/payment.html" class="checkout-button">Checkout</a>
+      <div class="cart-checkout-button-container">
+          <a href="/VisitorSide/html/payment.html" class="cart-checkout-button">Checkout</a>
       </div>
   </div>
 </div>
+
 
 
 

@@ -116,59 +116,33 @@
   </form>
 
   <!-- Edit Manga Form -->
-  <form action="https://white-seal-771693.hostingersite.com/AdminSide/php/editmanga.php" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 max-w-lg mx-auto flex-1">
-    <h2 class="text-2xl font-bold mb-4 text-center">Edit Manga</h2>
+  <!-- Manga Table -->
+<div class="flex justify-center items-start overflow-y-auto max-h-[450px]">
+  <table id="manga-table" class="min-w-full table-auto border-separate border-spacing-y-[8px]">
+      <thead class="bg-rgb(56,50,49) sticky top-0">
+          <tr>
+              <th class="px-4 py-2 text-center">Manga ID</th>
+              <th class="px-4 py-2 text-center">Title</th>
+              <th class="px-4 py-2 text-center">Author</th>
+              <th class="px-4 py-2 text-center">Genre</th>
+              <th class="px-4 py-2 text-center">Price</th>
+              <th class="px-4 py-2 text-center">Stock</th>
+              <th class="px-4 py-2 text-center">Description</th>
+              <th class="px-4 py-2 text-center">Image</th>
+              <th class="px-4 py-2 text-center">Sale Price</th>
+              <th class="px-4 py-2 text-center">Ratings</th>
+              <th class="px-4 py-2 text-center">Created At</th>
+              <th class="px-4 py-2 text-center">Action</th>
+          </tr>
+      </thead>
+      <tbody class="space-y-4">
+          <tr>
+              <td colspan="12" class="text-center py-4">No manga found.</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
 
-    <!-- Manga ID to Identify the Manga -->
-    <div class="mb-4">
-      <label for="edit-manga-id" class="block text-gray-700 text-sm font-bold mb-2">Manga ID:</label>
-      <input type="text" id="edit-manga-id" name="manga_id" required
-             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-             placeholder="Enter manga ID to edit">
-    </div>
 
-    <!-- Fields for editing details -->
-    <div class="mb-4">
-      <label for="edit-price" class="block text-gray-700 text-sm font-bold mb-2">New Price:</label>
-      <input type="number" id="edit-price" name="price" step="0.01" min="0"
-             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-             placeholder="Enter new price">
-    </div>
-
-    <div class="mb-4">
-      <label for="edit-stock" class="block text-gray-700 text-sm font-bold mb-2">New Stock:</label>
-      <input type="number" id="edit-stock" name="stock" min="0"
-             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-             placeholder="Enter new stock quantity">
-    </div>
-
-    <!-- Submit Button for Editing -->
-    <div class="flex items-center justify-center">
-      <button type="submit" name="edit_manga"
-              class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-        Update Manga
-      </button>
-    </div>
-  </form>
-
-  <!-- Delete Manga Form -->
-  <form action="/AdminSide/php/productmanage.php" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-lg mx-auto flex-1">
-    <h2 class="text-2xl font-bold mb-4 text-center">Delete Manga</h2>
-
-    <!-- Manga ID for Deletion -->
-    <div class="mb-4">
-      <label for="delete-manga-id" class="block text-gray-700 text-sm font-bold mb-2">Manga ID:</label>
-      <input type="text" id="delete-manga-id" name="manga_id" required
-             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-             placeholder="Enter manga ID to delete">
-    </div>
-
-    <!-- Submit Button for Deletion -->
-    <div class="flex items-center justify-center">
-      <button type="submit" name="delete_manga"
-              class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-        Delete Manga
-      </button>
-    </div>
-  </form>
+ 
 </div>

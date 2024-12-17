@@ -120,15 +120,22 @@ h1, p {
 }
 
 .manga-title {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: bold;
+  overflow: hidden; /* Hide overflowing text */
+  text-overflow: ellipsis;
+  width: 95%;
+  height: auto;
 }
 
 .manga-author,
 .manga-genre,
 .manga-price {
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin: 5px 0;
+  overflow: hidden; /* Hide overflowing text */
+  text-overflow: ellipsis;
+  width: 95%;
 }
 
 .manga-price {
@@ -147,7 +154,7 @@ h1, p {
 
 .manga-price .discounted-price {
   font-size: 1.2rem;
-  color: #f44336; /* Red for discounted price */
+  color: #ff1100; /* Red for discounted price */
 }
 
 .arrow {

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/VisitorSide/css/style.css">
     <link rel="stylesheet" href="/VisitorSide/css/registerCss.css">
     <link rel="stylesheet" href="/VisitorSide/css/view_all.css">
+    <link rel="stylesheet" href="/VisitorSide/css/cart.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   </head>
@@ -64,7 +65,7 @@
           <li><a href="/VisitorSide/html/Main_Page.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Home</a></li>
           <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">On Sale</a></li>
           <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Manga</a></li>
-          <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">New Release</a></li>
+          <li><a href="/VisitorSide/html/NewRelease.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">New Release</a></li>
           <li><a href="/VisitorSide/html/ContactUs.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Contact Us</a></li>
           <li><a href="#footer-wrapper" class="text-black hover:text-gray-400" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">About Us</a></li>
         </ul>
@@ -90,6 +91,117 @@
   </main>
   
           
+
+
+
+<!-- Modal Structure for Registration -->
+<div id="registerModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-left-section">
+      <img src="/src/ec35cb77-36c4-43ca-975e-3d7ad3372417.jpg" alt="Background Image" class="modal-background-image">
+    </div>
+    <div class="modal-right-section">
+      <span class="close-button" onclick="closeRegisterModal()">&times;</span>
+      <h2>Register an Account</h2>
+      
+      <!-- Registration Form -->
+      <form action="https://white-seal-771693.hostingersite.com/VisitorSide/php/register.php" id="register-form" method="POST">
+          <div class="input-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required placeholder="Enter your full name">
+          </div>
+
+          <div class="input-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="Enter your email">
+          </div>
+
+          <div class="input-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required placeholder="Enter your password">
+          </div>
+
+          <div class="buttons">
+              <button type="submit" class="register-btn">Register</button>
+              <a href="javascript:void(0);" class="login-btn" onclick="openLoginModal()">Login</a>
+
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Structure for Login -->
+<div id="loginModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-left-section">
+      <img src="/src/ec35cb77-36c4-43ca-975e-3d7ad3372417.jpg" alt="Background Image" class="modal-background-image">
+    </div>
+    <div class="modal-right-section">
+      <span class="close-button" onclick="closeLoginModal()">&times;</span>
+      <div class="form-container">
+        
+        
+        <!-- Greeting Text -->
+        <h2>Welcome Back!</h2>
+        <p>Login to your Account</p>
+        
+        <!-- Login Form -->
+        <form action="https://white-seal-771693.hostingersite.com/VisitorSide/php/login.php" id="login-form" method="POST">
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+          </div>
+          
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+          </div>
+          
+          <div class="buttons">
+            <button type="submit" class="login-btn">Login</button>
+            <a href="javascript:void(0);" class="register-btn" onclick="openRegisterModal()">Register</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CartModal Structure -->
+<div id="cartModalPanel" class="modal-cart hidden">
+  <div class="cart-modal-content">
+      
+      <!-- "Add to Cart" Title in the upper left -->
+      <h2 class="cart-modal-title">Add to Cart</h2>
+      <span class="cart-close-button" onclick="closeCartModal()">&times;</span>
+      
+      <!-- List of Manga Items in the cart -->
+      <ul id="cartItemListPanel" class="cart-item-list">
+          <!-- Example Item -->
+          <li class="cart-item">
+              <img src="../source/Horimiya.600.3183213.jpg" alt="Manga Cover" class="cart-item-image">
+              <div class="cart-item-details">
+                  <h3 class="cart-item-title">Manga Title</h3>
+                  <p class="cart-item-price">Price: $19.99</p>
+                  <p class="cart-item-quantity">Quantity: 1</p>
+              </div>
+          </li>
+          <!-- More items can go here -->
+      </ul>
+      
+      <!-- Checkout Button at the bottom -->
+      <div class="cart-checkout-button-container">
+          <a href="/VisitorSide/html/payment.html" class="cart-checkout-button">Checkout</a>
+      </div>
+  </div>
+</div>
+
+
+
+
+
 
 
 <!-- Footer Start -->
@@ -132,6 +244,9 @@
 <!-- Footer End -->
 
 
+  
+  <script src="/VisitorSide/js/mPage.js"></script>
+  <script src="/VisitorSide/js/manga_details.js"></script>
 <script src="/VisitorSide/js/viewall.js"></script>
 
   </body>

@@ -125,12 +125,12 @@ window.onclick = function(event) {
 
 // Function to open the modal
 function openCartModal() {
-  document.getElementById('cartModal').style.display = 'block';
+  document.getElementById('cartModalPanel').style.display = 'block';
 }
 
 // Function to close the modal
 function closeCartModal() {
-  document.getElementById('cartModal').style.display = 'none';
+  document.getElementById('cartModalPanel').style.display = 'none';
 }
 
 
