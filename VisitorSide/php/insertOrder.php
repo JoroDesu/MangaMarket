@@ -5,6 +5,10 @@ header("Access-Control-Allow-Headers: Content-Type");
 
 include 'dbconn.php';
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 
 // Retrieve Form Data
 $fullName = $_POST['firstName'] . ' ' . $_POST['lastName'];
