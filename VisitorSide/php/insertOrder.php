@@ -32,13 +32,16 @@ $stmt->bind_param("iisssssssssd", $userId, $mangaId, $fullName, $region, $buildi
 
 // Execute Query
 if ($stmt->execute()) {
-    // Redirect to the Main Page after successful order placement
-    header("Location: https://white-seal-771693.hostingersite.com/VisitorSide/html/Main_Page.html");
-    exit(); // Ensure the script stops execution after redirection
+    echo "<script>
+            alert('Manga successfully uploaded with image!');
+            window.location.href = '/VisitorSide/html/Main_Page.html';
+        </script>";
 } else {
-    echo "Error: " . $stmt->error;
+    echo "<script>
+            alert('Failed to upload manga. Please try again.');
+            window.location.href = '/VisitorSide/html/Main_Page.html';
+        </script>";
 }
-
 
 // Close Connections
 $stmt->close();
