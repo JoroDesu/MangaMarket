@@ -232,3 +232,6 @@ function scrollToRight(scrollerId) {
   const scroller = document.getElementById(scrollerId);
   scroller.scrollBy({ left: 300, behavior: 'smooth' });
 }
+
+
+
