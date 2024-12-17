@@ -32,8 +32,9 @@ function populateManga(mangaList) {
     }
 
     mangaList.forEach(manga => {
-        const mangaCard = document.createElement('div');
+        const mangaCard = document.createElement('a'); // Use an <a> element
         mangaCard.classList.add('manga-box'); // Add class for styling each manga card
+        mangaCard.href = `/VisitorSide/html/Descriptions.html?id=${manga.id}`; // Set the destination URL
         mangaCard.innerHTML = `
             <img src="${manga.cover}" alt="${manga.title} Cover" class="manga-cover">
             <div class="manga-details">
@@ -44,4 +45,5 @@ function populateManga(mangaList) {
         `;
         container.appendChild(mangaCard);
     });
+    
 }

@@ -32,10 +32,13 @@ $stmt->bind_param("iisssssssssd", $userId, $mangaId, $fullName, $region, $buildi
 
 // Execute Query
 if ($stmt->execute()) {
-    echo "Order placed successfully!";
+    // Redirect to the Main Page after successful order placement
+    header("Location: https://white-seal-771693.hostingersite.com/VisitorSide/html/Main_Page.html");
+    exit(); // Ensure the script stops execution after redirection
 } else {
     echo "Error: " . $stmt->error;
 }
+
 
 // Close Connections
 $stmt->close();
