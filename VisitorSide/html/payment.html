@@ -63,50 +63,81 @@
     
     <!-- Delivery Details -->
     <div class="delivery-details">
-        <a href="/VisitorSide/html/Descriptions.html?id=${manga.id}" class="back-btn">Go Back</a>
-        <h2>Delivery Details</h2>
-        <form>
-            <div class="name-row">
-                <div class="input-group">
-                    <label for="first-name">First Name</label>
-                    <input type="text" id="first-name" placeholder="Enter your first name" required>
-                </div>
-                <div class="input-group">
-                    <label for="last-name">Last Name</label>
-                    <input type="text" id="last-name" placeholder="Enter your last name" required>
-                </div>
+      <a href="/VisitorSide/html/Descriptions.html?id=${manga.id}" class="back-btn">Go Back</a>
+      <h2>Delivery Details</h2>
+      <form action="https://white-seal-771693.hostingersite.com/VisitorSide/php/insertOrder.php" method="post" id="order-form">
+          <div class="name-row">
+              <div class="input-group">
+                  <label for="first-name">First Name</label>
+                  <input type="text" id="first-name" name="firstName" placeholder="Enter your first name" required>
+              </div>
+              <div class="input-group">
+                  <label for="last-name">Last Name</label>
+                  <input type="text" id="last-name" name="lastName" placeholder="Enter your last name" required>
+              </div>
+          </div>
+          <div class="input-group">
+              <label for="region">Region</label>
+              <input type="text" id="region" name="region" placeholder="Enter your region" required>
+          </div>
+          <div class="input-group">
+              <label for="building-number">Building Number</label>
+              <input type="text" id="building-number" name="buildingNumber" placeholder="Enter your building number" required>
+          </div>
+          <div class="input-group">
+              <label for="street-name">Street Name</label>
+              <input type="text" id="street-name" name="streetName" placeholder="Enter your street name" required>
+          </div>
+          <div class="input-group">
+              <label for="city">City</label>
+              <input type="text" id="city" name="city" placeholder="Enter your city" required>
+          </div>
+          <div class="city-row">
+              <div class="input-group">
+                  <label for="state">State</label>
+                  <input type="text" id="state" name="state" placeholder="Enter your state" required>
+              </div>
+              <div class="input-group">
+                  <label for="postal-code">Postal Code</label>
+                  <input type="text" id="postal-code" name="postalCode" placeholder="Enter your postal code" required>
+              </div>
+          </div>
+          <div class="input-group">
+              <label for="phone-number">Phone Number</label>
+              <input type="tel" id="phone-number" name="phoneNumber" placeholder="Enter your phone number" required>
+          </div>
+  
+          <!-- Hidden Fields for Manga ID and Price -->
+          <input type="hidden" id="manga-id" name="mangaId">
+          <input type="hidden" id="total-price" name="price">
+  
+          <!-- Order Summary -->
+          
+  
+          <!-- Pay Now Button -->
+          <div class="pay-now-container">
+              <button type="submit" class="pay-now-button">Pay Now</button>
+          </div>
+      </form>
+  </div>
+  
+  <div class="order-summary ">
+    <h2>Order Summary</h2>
+    <div class="order-list">
+        <div class="order-item">
+            <img src="" alt="Manga Cover" class="order-cover">
+            <div class="order-details">
+                <p class="manga-title">Manga Title</p>
+                <p class="manga-price">$19.99</p>
             </div>
-            <div class="input-group">
-                <label for="region">Region</label>
-                <input type="text" id="region" placeholder="Enter your region" required>
-            </div>
-            <div class="input-group">
-                <label for="building-number">Building Number</label>
-                <input type="text" id="building-number" placeholder="Enter your building number" required>
-            </div>
-            <div class="input-group">
-                <label for="street-name">Street Name</label>
-                <input type="text" id="street-name" placeholder="Enter your street name" required>
-            </div>
-            <div class="input-group">
-                <label for="city">City</label>
-                <input type="text" id="city" placeholder="Enter your city" required>
-            </div>
-            <div class="city-row">
-                <div class="input-group">
-                    <label for="state">State</label>
-                    <input type="text" id="state" placeholder="Enter your state" required>
-                </div>
-                <div class="input-group">
-                    <label for="postal-code">Postal Code</label>
-                    <input type="text" id="postal-code" placeholder="Enter your postal code" required>
-                </div>
-            </div>
-            <div class="input-group">
-                <label for="phone-number">Phone Number</label>
-                <input type="tel" id="phone-number" placeholder="Enter your phone number" required>
-            </div>
-        </form>
+        </div>
+    </div>
+    <div class="summary-totals">
+        <p>Subtotal: <span class="subtotal">$0.00</span></p>
+        <p>Shipping: <span class="shipping">$50.00</span></p>
+        <p>Total: <span class="total">$0.00</span></p>
+    </div>
+</div>
         
     </div>
 
