@@ -19,7 +19,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $mangaId = intval($_POST['mangaId']);
     $price = floatval($_POST['price']);
 
-   
+    if (
+        empty($firstName) || empty($lastName) || empty($region) ||
+        empty($buildingNumber) || empty($streetName) || empty($city) ||
+        empty($state) || empty($postalCode) || empty($phoneNumber) ||
+        empty($mangaId) || empty($price)
+    ) {
+        echo json_encode(['success' => false, 'message' => 'Missing required fields']);
+        exit;
+    }
 
     // Insert into database
     $sql = "INSERT INTO orders (first_name, last_name, region, building_number, street_name, city, state, postal_code, phone_number, manga_id, price) 
