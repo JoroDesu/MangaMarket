@@ -24,7 +24,7 @@ $totalPrice = $_POST['price'];
 $deliveryInstructions = isset($_POST['deliveryInstructions']) ? $_POST['deliveryInstructions'] : "";
 
 // Assuming a default user_id for now (replace this with actual user ID logic)
-$userId = $_POST['mangaId'];
+$userId = $_POST['userId'];
 
 // SQL Query to Insert Data
 $sql = "INSERT INTO orders (user_id, manga_id, full_name, region, building_number, street_name, city, state, postal_code, phone_number, delivery_instructions, total_price)
