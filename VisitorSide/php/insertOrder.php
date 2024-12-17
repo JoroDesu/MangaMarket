@@ -10,7 +10,6 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
-// Retrieve Form Data
 $fullName = $_POST['firstName'] . ' ' . $_POST['lastName'];
 $region = $_POST['region'];
 $buildingNumber = $_POST['buildingNumber'];
@@ -23,18 +22,14 @@ $mangaId = $_POST['mangaId'];
 $totalPrice = $_POST['price'];
 $deliveryInstructions = isset($_POST['deliveryInstructions']) ? $_POST['deliveryInstructions'] : "";
 
-// Assuming a default user_id for now (replace this with actual user ID logic)
 $userId = $_POST['userId'];
 
-// SQL Query to Insert Data
 $sql = "INSERT INTO orders (user_id, manga_id, full_name, region, building_number, street_name, city, state, postal_code, phone_number, delivery_instructions, total_price)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-// Prepare and Bind
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("iisssssssssd", $userId, $mangaId, $fullName, $region, $buildingNumber, $streetName, $city, $state, $postalCode, $phoneNumber, $deliveryInstructions, $totalPrice);
 
-// Execute Query
 if ($stmt->execute()) {
     echo "<script>
             alert('Order Successful');
@@ -47,7 +42,6 @@ if ($stmt->execute()) {
         </script>";
 }
 
-// Close Connections
 $stmt->close();
 $conn->close();
 ?>

@@ -7,44 +7,38 @@ header("Access-Control-Allow-Headers: Content-Type, x-requested-with");
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit(0); 
 }
-session_start(); // Start session management
+session_start();
 
-// Include your database connection
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include 'dbconn.php';
 
-// Get the email and password from the POST request
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-// Prepare a query to check if the credentials match
 $sql = "SELECT user_id, email, password FROM credentials WHERE email = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $email); // "s" means one string parameter
+$stmt->bind_param("s", $email); 
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Check if the email exists
 if ($result->num_rows > 0) {
-    // Fetch the user record
     $user = $result->fetch_assoc();
 
-    // Verify the hashed password
     if (password_verify($password, $user['password'])) {
-        // Start session for the logged-in user
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['email'] = $user['email'];
 
         echo json_encode(["status" => "success", "message" => "Login successful"]);
     } else {
-        // Invalid password
         echo json_encode(["status" => "error", "message" => "Invalid credentials"]);
     }
 } else {
-    // Email not found
     echo json_encode(["status" => "error", "message" => "Invalid credentials"]);
 }
 
-// Close the connection
 $stmt->close();
 $conn->close();
 ?>

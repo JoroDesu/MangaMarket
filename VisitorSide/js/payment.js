@@ -34,7 +34,7 @@ function populateOrderSummary() {
             document.querySelector(".total").textContent = `₱${totalPrice.toFixed(2)}`;
 
             // Populate hidden fields
-            document.getElementById("user-id").value = 4;
+            document.getElementById("user-id").value = 4; //change this based on the user id in db
             document.getElementById("manga-id").value = mangaId;
             document.getElementById("total-price").value = totalPrice.toFixed(2);
         })

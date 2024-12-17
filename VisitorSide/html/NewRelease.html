@@ -19,56 +19,54 @@
   <body class="bg-gray-100 h-screen flex flex-col">
     <!-- Top Navigation -->
  
-    <header class="sticky-header bg-gray-950 text-white shadow p-4">
-        <div class="container mx-auto flex justify-between items-center">
-          <!-- Logo and Icons -->
-          <div class="flex items-center w-full justify-between">
-            <!-- Logo -->
-            <div class="flex items-center">
-              <img src="/src/cropped_image (1).png" alt="Logo" class="w-16 h-16 mr-5"> <!-- Adjusted size -->
-              <span class="text-2xl font-bold text-gray-800">Manga Market</span> <!-- Added text -->
-            </div>
-            
-        
-            <!-- Search Field in the Middle -->
-            <div class="flex-grow mx-4">
-              <input 
-                type="text" 
-                placeholder="Search Manga..." 
-                class="w-full p-2 rounded-lg text-black focus:outline-none search-input"
-              />
-            </div>
+    <!-- Header -->
+<header class="sticky-header bg-white text-black shadow p-4 fixed top-0 left-0 w-full z-50">
+  <div class="container mx-auto flex justify-between items-center">
+    <!-- Logo and Icons -->
+    <div class="flex items-center w-full justify-between">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <img src="/src/cropped_image (1).png" alt="Logo" class="w-16 h-16 mr-5"> <!-- Adjusted size -->
+        <span class="text-2xl font-bold text-gray-800">Manga Market</span> <!-- Added text -->
+      </div>
 
-        
-            <!-- Icons (Cart, Search, User, Wishlist) -->
-            <div class="flex space-x-6">
-                <!-- Trigger Button for Register Modal -->
-                <button class="register-button text-black hover:text-gray-400" onclick="openRegisterModal()">
-                  <i class="far fa-user"></i> <!-- Hollow User icon -->
-                </button>
+      <!-- Search Field in the Middle -->
+      <div class="flex-grow mx-4">
+        <input 
+          type="text" 
+          placeholder="Search Manga..." 
+          class="w-full p-2 rounded-lg text-black focus:outline-none border border-gray-300 search-input"
+        />
+      </div>
 
-             
-                <!-- Button to Trigger Modal -->
-                <button class="shopping-cart-button text-black hover:text-gray-400" onclick="openCartModal()">
-                  <i class="fas fa-shopping-cart"></i> <!-- Hollow Cart icon -->
-              </button>
-            </div>
-            
-          </div>
-        </div>
-      </header>
-      
+      <!-- Icons (Cart, Search, User, Wishlist) -->
+      <div class="flex space-x-6">
+        <!-- Trigger Button for Register Modal -->
+        <button class="register-button text-gray-700 hover:text-gray-400" onclick="openRegisterModal()">
+          <i class="far fa-user"></i> <!-- Hollow User icon -->
+        </button>
 
-      <nav class="sticky-nav">
-        <ul class="flex justify-center space-x-6 mt-4">
-          <li><a href="/VisitorSide/html/Main_Page.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Home</a></li>
-          <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">On Sale</a></li>
-          <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Manga</a></li>
-          <li><a href="/VisitorSide/html/NewRelease.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">New Release</a></li>
-          <li><a href="/VisitorSide/html/ContactUs.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Contact Us</a></li>
-          <li><a href="#footer-wrapper" class="text-black hover:text-gray-400" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">About Us</a></li>
-        </ul>
-      </nav>
+        <!-- Button to Trigger Modal -->
+        <button class="shopping-cart-button text-gray-700 hover:text-gray-400" onclick="openCartModal()">
+          <i class="fas fa-shopping-cart"></i> <!-- Hollow Cart icon -->
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Navigation Bar -->
+<nav class="sticky-nav bg-white shadow-md mt-20 sticky bottom-20 left-0 w-full z-10">
+  <ul class="flex justify-center space-x-6 p-4">
+    <li><a href="/VisitorSide/html/Main_Page.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Home</a></li>
+    <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">On Sale</a></li>
+    <li><a href="/VisitorSide/html/View_all.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Manga</a></li>
+    <li><a href="/VisitorSide/html/NewRelease.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">New Release</a></li>
+    <li><a href="/VisitorSide/html/ContactUs.html" class="text-black hover:text-gray-400 border-r-2 pr-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Contact Us</a></li>
+    <li><a href="#footer-wrapper" class="text-black hover:text-gray-400" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">About Us</a></li>
+  </ul>
+</nav>
+
       
 
   
