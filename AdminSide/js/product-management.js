@@ -1,6 +1,6 @@
 // Fetch and populate the manga table
 function fetchMangas() {
-  fetch(`https://white-seal-771693.hostingersite.com/AdminSide/php/fetchTbManga.php`)
+  fetch(`https://mangamarket.store/AdminSide/php/fetchTbManga.php`)
       .then(response => {
           if (!response.ok) {
               throw new Error('Network response was not ok: ' + response.statusText);

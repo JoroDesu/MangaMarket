@@ -4,7 +4,7 @@ function populateMangaBoxes() {
     boxContainer.innerHTML = ""; // Clear existing content
   
     // Fetch the manga data from the PHP script
-    fetch("https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchManga.php") // Change this to the correct path to your PHP file
+    fetch("https://mangamarket.store/VisitorSide/php/fetchManga.php") // Change this to the correct path to your PHP file
       .then(response => response.json()) // Parse the JSON response
       .then(mangaData => {
         mangaData.forEach((manga) => {

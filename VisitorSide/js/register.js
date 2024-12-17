@@ -15,5 +15,5 @@ document.getElementById("register-form").addEventListener("submit", function(eve
     alert("Account created successfully!");
 
     // Redirect to login page (for demonstration purposes)
-    window.location.href = "https://white-seal-771693.hostingersite.com/VisitorSide/html/Main_Page.html";
+    window.location.href = "https://mangamarket.store/VisitorSide/html/Main_Page.html";
 });

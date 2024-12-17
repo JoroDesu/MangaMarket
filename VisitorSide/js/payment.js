@@ -11,7 +11,7 @@ function populateOrderSummary() {
         return;
     }
 
-    fetch(`https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchMangaId.php?id=${mangaId}`)
+    fetch(`https://mangamarket.store/VisitorSide/php/fetchMangaId.php?id=${mangaId}`)
         .then(response => response.json())
         .then(manga => {
             if (manga.message) {

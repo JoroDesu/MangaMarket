@@ -7,7 +7,7 @@ function populateMangaBoxes() {
   boxContainer.innerHTML = ""; // Clear existing content
 
   // Fetch the manga data from the PHP script
-  fetch("https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchManga.php") // Change this to the correct path to your PHP file
+  fetch("https://mangamarket.store/VisitorSide/php/fetchManga.php") // Change this to the correct path to your PHP file
     .then(response => response.json()) // Parse the JSON response
     .then(mangaData => {
       mangaData.forEach((manga) => {
@@ -30,7 +30,7 @@ function populateMangaBoxes() {
     });
 }
 
-fetch('https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchManga.php') 
+fetch('https://mangamarket.store/VisitorSide/php/fetchManga.php') 
     .then((response) => {
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -60,7 +60,7 @@ fetch('https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchManga.ph
       const boxContainer = document.querySelector("#saleScroller");
       boxContainer.innerHTML = ""; // Clear existing content
     
-      fetch("https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchOnSale.php")
+      fetch("https://mangamarket.store/VisitorSide/php/fetchOnSale.php")
         .then(response => response.json())
         .then(onSaleData => {
           onSaleData.forEach((manga) => {
@@ -86,7 +86,7 @@ fetch('https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchManga.ph
         });
     }
 
-    fetch("https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchOnSale.php")
+    fetch("https://mangamarket.store/VisitorSide/php/fetchOnSale.php")
   .then(response => {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -108,7 +108,7 @@ fetch('https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchManga.ph
       const boxContainer = document.querySelector("#releaseScroller");
       boxContainer.innerHTML = ""; // Clear existing content
     
-      fetch("https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchNewReleases.php")
+      fetch("https://mangamarket.store/VisitorSide/php/fetchNewReleases.php")
         .then(response => response.json())
         .then(newReleaseData => {
           newReleaseData.forEach((manga) => {

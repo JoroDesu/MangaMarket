@@ -8,7 +8,7 @@ console.log('Selected Genre:', genre);
 document.getElementById('Catitle').textContent = genre;
 
 // Fetch category data from the server based on the genre
-fetch(`https://white-seal-771693.hostingersite.com/VisitorSide/php/fetchGenre.php?genre=${genre}`)
+fetch(`https://mangamarket.store/VisitorSide/php/fetchGenre.php?genre=${genre}`)
     .then(response => response.json())  // Assuming the response is in JSON format
     .then(data => {
         // Log the fetched data to the console
