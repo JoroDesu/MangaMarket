@@ -49,9 +49,9 @@
 }
 
 .close-button {
-  position: relative;
-  top: 0;
-  right: 0;
+  position: absolute;
+  top: 20px;
+  right: 20px;
   font-size: 24px;
   color: #333;
   cursor: pointer;
@@ -104,12 +104,12 @@ h2 {
 }
 
 .register-btn {
-  background-color: #0288d1;
+  background-color: #EF6B4A;
   color: white;
 }
 
 .register-btn:hover {
-  background-color: #026aa7;
+  background-color: #f3947c;
 }
 
 .login-btn {
@@ -121,7 +121,7 @@ h2 {
 }
 
 .login-btn:hover {
-  background-color: #444;
+  background-color: #8f8f8f;
 }
 
 /* Responsive Design */

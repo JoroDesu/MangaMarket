@@ -1,6 +1,6 @@
 // Fetch and populate the manga table
-function fetchMangas(sort = 'newest') {
-  fetch(`https://museobulawan.online/development/admin_mis/src/php/fetchMangas.php?sort=${sort}`)
+function fetchMangas() {
+  fetch(`https://white-seal-771693.hostingersite.com/AdminSide/php/fetchTbManga.php`)
       .then(response => {
           if (!response.ok) {
               throw new Error('Network response was not ok: ' + response.statusText);
@@ -12,7 +12,12 @@ function fetchMangas(sort = 'newest') {
               console.error(data.error);
               displayNoDataMessage();
           } else {
-              populateMangaTable(data);
+              if (Array.isArray(data)) {
+                  populateMangaTable(data);
+              } else {
+                  console.error('Data is not in expected array format');
+                  displayNoDataMessage();
+              }
           }
       })
       .catch(error => {
@@ -25,99 +30,44 @@ function fetchMangas(sort = 'newest') {
 function populateMangaTable(mangas) {
   const tableBody = document.getElementById('manga-table').querySelector('tbody');
   tableBody.innerHTML = ''; 
+
   // Check if there are mangas
   if (mangas.length === 0) {
       displayNoDataMessage();
       return;
   }
 
-  // Populate table rows
-  mangas.forEach(manga => {
-      const row = document.createElement('tr');
-      row.classList.add('border-t', 'border-gray-300', 'text-center');
+  // Build the table rows directly with data
+  const rows = mangas.map(manga => {
+      return `
+          <tr class="border-t border-gray-300 text-center">
+              <td class="px-4 py-2 bg-white border-black border-t-2 border-b-2">${manga.manga_id || 'N/A'}</td>
+              <td class="px-4 py-2 bg-white border-black border-t-2 border-b-2">${manga.title || 'N/A'}</td>
+              <td class="px-4 py-2 bg-white border-black border-t-2 border-b-2">${manga.author || 'N/A'}</td>
+              <td class="px-4 py-2 bg-white border-black border-t-2 border-b-2">${manga.genre || 'N/A'}</td>
+              <td class="px-4 py-2 bg-white border-black border-t-2 border-b-2">${manga.price || 'N/A'}</td>
+              <td class="px-4 py-2 bg-white border-black border-t-2 border-b-2">${manga.stock || 'N/A'}</td>
+              <td class="px-4 py-2 bg-white border-black border-t-2 border-b-2">${manga.description || 'N/A'}</td>
+              <td class="px-4 py-2 bg-white border-black border-t-2 border-b-2">
+                  <img src="${manga.image_url || ''}" alt="${manga.title || 'No image available'}" class="w-16 h-16 object-cover" />
+              </td>
+              <td class="px-4 py-2 bg-white border-black border-t-2 border-b-2">${manga.saleprice || 'N/A'}</td>
+              <td class="px-4 py-2 bg-white border-black border-t-2 border-b-2">${manga.ratings || 'N/A'}</td>
+              <td class="px-4 py-2 bg-white border-black border-t-2 border-b-2">${manga.created_at || 'N/A'}</td>
+              <td class="px-4 py-2 flex justify-center space-x-2 bg-white border-black rounded-r-[15px] border-t-2 border-b-2 border-r-2">
+                  <button class="bg-transparent text-black p-2 rounded hover:bg-orange-300" onclick="handleMangaAction('edit', ${JSON.stringify(manga)})">
+                      <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="bg-transparent text-black p-2 rounded hover:bg-orange-300" onclick="handleMangaAction('delete', ${manga.manga_id})">
+                      <i class="fas fa-trash"></i>
+                  </button>
+              </td>
+          </tr>
+      `;
+  }).join('');
 
-      // Create and populate cells
-      const mangaIdCell = document.createElement('td');
-      mangaIdCell.classList.add('px-4', 'py-2', 'bg-white', 'border-black', 'border-t-2', 'border-b-2', 'border-l-2');
-      mangaIdCell.textContent = manga.manga_id;
-
-      const titleCell = document.createElement('td');
-      titleCell.classList.add('px-4', 'py-2', 'bg-white', 'border-black', 'border-t-2', 'border-b-2');
-      titleCell.textContent = manga.title;
-
-      const authorCell = document.createElement('td');
-      authorCell.classList.add('px-4', 'py-2', 'bg-white', 'border-black', 'border-t-2', 'border-b-2');
-      authorCell.textContent = manga.author;
-
-      const genreCell = document.createElement('td');
-      genreCell.classList.add('px-4', 'py-2', 'bg-white', 'border-black', 'border-t-2', 'border-b-2');
-      genreCell.textContent = manga.genre;
-
-      const priceCell = document.createElement('td');
-      priceCell.classList.add('px-4', 'py-2', 'bg-white', 'border-black', 'border-t-2', 'border-b-2');
-      priceCell.textContent = manga.price;
-
-      const stockCell = document.createElement('td');
-      stockCell.classList.add('px-4', 'py-2', 'bg-white', 'border-black', 'border-t-2', 'border-b-2');
-      stockCell.textContent = manga.stock;
-
-      const descriptionCell = document.createElement('td');
-      descriptionCell.classList.add('px-4', 'py-2', 'bg-white', 'border-black', 'border-t-2', 'border-b-2');
-      descriptionCell.textContent = manga.description;
-
-      const imageCell = document.createElement('td');
-      imageCell.classList.add('px-4', 'py-2', 'bg-white', 'border-black', 'border-t-2', 'border-b-2');
-      const img = document.createElement('img');
-      img.src = manga.image_url;
-      img.alt = manga.title;
-      img.classList.add('w-16', 'h-16', 'object-cover');
-      imageCell.appendChild(img);
-
-      const salePriceCell = document.createElement('td');
-      salePriceCell.classList.add('px-4', 'py-2', 'bg-white', 'border-black', 'border-t-2', 'border-b-2');
-      salePriceCell.textContent = manga.saleprice;
-
-      const ratingsCell = document.createElement('td');
-      ratingsCell.classList.add('px-4', 'py-2', 'bg-white', 'border-black', 'border-t-2', 'border-b-2');
-      ratingsCell.textContent = manga.ratings;
-
-      const createdAtCell = document.createElement('td');
-      createdAtCell.classList.add('px-4', 'py-2', 'bg-white', 'border-black', 'border-t-2', 'border-b-2');
-      createdAtCell.textContent = manga.created_at;
-
-      const actionCell = document.createElement('td');
-      actionCell.classList.add('px-4', 'py-2', 'flex', 'justify-center', 'space-x-2', 'bg-white', 'border-black', 'rounded-r-[15px]', 'border-t-2', 'border-b-2', 'border-r-2');
-
-      // Add buttons with event listeners
-      const editButton = document.createElement('button');
-      editButton.classList.add('bg-transparent', 'text-black', 'p-2', 'rounded', 'hover:bg-orange-300');
-      editButton.innerHTML = `<i class="fas fa-edit"></i>`;
-      editButton.addEventListener('click', () => handleMangaAction('edit', manga));
-
-      const deleteButton = document.createElement('button');
-      deleteButton.classList.add('bg-transparent', 'text-black', 'p-2', 'rounded', 'hover:bg-orange-300');
-      deleteButton.innerHTML = `<i class="fas fa-trash"></i>`;
-      deleteButton.addEventListener('click', () => handleMangaAction('delete', manga.manga_id));
-
-      actionCell.appendChild(editButton);
-      actionCell.appendChild(deleteButton);
-
-      // Append cells to row
-      row.appendChild(mangaIdCell);
-      row.appendChild(titleCell);
-      row.appendChild(authorCell);
-      row.appendChild(genreCell);
-      row.appendChild(priceCell);
-      row.appendChild(stockCell);
-      row.appendChild(descriptionCell);
-      row.appendChild(imageCell);
-      row.appendChild(salePriceCell);
-      row.appendChild(ratingsCell);
-      row.appendChild(createdAtCell);
-      row.appendChild(actionCell);
-
-      tableBody.appendChild(row);
-  });
+  // Insert the rows into the table body
+  tableBody.innerHTML = rows;
 }
 
 // Handle actions for edit and delete
