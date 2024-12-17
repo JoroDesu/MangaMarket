@@ -22,7 +22,7 @@ if (empty($genre)) {
 $genre = "%" . $genre . "%"; // Match any genre containing the user's input
 
 // Query to get manga by genre using LIKE
-$query = "SELECT title, author, price, image_url FROM manga WHERE genre LIKE ?";
+$query = "SELECT manga_id, title, author, price, image_url FROM manga WHERE genre LIKE ?";
 $stmt = $conn->prepare($query);
 
 if (!$stmt) {
@@ -42,6 +42,7 @@ if ($stmt->execute()) {
         while ($row = $result->fetch_assoc()) {
             $baseURL = "../../source/mangacover/";
             $mangaList[] = [
+                'id' => $row['manga_id'],
                 'title' => $row['title'],
                 'author' => $row['author'],
                 'price' => $row['price'],

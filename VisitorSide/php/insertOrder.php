@@ -33,12 +33,12 @@ $stmt->bind_param("iisssssssssd", $userId, $mangaId, $fullName, $region, $buildi
 // Execute Query
 if ($stmt->execute()) {
     echo "<script>
-            alert('Manga successfully uploaded with image!');
+            alert('Order Successful');
             window.location.href = '/VisitorSide/html/Main_Page.html';
         </script>";
 } else {
     echo "<script>
-            alert('Failed to upload manga. Please try again.');
+            alert('Order Failed. Please try again.');
             window.location.href = '/VisitorSide/html/Main_Page.html';
         </script>";
 }
