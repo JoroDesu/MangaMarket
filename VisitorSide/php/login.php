@@ -18,9 +18,32 @@ include 'dbconn.php';
 $email = $_POST['email'];
 $password = $_POST['password'];
 
+// Check for admin credentials
+$adminSql = "SELECT admin_id, username, password FROM admin WHERE username = ?";
+$adminStmt = $conn->prepare($adminSql);
+$adminStmt->bind_param("s", $email);
+$adminStmt->execute();
+$adminResult = $adminStmt->get_result();
+
+if ($adminResult->num_rows > 0) {
+    $admin = $adminResult->fetch_assoc();
+
+    if ($password === $admin['password']) { // Plain comparison for simplicity
+        $_SESSION['admin_id'] = $admin['admin_id'];
+        $_SESSION['username'] = $admin['username'];
+
+        echo "<script>
+                alert('Admin login successful!');
+                window.location.href = 'https://mangamarket.store/AdminSide/index.html';
+              </script>";
+        exit;
+    }
+}
+
+// Check for regular user credentials
 $sql = "SELECT user_id, email, password FROM users WHERE email = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $email); 
+$stmt->bind_param("s", $email);
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -51,5 +74,7 @@ if ($result->num_rows > 0) {
 }
 
 $stmt->close();
+$adminStmt->close();
 $conn->close();
+
 ?>
