@@ -54,8 +54,6 @@ if ($result->num_rows > 0) {
         $_SESSION['user_id'] = $user['user_id'];
         $_SESSION['email'] = $user['email'];
 
-        $userID = $user['user_id']; // Capture the user ID
-
         echo "<script>
                 alert('Login successful!');
                 window.location.href = '/VisitorSide/html/Main_Page.html?id={$userID}';
@@ -76,5 +74,9 @@ if ($result->num_rows > 0) {
 $stmt->close();
 $adminStmt->close();
 $conn->close();
+
+// Pass login status to frontend
+$isLoggedIn = isset($_SESSION['user_id']) || isset($_SESSION['admin_id']) ? 'true' : 'false';
+echo "<script>var isLoggedIn = $isLoggedIn;</script>";
 
 ?>

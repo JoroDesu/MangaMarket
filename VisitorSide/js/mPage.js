@@ -72,8 +72,23 @@ const slides = document.getElementById('slides');
     }
 }
 
-// Assuming you have a way to check if the user is logged in, for example:
-let isLoggedIn = false;  // This should be set based on session or token validation
+
+function checkLoginStatus() {
+  let isLoggedIn = 'true';
+  if (isLoggedIn === 'true') {
+      // If the user is logged in, redirect to the profile page
+      window.location.href = 'https://mangamarket.store/VisitorSide/html/Profile.html';
+  } else {
+      // If the user is not logged in, open the cart modal (or show login)
+      openRegisterModal();
+  }
+}
+
+// Your existing openCartModal function
+function openCartModal() {
+  // Your modal opening code
+}
+
 
 // Function to open the registration modal
 function openRegisterModal() {
@@ -181,7 +196,7 @@ document.getElementById('register-form').addEventListener('submit', function(eve
 
   var form = new FormData(this); // Get the form data
 
-  fetch('https://white-seal-771693.hostingersite.com/VisitorSide/php/register.php', {
+  fetch('https://mangamarket.store/VisitorSide/php/register.php', {
       method: 'POST',
       body: form
   })

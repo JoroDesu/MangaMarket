@@ -41,7 +41,7 @@
       <!-- Icons (Cart, Search, User, Wishlist) -->
       <div class="flex space-x-6">
         <!-- Trigger Button for Register Modal -->
-        <button class="register-button text-gray-700 hover:text-gray-400" onclick="checkLoginStatus()">
+        <button class="register-button text-gray-700 hover:text-gray-400" onclick="openRegisterModal()">
           <i class="far fa-user"></i> <!-- Hollow User icon -->
         </button>
 
@@ -70,157 +70,98 @@
   
 
         <!-- Main Content -->
-    <main class="flex-1 p-6 bg-orange-100">
-      <div id="slider" class="relative w-full h-[96px] mx-auto overflow-hidden rounded-lg shadow-lg bg-gray-600">
-        <!-- Slides -->
-        <div id="slides" class="flex transition-transform duration-500">
-          <img src="/src/8820ff7553baaf595822b58c5590b604.jpg" alt="Slide 1" class="w-full h-auto object-cover flex-shrink-0">
-          <img src="/src/anime_banner_black_and_white_by_nenexhanako_dectbcn-fullview.jpg" alt="Slide 2" class="w-full h-auto object-cover flex-shrink-0">
-          <img src="/src/cover.365208.2400x600.jpg" alt="Slide 3" class="w-full h-auto object-cover flex-shrink-0">
-          <img src="/src/manga-topic-bcb2db3d26e6fc69abdc45d00b4f3268.jpg" alt="Slide 4" class="w-full h-auto object-cover flex-shrink-0">
-          <img src="/src//xf6m7rjtkke51.png" alt="Slide 5" class="w-full h-auto object-cover flex-shrink-0">
-        </div>
-      
-        <!-- Content Overlay -->
-        <div class="absolute bottom-0 left-0 w-full h-full bg-black bg-opacity-50 text-white flex items-center">
-          <div class="footer-box text-left px-8 max-w-lg">
-            <img src="/src/cropped_image (1).png" alt="MangaMarket Logo" class="footer-logo mb-2">
-            <h2 class="brand-title text-2xl font-bold mt-2">MangaMarket</h2>
-            <p class="brand-description mt-2 text-xl">
-              Dive into the world of manga! Your one-stop shop for the latest and greatest manga collections, exclusively for the Philippines.
-            </p>
-            <a href="/VisitorSide/html/Main_Page.html" 
-               class="shop-now-btn mt-4 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg">
-              Shop Now
-            </a>
-          </div>
-        </div>
-      </div>
-      
-    
-    
-    
-
-
-
-        <div class="best-seller">
-          <div class="header">
-              <h1>Best Seller</h1>
-              <a href="/VisitorSide/html/View_all.html" class="view-all-btn">View All</a>
-          </div>
-          <div class="box-line-container">
-            <!-- Left Arrow -->
-            <button class="arrow left" onclick="scrollToLeft('mangaScroller')">&#10094;</button>
-            
-            <div class="box-container" id="mangaScroller">
-              <a href="/VisitorSide/html/manga-details.html" class="manga-box">
-                <img src="/source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
-                <div class="manga-details">
-                  <h3 class="manga-title">Manga Title 1</h3>
-                  <p class="manga-author">Author: Author Name</p>
-                  <p class="manga-genre">Genre: Adventure</p>
-                  <p class="manga-price">Price: $19.99</p>
-                </div>
-              </a>
-          
-              <a href="/VisitorSide/html/manga-details.html" class="manga-box">
-                <img src="/source/583649164431305.63f68280e2b51.jpg" alt="Manga Cover" class="manga-cover">
-                <div class="manga-details">
-                  <h3 class="manga-title">Manga Title 2</h3>
-                  <p class="manga-author">Author: Author Name</p>
-                  <p class="manga-genre">Genre: Fantasy</p>
-                  <p class="manga-price">Price: $15.99</p>
-                </div>
-              </a>
-              
-              <!-- Additional manga items can be added here -->
+        <div class="flex flex-col md:flex-row w-full max-w-screen-xl mx-auto py-10">
+            <!-- Sidebar -->
+            <div class="w-full md:w-1/4 bg-white shadow-md rounded-lg p-5">
+              <div class="text-center">
+                <!-- Profile Picture -->
+                <img
+                  src="https://via.placeholder.com/150"
+                  alt="Profile Picture"
+                  class="w-32 h-32 mx-auto rounded-full border-4 border-gray-200"
+                />
+                <!-- User Name -->
+                <h2 class="mt-4 text-xl font-bold text-gray-700">John Doe</h2>
+              </div>
+        
+              <!-- Tabs -->
+              <div class="mt-8">
+                <button
+                  id="myAccountTab"
+                  class="w-full text-left py-2 px-4 mb-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
+                  onclick="showTab('account')"
+                >
+                  My Account
+                </button>
+                <button
+                  id="myOrdersTab"
+                  class="w-full text-left py-2 px-4 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring focus:ring-blue-300"
+                  onclick="showTab('orders')"
+                >
+                  My Orders
+                </button>
+              </div>
             </div>
-            
-            <!-- Right Arrow -->
-            <button class="arrow right" onclick="scrollToRight('mangaScroller')">&#10095;</button>
+        
+            <!-- Main Content -->
+            <div class="w-full md:w-3/4 bg-white shadow-md rounded-lg p-5 ml-0 md:ml-5 mt-5 md:mt-0">
+              <!-- My Account Section -->
+              <div id="accountSection" class="hidden">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">My Account</h2>
+                <form>
+                  <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2">New Password</label>
+                    <input
+                      type="password"
+                      class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+                      placeholder="Enter new password"
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2">Confirm Password</label>
+                    <input
+                      type="password"
+                      class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+                      placeholder="Confirm new password"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
+                  >
+                    Update Password
+                  </button>
+                </form>
+              </div>
+        
+              <!-- My Orders Section -->
+              <div id="ordersSection" class="hidden">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">My Orders</h2>
+                <ul class="divide-y divide-gray-200">
+                  <!-- Example order item -->
+                  <li class="py-4">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <h3 class="text-lg font-bold text-gray-700">Naruto Volume 1</h3>
+                        <p class="text-sm text-gray-500">Order Date: 2024-12-26</p>
+                      </div>
+                      <div class="text-blue-500 font-bold">₱500.00</div>
+                    </div>
+                  </li>
+                  <li class="py-4">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <h3 class="text-lg font-bold text-gray-700">One Piece Volume 3</h3>
+                        <p class="text-sm text-gray-500">Order Date: 2024-12-20</p>
+                      </div>
+                      <div class="text-blue-500 font-bold">₱600.00</div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-          
-      </div>
-      
-      <div class="on-sale">
-        <div class="header">
-            <h1>On Sale</h1>
-            <a href="/VisitorSide/html/View_all.html" class="view-all-btn">View All</a>
-        </div>
-        <div class="box-line-container">
-          <!-- Left Arrow -->
-          <button class="arrow left" onclick="scrollToLeft('saleScroller')">&#10094;</button>
-      
-          <div class="box-container" id="saleScroller">
-            <!-- Dynamically populated content -->
-          </div>
-      
-          <!-- Right Arrow -->
-          <button class="arrow right" onclick="scrollToRight('saleScroller')">&#10095;</button>
-        </div>
-      </div>
-      
-      <div class="new-release">
-        <div class="header">
-            <h1>New Release</h1>
-            <a href="/VisitorSide/html/View_all.html" class="view-all-btn">View All</a>
-        </div>
-        <div class="box-line-container">
-          <!-- Left Arrow -->
-          <button class="arrow left" onclick="scrollToLeft('releaseScroller')">&#10094;</button>
-      
-          <div class="box-container" id="releaseScroller">
-            <!-- Dynamically populated content -->
-          </div>
-      
-          <!-- Right Arrow -->
-          <button class="arrow right" onclick="scrollToRight('releaseScroller')">&#10095;</button>
-        </div>
-      </div>
-
-
-  
-
-
-      <div class="category-container relative bg-cover bg-center shadow-lg">
-        <h2>Check our Categories</h2>
-        <div class="category-grid">
-          <a href="#" onclick="fetchCategory('Adventure')" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/fantasy-anime-1920-x-1080-wallpaper-u6n5i0t1sgcrii9i.jpg');">Adventure</a>
-          <a href="#" onclick="fetchCategory('Fantasy')" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/images.jpg');">Fantasy</a>
-          <a href="#" onclick="fetchCategory('Action')" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/fa76d0120785243.60b889ddccfaa.jpg');">Action</a>
-          <a href="#" onclick="fetchCategory('Romance')" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/72b8dee3-63c3-4eb5-9a68-3bf1a88d447e-love-couple-anime.webp');">Romance</a>
-          <a href="#" onclick="fetchCategory('Mystery')" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/anime-original-forest-night-wallpaper-preview.jpg');">Mystery</a>
-          <a href="#" onclick="fetchCategory('Horror')" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/qw5ma5zajz841.jpg');">Horror</a>
-          <a href="#" onclick="fetchCategory('Sci-fi')" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/950ff831445d81e5d45e66e4518bb1a5.jpg');">Sci-Fi</a>
-          <a href="#" onclick="fetchCategory('Comedy')" class="category-box bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/gintama-gintaoki-wallpaper-560x314.webp');">Comedy</a>
-          <!-- Hidden categories -->
-          <a href="#" onclick="fetchCategory('Thriller')" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/thriller-anime-1500-x-844-wallpaper-iqc0xdh2yn6fqs1w.jpg');">Thriller</a>
-          <a href="#" onclick="fetchCategory('Drama')" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/HD-wallpaper-kousei-kaori-romance-anime-love-manga-drama-spring-couple.jpg');">Drama</a>
-          <a href="#" onclick="fetchCategory('Slice-of-life')" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/fruits-basket.jpg');">Slice of Life</a>
-          <a href="#" onclick="fetchCategory('Supernatural')" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/images\ \(1\).jpg');">Supernatural</a>
-          <a href="#" onclick="fetchCategory('Historical')" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/anime-japanese-character_23-2151478204.jpg');">Historical</a>
-          <a href="#" onclick="fetchCategory('Sports')" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/8bf42cd3db64abf013f3e2fe1377af84.webp');">Sports</a>
-          <a href="#" onclick="fetchCategory('Music')" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/1337285.png');">Music</a>
-          <a href="#" onclick="fetchCategory('Mecha')" class="category-box hidden bg-cover bg-center shadow-lg" style="background-image: url('/source/catergoriesbg/1344463.png');">Mecha</a>
-          </div>
-        <button class="expand-btn" onclick="toggleCategories()">Expand</button>
-    </div>
-    
-    <script>
-      function fetchCategory(genre) {
-        // Redirect to view_all.html with the genre as a parameter
-        window.location.href = `/VisitorSide/html/View_all.html?genre=${genre}`;
-      }
-    </script>
-    
-  
-    </div>
-
-
-
-
-
-
+        
 
 <!-- Modal Structure for Registration -->
 <div id="registerModal" class="modal hidden">
@@ -379,6 +320,7 @@
   
   <script src="/VisitorSide/js/mPage.js"></script>
   <script src="/VisitorSide/js/manga_details.js"></script>
+  <script src="/VisitorSide/js/profile.js"></script>
   
   </body>
   
