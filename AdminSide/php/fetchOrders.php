@@ -1,5 +1,11 @@
 <?php
-// Include your database connection file
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, x-requested-with");
+
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    exit(0);
+}
 require 'dbconn.php'; // Adjust the path to your database connection file
 
 header('Content-Type: application/json');
