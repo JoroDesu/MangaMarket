@@ -1,3 +1,7 @@
+document.addEventListener('DOMContentLoaded', () => {
+    fetchMangas();
+});
+
 // Fetch and populate the manga table
 function fetchMangas() {
   fetch(`https://mangamarket.store/AdminSide/php/fetchTbManga.php`)
