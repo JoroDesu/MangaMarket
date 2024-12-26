@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit(0); 
 }
 
-include 'db_connect.php';
+include 'dbconn.php';
 
 $sort = $_GET['sort'] ?? 'newest'; 
 $order = ($sort === 'oldest') ? 'ASC' : 'DESC';
