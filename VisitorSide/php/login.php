@@ -7,6 +7,7 @@ header("Access-Control-Allow-Headers: Content-Type, x-requested-with");
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit(0); 
 }
+
 session_start();
 
 ini_set('display_errors', 1);
@@ -15,8 +16,8 @@ error_reporting(E_ALL);
 
 include 'dbconn.php';
 
-$email = $_POST['email'];
-$password = $_POST['password'];
+$email = trim($_POST['email']);
+$password = trim($_POST['password']);
 
 // Check for admin credentials
 $adminSql = "SELECT admin_id, a_username, a_pass FROM admin WHERE a_username = ?";
@@ -28,9 +29,9 @@ $adminResult = $adminStmt->get_result();
 if ($adminResult->num_rows > 0) {
     $admin = $adminResult->fetch_assoc();
 
-    if ($password === $admin['password']) { // Plain comparison for simplicity
+    if (password_verify($password, $admin['a_pass'])) {
         $_SESSION['admin_id'] = $admin['admin_id'];
-        $_SESSION['username'] = $admin['username'];
+        $_SESSION['username'] = $admin['a_username'];
 
         echo "<script>
                 alert('Admin login successful!');
@@ -54,23 +55,17 @@ if ($result->num_rows > 0) {
         $_SESSION['user_id'] = $user['user_id'];
         $_SESSION['email'] = $user['email'];
 
-        $userID = $user['user_id']; // Capture the user ID
-
         echo "<script>
                 alert('Login successful!');
-                window.location.href = '/VisitorSide/html/Main_Page.html?id={$userID}';
+                window.location.href = '/VisitorSide/html/Main_Page.html?id={$user['user_id']}';
               </script>";
     } else {
-        echo "<script>
-                alert('Invalid credentials');
-                window.location.href = '/VisitorSide/html/Main_Page.html';
-              </script>";
+        header("Location: /VisitorSide/html/Main_Page.html?error=invalid_credentials");
+        exit;
     }
 } else {
-    echo "<script>
-            alert('Invalid credentials');
-            window.location.href = '/VisitorSide/html/Main_Page.html';
-          </script>";
+    header("Location: /VisitorSide/html/Main_Page.html?error=invalid_credentials");
+    exit;
 }
 
 $stmt->close();
