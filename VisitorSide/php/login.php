@@ -54,6 +54,8 @@ if ($result->num_rows > 0) {
         $_SESSION['user_id'] = $user['user_id'];
         $_SESSION['email'] = $user['email'];
 
+        $userID = $user['user_id'];
+
         echo "<script>
                 alert('Login successful!');
                 window.location.href = '/VisitorSide/html/Main_Page.html?id={$userID}';
