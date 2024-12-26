@@ -19,7 +19,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 // Check for admin credentials
-$adminSql = "SELECT admin_id, username, password FROM admin WHERE username = ?";
+$adminSql = "SELECT admin_id, a_username, a_pass FROM admin WHERE a_username = ?";
 $adminStmt = $conn->prepare($adminSql);
 $adminStmt->bind_param("s", $email);
 $adminStmt->execute();
