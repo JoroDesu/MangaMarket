@@ -74,7 +74,7 @@ const slides = document.getElementById('slides');
 
 
 function checkLoginStatus() {
-  let isLoggedIn = 'true';
+  let isLoggedIn = 'false';
   if (isLoggedIn === 'true') {
       // If the user is logged in, redirect to the profile page
       window.location.href = 'https://mangamarket.store/VisitorSide/html/Profile.html';

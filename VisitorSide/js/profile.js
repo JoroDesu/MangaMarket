@@ -29,3 +29,21 @@ function showTab(tabName) {
 
   // Default tab
   showTab('account');
+
+  function logout() {
+    fetch('https://mangamarket.store/VisitorSide/php/logout.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then((response) => {
+            if (response.ok) {
+                // Redirect to the login page after successful logout
+                window.location.href = '/VisitorSide/html/Main_Page.html';
+            } else {
+                alert('Logout failed. Please try again.');
+            }
+        })
+        .catch((error) => console.error('Error:', error));
+}
