@@ -12,36 +12,27 @@ include 'db_connect.php';
 $sort = $_GET['sort'] ?? 'newest'; 
 $order = ($sort === 'oldest') ? 'ASC' : 'DESC';
 
-// Query to fetch orders with foreign keys and join users and manga tables
+// Query to fetch data from the orders table
 $query = "
     SELECT 
-        o.order_id AS orderID,
-        o.status AS order_status,
-        o.delivery_instructions AS delivery_notes,
-        o.total_price AS total_price,
-        o.created_at AS order_date,
-        u.user_id AS userID,
-        u.full_name AS user_name,
-        u.region AS user_region,
-        u.building_number AS user_building,
-        u.street_name AS user_street,
-        u.city AS user_city,
-        u.state AS user_state,
-        u.postal_code AS user_postal_code,
-        u.phone_number AS user_phone,
-        m.manga_id AS mangaID,
-        m.title AS manga_title,
-        m.author AS manga_author,
-        m.genre AS manga_genre,
-        m.price AS manga_price
+        order_id, 
+        user_id, 
+        manga_id, 
+        status, 
+        full_name, 
+        region, 
+        building_number, 
+        street_name, 
+        city, 
+        state, 
+        postal_code, 
+        phone_number, 
+        delivery_instructions, 
+        total_price
     FROM 
-        orders AS o
-    JOIN 
-        users AS u ON o.user_id = u.user_id
-    JOIN 
-        manga AS m ON o.manga_id = m.manga_id
+        orders
     ORDER BY 
-        o.created_at $order
+        created_at $order
 ";
 
 $result = mysqli_query($connextion, $query);
