@@ -7,7 +7,6 @@ header("Access-Control-Allow-Headers: Content-Type, x-requested-with");
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit(0); 
 }
-
 session_start();
 
 ini_set('display_errors', 1);
@@ -16,8 +15,8 @@ error_reporting(E_ALL);
 
 include 'dbconn.php';
 
-$email = trim($_POST['email']);
-$password = trim($_POST['password']);
+$email = $_POST['email'];
+$password = $_POST['password'];
 
 // Check for admin credentials
 $adminSql = "SELECT admin_id, a_username, a_pass FROM admin WHERE a_username = ?";
@@ -55,17 +54,23 @@ if ($result->num_rows > 0) {
         $_SESSION['user_id'] = $user['user_id'];
         $_SESSION['email'] = $user['email'];
 
+        $userID = $user['user_id']; // Capture the user ID
+
         echo "<script>
                 alert('Login successful!');
-                window.location.href = '/VisitorSide/html/Main_Page.html?id={$user['user_id']}';
+                window.location.href = '/VisitorSide/html/Main_Page.html?id={$userID}';
               </script>";
     } else {
-        header("Location: /VisitorSide/html/Main_Page.html?error=invalid_credentials");
-        exit;
+        echo "<script>
+                alert('Invalid credentials');
+                window.location.href = '/VisitorSide/html/Main_Page.html';
+              </script>";
     }
 } else {
-    header("Location: /VisitorSide/html/Main_Page.html?error=invalid_credentials");
-    exit;
+    echo "<script>
+            alert('Invalid credentials');
+            window.location.href = '/VisitorSide/html/Main_Page.html';
+          </script>";
 }
 
 $stmt->close();
